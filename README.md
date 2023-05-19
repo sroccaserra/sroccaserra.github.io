@@ -7,6 +7,9 @@
 Coder un site pour collecter mes articles avec le moins d'outils possible, si
 possible ce qui est déjà installé sur un Linux pour développer.
 
+Tous les fichiers sources sont dans `src/`, sauf le Makefile qui est à la
+racine.
+
 Pour le moment j'expérimente d'écrire mes articles directement en HTML dans
 Vim. Le header et footer sont ajoutés par [m4][m4], qui est souvent installé
 par défaut. Les fichiers HTML complets sont générés par une règle [Make][make],
