@@ -19,5 +19,18 @@ jour tout ce qui doit l'être.
 Pour visualiser mes changements, j'utilise Python, installé aussi par défaut,
 pour démarrer un serveur HTTP local.
 
+### Références
+
+Inspirations pour coder ce site le plus simplement possible :
+
+- All you may need is HTML ~ <https://fabiensanglard.net/html/index.html>
+- Phil Hagelberg's Colophon ~ <https://technomancy.us/colophon>
+- Phil Hagelberg's Makefile ~ <https://p.hagelb.org/Makefile.html>
+- Frugarilla ~ <https://www.frugarilla.fr/>
+- <https://danluu.com/>
+- <https://motherfuckingwebsite.com/>
+- <https://chrisman.github.io/9.html>
+- <https://github.com/vkitchen/apostl>
+
 [m4]: https://www.gnu.org/software/m4/
 [make]: https://www.gnu.org/software/make/
