@@ -4,8 +4,9 @@ DST_FILES=$(patsubst src/%,%,$(filter-out src/header.html src/footer.html,$(SRC_
 .PHONY: all
 all: $(DST_FILES)
 
-%.html: src/%.html src/header.html src/footer.html
+$(DST_FILES): %.html: src/%.html src/header.html src/footer.html
 	m4 $< > $@
 
-pages/%.html: src/pages/%.html src/header.html src/footer.html
-	m4 $< > $@
+.PHONY: serve
+serve:
+	python3 -m http.server 8080
