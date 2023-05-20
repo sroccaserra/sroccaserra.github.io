@@ -4,7 +4,7 @@ DST_ARTICLES=$(patsubst src/%,%,$(filter-out src/index.html src/layout.html,$(SR
 .PHONY: all
 all: index.html $(DST_ARTICLES)
 
-index.html: src/index.html src/layout.html $(shell find src/pages/ -type f)
+index.html: $(SRC_FILES)
 	m4 \
 		-D __date='' \
 		-D __title="Journal d'exploration logicielle" \
@@ -18,6 +18,10 @@ $(DST_ARTICLES): %.html: src/%.html src/layout.html
 		-D __title="$(shell basename "$@" .html | cut -d_ -f2- | tr _ ' ')" \
 		-D __contents="$<" \
 		src/layout.html > "$@"
+
+.PHONY: clean
+clean:
+	rm -f index.html $(DST_ARTICLES)
 
 .PHONY: serve
 serve:
