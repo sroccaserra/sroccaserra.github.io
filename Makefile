@@ -4,10 +4,11 @@ DST_ARTICLES=$(patsubst src/%,%,$(filter-out src/index.html src/layout.html,$(SR
 .PHONY: all
 all: index.html $(DST_ARTICLES)
 
-index.html: src/index.html src/layout.html
+index.html: src/index.html src/layout.html $(shell find src/pages/ -type f)
 	m4 \
 		-D __date='' \
 		-D __title="Journal d'exploration logicielle" \
+		-D __toc="$(shell bash src/toc.sh $(DST_ARTICLES))" \
 		-D __contents="$<" \
 		src/layout.html > "$@"
 
