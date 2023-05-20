@@ -25,7 +25,12 @@ Voilà la démarche que j’ai suivie pour rendre visible les patterns de perte 
 Une connexion VPN, pour se maintenir, envoie à interval régulier des pings entre client et serveur. J’ai activé les logs de ces pings du point de vue de mon serveur applicatif. J’ai donc dans mes logs des pings envoyés et des pings reçus.
 </p>
 <p>
-Ces logs sont très verbeux, ils contiennent beaucoup d’information. En plissant les yeux, on peut voir dans ces lignes des lignes ‘RECEIVED PING PACKET’ et ‘SENT PING’. On peut voire aussi des lignes ‘Inactivity timeout’ et ‘ping-restart’ : ce sont les lignes qui montrent le problème, le redémarrage fréquent de la connexion VPN qui causait les pertes d’emails.
+Ces logs sont très verbeux, ils contiennent beaucoup d’information. En plissant
+les yeux, on peut voir dans ces lignes des lignes
+<code>RECEIVED&nbsp;PING&nbsp;PACKET</code> et <code>SENT&nbsp;PING</code>. On
+peut voire aussi des lignes <code>Inactivity&nbsp;timeout</code> et
+<code>ping-restart</code>&nbsp;: ce sont les lignes qui montrent le problème,
+le redémarrage fréquent de la connexion VPN qui causait les pertes d’emails.
 </p>
 
 <pre>
@@ -70,7 +75,9 @@ On peut déjà en tirer des informations mais ce n’est pas très pratique : da
 
 <h2>Transformation des logs</h2>
 <p>
-J’ai commencé par extraire les événements qui m’intéressent avec `rg` (un genre de `grep`) et à les structurer pour isoler le timestamp.
+J’ai commencé par extraire les événements qui m’intéressent avec
+<code>rg</code> (un genre de <code>grep</code>) et à les structurer pour isoler
+le timestamp.
 </p>
 <p>
 Isoler les envois de pings :
