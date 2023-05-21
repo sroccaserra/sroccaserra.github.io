@@ -125,63 +125,61 @@ envoyer le résultat dans un fichier “sent” (ici avec `tee` pour visualiser 
 résultat en même temps) :
 
 <pre>
-$ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' >' | <b>tee</b> sent
-2023-05-12 17:20:53.995533501 >
-2023-05-12 17:21:03.996518529 >
-2023-05-12 17:21:18.998396048 >
-2023-05-12 17:21:28.999163512 >
-2023-05-12 17:21:39.000143400 >
-2023-05-12 17:21:49.001231283 >
-2023-05-12 17:21:59.002246836 >
-2023-05-12 17:22:09.003689111 >
-2023-05-12 17:22:20.004544393 >
-2023-05-12 17:22:34.006820819 >
-2023-05-12 17:22:44.007459739 >
-2023-05-12 17:22:54.008443004 >
+$ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &gt;' | <b>tee</b> sent
+2023-05-12 17:20:53.995533501 &gt;
+2023-05-12 17:21:03.996518529 &gt;
+2023-05-12 17:21:18.998396048 &gt;
+2023-05-12 17:21:28.999163512 &gt;
+2023-05-12 17:21:39.000143400 &gt;
+2023-05-12 17:21:49.001231283 &gt;
+2023-05-12 17:21:59.002246836 &gt;
+2023-05-12 17:22:09.003689111 &gt;
+2023-05-12 17:22:20.004544393 &gt;
+2023-05-12 17:22:34.006820819 &gt;
+2023-05-12 17:22:44.007459739 &gt;
+2023-05-12 17:22:54.008443004 &gt;
 </pre>
 
 Faire la même chose avec les pings reçus :
 
 <pre>
-$ <b>rg</b> 'RECEIVED PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' < Received' | <b>tee</b> received
-2023-05-12 17:20:12.991392556 < Received
-2023-05-12 17:21:28.999248049 < Received
-2023-05-12 17:22:44.007432531 < Received
-2023-05-12 17:22:54.008453476 < Received
+$ <b>rg</b> 'RECEIVED PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &lt; Received' | <b>tee</b> received
+2023-05-12 17:20:12.991392556 &lt; Received
+2023-05-12 17:21:28.999248049 &lt; Received
+2023-05-12 17:22:44.007432531 &lt; Received
+2023-05-12 17:22:54.008453476 &lt; Received
 </pre>
 
 Et les redémarrages de session VPN :
 
 <pre>
-$ <b>rg</b> '12 17:.*Inactivity timeout' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' * Restart !!' | <b>tee</b> restart
+$ <b>rg</b> '12 17:.&ast;Inactivity timeout' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' * Restart !!' | <b>tee</b> restart
 2023-05-12 17:21:13.997629899 * Restart !!
 2023-05-12 17:22:29.005460487 * Restart !!
 </pre>
 
-<p>
-Ensuite on peut joindre les fichiers avec `cat` et les trier (par date puisque c’est le début de ligne) dans un fichier “history”::
-</p>
+Ensuite on peut joindre les fichiers avec `cat` et les trier (par date puisque c’est le début de ligne) dans un fichier "history"&nbsp;:
 
 <pre>
 $ <b>cat</b> received sent restarts | <b>sort</b> > history
 $ <b>cat</b> history
-2023-05-12 17:20:53.995533501 >
-2023-05-12 17:21:03.996518529 >
+2023-05-12 17:20:53.995533501 &gt;
+2023-05-12 17:21:03.996518529 &gt;
 2023-05-12 17:21:13.997629899 * Restart !!
-2023-05-12 17:21:18.998396048 >
-2023-05-12 17:21:28.999163512 >
-2023-05-12 17:21:28.999248049 < Received
-2023-05-12 17:21:39.000143400 >
-2023-05-12 17:21:49.001231283 >
-2023-05-12 17:21:59.002246836 >
-2023-05-12 17:22:09.003689111 >
-2023-05-12 17:22:20.004544393 >
+2023-05-12 17:21:18.998396048 &gt;
+2023-05-12 17:21:28.999163512 &gt;
+2023-05-12 17:21:28.999248049 &lt; Received
+2023-05-12 17:21:39.000143400 &gt;
+2023-05-12 17:21:49.001231283 &gt;
+2023-05-12 17:21:59.002246836 &gt;
+2023-05-12 17:22:09.003689111 &gt;
+2023-05-12 17:22:20.004544393 &gt;
 2023-05-12 17:22:29.005460487 * Restart !!
-2023-05-12 17:22:34.006820819 >
-2023-05-12 17:22:44.007432531 < Received
-2023-05-12 17:22:44.007459739 >
-2023-05-12 17:22:54.008443004 >
-2023-05-12 17:22:54.008453476 < Received
+2023-05-12 17:22:34.006820819 &gt;
+2023-05-12 17:22:44.007432531 &lt; Received
+2023-05-12 17:22:44.007459739 &gt;
+2023-05-12 17:22:54.008443004 &gt;
+2023-05-12 17:22:54.008453476 &lt; Received
 </pre>
 
 C’est déjà plus lisible, on peut maintenant commencer à corréler et voir des patterns. En plissant les yeux, on peut voir que les pings envoyés sont beaucoup plus fréquents que les pings reçus.
@@ -215,25 +213,25 @@ Pour résumer, bien connaître GNU core-utils et un langage de programmation un 
 On peut faire toute la phase d’exploration de logs en une seule ligne de awk :
 
 <pre>
-$ <b>awk</b> &lt;logs '/SENT PING/ { print $1 $2 " >" } ; /RECEIVED PING/ { print $1 $2 " < Received"} ; /Inactivity/ { print $1 $2 " * Restart !!" }'
-2023-05-1217:20:43.994461854 >
-2023-05-1217:20:53.995533501 >
-2023-05-1217:21:03.996518529 >
+$ <b>awk</b> &lt;logs '/SENT PING/ { print $1 $2 " &gt;" } ; /RECEIVED PING/ { print $1 $2 " &lt; Received"} ; /Inactivity/ { print $1 $2 " * Restart !!" }'
+2023-05-1217:20:43.994461854 &gt;
+2023-05-1217:20:53.995533501 &gt;
+2023-05-1217:21:03.996518529 &gt;
 2023-05-1217:21:13.997629899 * Restart !!
-2023-05-1217:21:18.998396048 >
-2023-05-1217:21:28.999163512 >
-2023-05-1217:21:28.999248049 < Received
-2023-05-1217:21:39.000143400 >
-2023-05-1217:21:49.001231283 >
-2023-05-1217:21:59.002246836 >
-2023-05-1217:22:09.003689111 >
-2023-05-1217:22:20.004544393 >
+2023-05-1217:21:18.998396048 &gt;
+2023-05-1217:21:28.999163512 &gt;
+2023-05-1217:21:28.999248049 &lt; Received
+2023-05-1217:21:39.000143400 &gt;
+2023-05-1217:21:49.001231283 &gt;
+2023-05-1217:21:59.002246836 &gt;
+2023-05-1217:22:09.003689111 &gt;
+2023-05-1217:22:20.004544393 &gt;
 2023-05-1217:22:29.005460487 * Restart !!
-2023-05-1217:22:34.006820819 >
-2023-05-1217:22:44.007432531 < Received
-2023-05-1217:22:44.007459739 >
-2023-05-1217:22:54.008443004 >
-2023-05-1217:22:54.008453476 < Received
+2023-05-1217:22:34.006820819 &gt;
+2023-05-1217:22:44.007432531 &lt; Received
+2023-05-1217:22:44.007459739 &gt;
+2023-05-1217:22:54.008443004 &gt;
+2023-05-1217:22:54.008453476 &lt; Received
 </pre>
 
 ### Code du graph en Pharo Smalltalk
@@ -257,7 +255,7 @@ c show
 <img class="center" src="/images/2023-05-14_sinus.png" width="613" height="592" />
 
 Voilà tout le code écrit vite fait pour le graph des redémarrages. Ça tient en
-une vingtaine de lignes :
+une vingtaine de lignes&nbsp;:
 
 <pre>
 file := FileSystem disk workingDirectory / 'Developer/projet/history'.
