@@ -3,151 +3,64 @@
 }
 
 html {
+    font-family : Verdana, "Bitstream Vera Sans", "DejaVu Sans", Tahoma, Geneva, Arial, "Sans-serif";
     max-width: 900px;
-    font-family : Verdana, "Bitstream Vera Sans", "DejaVu Sans", Tahoma, Geneva, Arial, Sans-serif;
-    text-align: justify;
-    hyphens: auto;
     margin: 0 auto;
-    padding-left: 2%;
-    padding-right: 3%;
-    color:#444;
-}
-
-a {
-  color:#444;
-  font-weight: bold;
-}
-
-.arrow {
-    text-decoration: none;
 }
 
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-div.t {
-
-    padding-left: 1ch;
-    border-left: solid 1px black;
-    margin-bottom: 2ch;
-}
-
-div.t:before {
-    content: "Trivia:";
-    white-space: nowrap;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-
-@media (max-width: 500px) {
-  * {
-    font-size: 12px;
-  }
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 pre {
-    background-color: #EEE;
-    border: solid black 1px;
-    padding: 1ch;
-    padding-left:2ch;
+    background-color: #393939;
+    color: white;
+    max-width:100%;
+    height:auto;
     overflow: scroll;
-}
-
-blockquote {
-    background-color: #f3f3f3;
-    border: dashed 1px grey;
-    width: 97.5%;
-    font-style: italic;
-    text-align: justify;
-
     padding: 1ch;
-    padding-top: 2ch;
-    padding-bottom: 2ch;
-
-    margin : 0ch;
-    margin-bottom: 2ch;
-    margin-top: 0ch;
-}
-
-blockquote div {
-    text-transform: none;
-    text-align: right;
-    width: 100%;
+    padding-left: 2ch;
 }
 
 code {
     font-weight: bold;
-    background-color: #e1e1e1;
+    background-color: #f2f2f5;
+    color: #393939;
     border-radius: 0.5ch;
     padding-left: 0.3ch;
     padding-right: 0.3ch;
 }
 
-img {
-    border: 1px solid black;
+blockquote {
+    background-color: #f2f2f5;
+    color: #393939;
+    font-style: italic;
+    text-align: justify;
+    padding: 2ch;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 0ch;
+    margin-bottom: 2ch;
 }
 
 h1 {
-    page-break-before: right;
     font-weight: bold;
-    text-transform: uppercase;
     font-size: 140%;
-    margin-top: 3ch;
-    margin-bottom: 0.5ch;
 }
 
 h2 {
-    margin-top: 3ch;
+    font-weight: bold;
+    font-size: 120%;
 }
 
 h3 {
-    color: #999;
-}
-
-.lined th {
-    background-color: #EEE;
-}
-
-span.r{
-  color:red;
-  font-weight: bold;
-}
-
-span.g{
-  color:green;
-  font-weight: bold;
-}
-
-span.b{
-  color:blue;
-  font-weight: bold;
-}
-
-span.h{
-  font-weight: bold;
-}
-
-span.k{
-  font-weight: bold;
-  color:orange;
-}
-
-table.lined, .lined th, .lined td{
-   border: 1px solid black;
-   border-collapse: collapse;
-   border-spacing : 0x;
-   text-align: center;
-}
-
-table {
-    margin-top: 2ch;
-    width: 100%;
-}
-
-td pre {
-    vertical-align: top;
+    color: #393939;
+    font-weight: bold;
 }
