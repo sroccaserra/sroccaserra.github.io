@@ -4,7 +4,7 @@ DST_ARTICLES=$(patsubst src/%.md,%.html,$(SRC_ARTICLES))
 .PHONY: all
 all: index.html $(DST_ARTICLES)
 
-index.html: src/index.html $(SRC_ARTICLES)
+index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 	m4 \
 		-D __date='' \
 		-D __title="Journal d'exploration logicielle" \
