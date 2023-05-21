@@ -289,5 +289,9 @@ c padding: 0 @ 80.
 c show
 </pre>
 
-Le site de Pharo Smalltalk, qui permet de faire tourner ce code out of the box
-: <https://pharo.org/>
+## Liens
+
+- Le site de Pharo Smalltalk, qui permet de faire tourner ce code out of the
+  box ~ [pharo.org][ph]
+
+[ph]: https://pharo.org/

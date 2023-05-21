@@ -2,12 +2,11 @@ Récemment j'ai fait un petit tour des tables des matières d'ouvrages classique
 pour trouver des références sur le couplage dans le code. Voici ce que j'ai
 récolté, sans ordre de préférence.
 
-## The Pragmatic Programmer
+## Livres
 
-Tout d'abord, [The Pragmatic Programmer][pp] est une super référence sur le
-sujet.
+### The Pragmatic Programmer
 
-[pp]: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/
+Tout d'abord, The Pragmatic Programmer est une super référence sur le sujet.
 
 Notamment dans la 2e édition, le topic 28, Decoupling, pp. 130-137.
 
@@ -26,19 +25,15 @@ Pour vous donner envie de le lire (et ça me donne super envie de le relire !!),
 - Inheritance adds coupling
 - Again, it’s all about change
 
-## Refactoring
+### Refactoring
 
-Dans [Refactoring][r], il y a les code smells opposés “Divergent Change” et
-“Shotgun Surgery” (p. 76 de la 2ème édition), et "Message Chain" (p. 81) avec
-les refactorings associés.
+Dans Refactoring, il y a les code smells opposés “Divergent Change” et “Shotgun
+Surgery” (p. 76 de la 2ème édition), et "Message Chain" (p. 81) avec les
+refactorings associés.
 
-[r]: https://martinfowler.com/books/refactoring.html
+### Code Complete
 
-## Code Complete
-
-Dans [Code Complete][cc]&nbsp;:
-
-[cc]: https://www.informit.com/store/code-complete-9780735619678
+Dans Code Complete&nbsp;:
 
 > Loose coupling: Loose coupling means designing so that you hold connections
 > among different parts of a program to a minimum. Use the principles of good
@@ -54,21 +49,17 @@ Coupling Loose, p. 100, qui parle de :
 
 Et aussi l’heuristique “Aim for strong cohesion”, p. 105.
 
-## Clean Architecture
+### Clean Architecture
 
-[Clean Architecture][ca] a un chapitre Component Cohesion, un chapitre
+Le livre Clean Architecture a un chapitre Component Cohesion, un chapitre
 Component Coupling et un chapitre Independance, qui parle de Decoupling Layers,
 Decoupling Use Cases et Decoupling Mode.
 
-[ca]: https://www.informit.com/store/clean-architecture-a-craftsmans-guide-to-software-structure-9780134494166
+### Working Effectively with Legacy Code
 
-## Working Effectively with Legacy Code
-
-Dans [Working Effectively with Legacy Code][wewlc] il y a le chapitre 25,
+Dans le livre Working Effectively with Legacy Code il y a le chapitre 25,
 Dependency-Breaking Techniques, qui donne des techniques pour découpler des
 classes suffisamment pour pouvoir les tester.
-
-[wewlc]: https://www.informit.com/store/working-effectively-with-legacy-code-9780131177055
 
 ## Articles
 
@@ -82,7 +73,9 @@ Cette conférence récente d’Arnaud Lemaire :
 
 [al]: https://www.lilobase.me/votre-application-a-besoin-de-son-jardin-secret-attention-a-la-localite-de-linformation/
 
-Et coïncidence, [ce tweet][kb] d'aujourd'hui de Kent Beck :
+Et coïncidence, ce tweet d'aujourd'hui de Kent Beck :
+
+- [twitter.com/KentBeck/status/1322545224220991488][kb]
 
 [kb]: https://twitter.com/KentBeck/status/1322545224220991488
 
@@ -104,3 +97,19 @@ Et coïncidence, [ce tweet][kb] d'aujourd'hui de Kent Beck :
 C’était chouette de faire ce petit tour de tables des matières dans ces
 ouvrages, maintenant il me faut du temps pour les lire ou relire, et mettre en
 pratique 😯 Bonne lecture, bonne pratique de vos apprentissages !
+
+## Liens
+
+Les livres cités :
+
+- [The Pragmatic Programmer][pp]
+- [Refactoring][r]
+- [Clean Code][cc]
+- [Clean Architecture][ca]
+- [Working Effectively With Legacy Code][wewlc]
+
+[pp]: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/
+[r]: https://martinfowler.com/books/refactoring.html
+[cc]: https://www.informit.com/store/code-complete-9780735619678
+[ca]: https://www.informit.com/store/clean-architecture-a-craftsmans-guide-to-software-structure-9780134494166
+[wewlc]: https://www.informit.com/store/working-effectively-with-legacy-code-9780131177055
