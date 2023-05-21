@@ -1,10 +1,8 @@
-J'ai été intéressé par [cet article du Monde][a] (réservé aux abonné·es) dans
+Cette semaine j'ai été intéressé par un article du Monde (voir liens) dans
 lequel on trouve que pour respecter les accords de Paris, il faudrait réduire
 les émissions de gaz à effet de serre du secteur du numérique de 7 % par an
 jusqu'en 2050. On y lit aussi que le rythme actuel est une augmentation des
 émissions du secteur de 6 % par an. On ne va pas dans la bonne direction.
-
-[a]: https://www.lemonde.fr/sciences/article/2023/05/01/la-recherche-au-defi-de-la-sobriete-energetique-du-numerique_6171677_1650684.html
 
 `+ 6 %`, `- 7 %`&nbsp;: on ne se rend pas compte mais les deux sont énormes car
 les courbes sont exponentielles (principe des intérêts cumulés).  Pour
@@ -41,3 +39,10 @@ pas le seul impact négatif du secteur du numérique dans la catastrophe
   du secteur du numérique n'est pas réaliste.
 - Les sociétés doivent prendre conscience du problème et agir ASAP dans la
   bonne direction et avec les bons ordres de grandeur.
+
+## Liens
+
+- L'article du Monde en question (réservé aux abonné·es) ~ [La recherche au
+  défi de la sobriété énergétique du numérique][a]
+
+[a]: https://www.lemonde.fr/sciences/article/2023/05/01/la-recherche-au-defi-de-la-sobriete-energetique-du-numerique_6171677_1650684.html
