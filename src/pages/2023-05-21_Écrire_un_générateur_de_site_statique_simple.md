@@ -6,11 +6,11 @@ statique. J'ai fait ça en quelques heures pour m'amuser 🎉
 
 Résultat :
 
-- [28 loc de Makefile][mf] pour convertir le markdown en html et appliquer le
-  layout commun.
-- [11 loc de shell][sh] pour générer la table des matières.
-- Une seule dépendance de 18 ko qui ne change plus depuis 2004 ([markdown
-  basique][md]).
+- 28 loc de Makefile pour convertir le markdown en html et appliquer le layout
+  commun.
+- 11 loc de shell pour générer la table des matières.
+- Une seule dépendance de 18 ko qui ne change plus depuis 2004 (markdown
+  basique).
 - Utilise quelques commandes qu'on a déjà sur un Linux de dev (`make`, `grep`,
   `cut`, `tr`, `awk`, perl 5 pour markdown).
 - Zéro framework.
@@ -18,10 +18,6 @@ Résultat :
 - Zéro scroll infini addictif.
 - Zéro recommandations addictives.
 - Je suis passé d'un éco index de 56 sur dev.to à 95 environ (?)
-
-[mf]: https://github.com/sroccaserra/sroccaserra.github.io/blob/5e17de3/Makefile
-[sh]: https://github.com/sroccaserra/sroccaserra.github.io/blob/aeb8c9b/src/toc.sh
-[md]: https://daringfireball.net/projects/markdown/
 
 Et ça juste marche 😮
 
@@ -68,15 +64,33 @@ qui sont stables, je me libère&nbsp;:
   Node.js, Ruby, ou Go, ou une dépendance d'une dépendance, ou autre a changé
   par surprise.
 
-Pour finir, voilà les inspirations qui m'ont permis de construire ce générateur
-simplement et en peu de temps&nbsp;:
+## Liens
 
-- All you may need is HTML ~ <https://fabiensanglard.net/html/index.html>
-- Phil Hagelberg's Colophon ~ <https://technomancy.us/colophon>
-- Phil Hagelberg's Makefile ~ <https://p.hagelb.org/Makefile.html>
-- Les collègues de Frugarilla ~ <https://www.frugarilla.fr/>
-- <https://danluu.com/>
-- <https://motherfuckingwebsite.com/>
-- <https://chrisman.github.io/9.html>
-- <https://github.com/vkitchen/apostl>
+- Les 28 loc de Makefile ~ [Makefile][mf]
+- Les 11 loc de script shell ~ [src/toc.sh][sh]
+- Le script markdown 1.0.1 de 2004 ~ [daringfireball.net/projects/markdown/][md]
 
+[mf]: https://github.com/sroccaserra/sroccaserra.github.io/blob/5e17de3/Makefile
+[sh]: https://github.com/sroccaserra/sroccaserra.github.io/blob/aeb8c9b/src/toc.sh
+[md]: https://daringfireball.net/projects/markdown/
+
+Les inspirations qui m'ont permis de construire ce générateur simplement et en
+peu de temps&nbsp;:
+
+- All you may need is HTML ~ [fabiensanglard.net/html][fs]
+- Phil Hagelberg's Colophon ~ [technomancy.us/colophon][tm]
+- Phil Hagelberg's Makefile ~ [p.hagelb.org/Makefile.html][ph]
+- Les collègues de Frugarilla ~ [frugarilla.fr][fr]
+- [danluu.com][dl]
+- [motherfuckingwebsite.com][mfws]
+- [chrisman.github.io/9.html][ch]
+- [github.com/vkitchen/apostl][ap]
+
+[fs]: https://fabiensanglard.net/html/index.html
+[tm]: https://technomancy.us/colophon
+[ph]: https://p.hagelb.org/Makefile.html
+[fr]: https://www.frugarilla.fr/
+[dl]: https://danluu.com/
+[mfws]: https://motherfuckingwebsite.com/
+[ch]: https://chrisman.github.io/9.html
+[ap]: https://github.com/vkitchen/apostl
