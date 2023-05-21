@@ -10,8 +10,8 @@ possible ce qui est déjà installé sur un Linux pour développer.
 Quelques détails techniques :
 - Tous les fichiers sources sont dans `src/`, sauf le Makefile qui est à la
   racine.
-- Pour le moment j'expérimente d'écrire mes articles directement en HTML dans
-  Vim.
+- Les articles sont écrits en [markdown][md] basique (`sudo apt install
+  markdown`, c'est quelques ko).
 - Le header et footer sont ajoutés par [m4][m4], qui est souvent installé par
   défaut.
 - Les fichiers HTML complets sont générés par une règle [Make][make],
@@ -35,6 +35,7 @@ Inspirations pour coder ce site le plus simplement possible :
 - <https://chrisman.github.io/9.html>
 - <https://github.com/vkitchen/apostl>
 
+[md]: https://daringfireball.net/projects/markdown/
 [m4]: https://www.gnu.org/software/m4/
 [make]: https://www.gnu.org/software/make/
 [awk]: https://www.gnu.org/software/gawk/
