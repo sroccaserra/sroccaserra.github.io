@@ -6,15 +6,19 @@
         <meta charset="utf-8"/>
     </head>
     <body>
-        <br/>
-        <center>
-            <a class="title" href="/index.html"><b>Journal d'Exploration Logicielle</b><br/></a>
-        </center>
-        <br/>
-        __date
-        <br/>
-        <h1>__title</h1>
-        <hr/>
+        <header>
+            <br/>
+            <center>
+                <a class="title" href="/index.html"><b>Journal d'Exploration Logicielle</b><br/></a>
+            </center>
+        </header>
+        <article>
+                <br/>
+                <time datetime="__date">__date</time>
+                <br/>
+                <h1>__title</h1>
+                <hr/>
 include(__contents)
+        </article>
     </body>
 </html>
