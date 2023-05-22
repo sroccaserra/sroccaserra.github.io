@@ -19,6 +19,12 @@ img {
     height: auto;
 }
 
+img.pixel, canvas.pixel {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
 pre {
     background-color: #393939;
     color: white;
