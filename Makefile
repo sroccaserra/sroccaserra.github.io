@@ -7,7 +7,7 @@ all: index.html $(DST_ARTICLES)
 index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 	m4 \
 		-D __date='' \
-		-D __title="Journal d'exploration logicielle" \
+		-D __title="Journal d'Exploration Logicielle" \
 		-D __toc="$(shell bash src/toc.sh $(DST_ARTICLES))" \
 		-D __contents="$<" \
 		src/layout.html > "$@"
