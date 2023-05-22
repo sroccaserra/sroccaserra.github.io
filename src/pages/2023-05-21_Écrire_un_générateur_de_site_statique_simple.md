@@ -11,8 +11,8 @@ Résultat :
 - 11 loc de shell pour générer la table des matières.
 - Une seule dépendance de 18 ko qui ne change plus depuis 2004 (markdown
   basique).
-- Utilise quelques commandes qu'on a déjà sur un Linux de dev (`make`, `grep`,
-  `cut`, `tr`, `awk`, perl 5 pour markdown).
+- Utilise quelques commandes qu'on a déjà sur un Linux de dev (`make`, `m4`,
+  `grep`, `cut`, `tr`, `awk`, perl 5 pour markdown).
 - Zéro framework.
 - Zéro tracker addictif.
 - Zéro scroll infini addictif.
