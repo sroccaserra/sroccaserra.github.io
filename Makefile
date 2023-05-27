@@ -2,7 +2,7 @@ SRC_ARTICLES=$(wildcard src/**/*.md)
 DST_ARTICLES=$(patsubst src/%.md,%.html,$(SRC_ARTICLES))
 
 .PHONY: all
-all: index.html $(DST_ARTICLES)
+all: index.html rss.xml $(DST_ARTICLES)
 
 .PHONY: watch
 watch:
@@ -29,9 +29,14 @@ fragments/%.html: fragments/pages src/%.md
 fragments/pages:
 	mkdir -p fragments/pages
 
+rss.xml: index.html src/rss.xml
+	m4 \
+		-D __items="$(shell bash src/rss_items.sh $(DST_ARTICLES))" \
+		src/rss.xml > "$@"
+
 .PHONY: clean
 clean:
-	rm -f index.html $(DST_ARTICLES)
+	rm -f index.html rss.xml $(DST_ARTICLES)
 	rm -rf fragments
 
 .PHONY: serve

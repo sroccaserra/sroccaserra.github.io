@@ -35,6 +35,10 @@ Inspirations pour coder ce site le plus simplement possible :
 - <https://chrisman.github.io/9.html>
 - <https://github.com/vkitchen/apostl>
 
+Refs techniques :
+
+- RSS2 ~ <https://validator.w3.org/feed/docs/rss2.html>
+
 [md]: https://daringfireball.net/projects/markdown/
 [m4]: https://www.gnu.org/software/m4/
 [make]: https://www.gnu.org/software/make/

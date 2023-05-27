@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="https://sroccaserra.github.io/rss.xml" rel="self" type="application/rss+xml" />
+        <title>Journal d'Exploration Logicielle</title>
+        <link>https://sroccaserra.github.io</link>
+        <description>
+            Des notes sur ce que j'observe dans les métiers liés à la
+            fabrication de logiciels
+        </description>
+        __items
+    </channel>
+</rss>
