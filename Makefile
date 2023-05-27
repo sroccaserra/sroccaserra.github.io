@@ -4,6 +4,10 @@ DST_ARTICLES=$(patsubst src/%.md,%.html,$(SRC_ARTICLES))
 .PHONY: all
 all: index.html $(DST_ARTICLES)
 
+.PHONY: watch
+watch:
+	rg --files src style images Makefile | entr make
+
 index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 	m4 \
 		-D __date='' \
