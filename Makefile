@@ -8,7 +8,7 @@ index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 	@echo Updating Index...
 	@m4 \
 		-D __date='' \
-		-D __title="Journal d'Exploration Logicielle" \
+		-D __title="Apprendre + Équipe = Programmes" \
 		-D __toc="$(shell bash src/toc.sh $(DST_ARTICLES))" \
 		-D __contents="$<" \
 		src/layout.html > "$@"
