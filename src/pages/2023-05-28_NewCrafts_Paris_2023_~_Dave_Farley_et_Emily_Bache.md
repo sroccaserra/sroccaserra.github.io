@@ -12,7 +12,8 @@ mois prochain normallement).
 Dans ce premier article, mes notes sur les présentations de Dave Farley et
 Emily Bache.
 
-Dans les suivants, j'ai prévu de partager mes notes sur les interventions de :
+Dans les suivants, j'ai prévu de partager mes notes sur les interventions
+de&nbsp;:
 
 - Laurent Bossavit
 - Clare Sudbery
@@ -37,7 +38,7 @@ Il propose donc d'optimiser pour l'apprentissage.
 
 > Optimize for learning.
 
-Dave propose également de faire des choix qui favorise la modularité :
+Dave propose également de faire des choix qui favorisent la modularité&nbsp;:
 
 > Whenever you have a choice, prefer the choice that improve modularity,
 > cohesion, separation of concerns, abstraction. If you have no good idea,
@@ -47,8 +48,8 @@ Dave propose également de faire des choix qui favorise la modularité :
 On retrouvera une discussion sur couplage et cohésion dans l'intervention de
 Kent Beck à la fin de la conférence.
 
-Note : cet écart entre ingénierie logiciel et fabrication rejoint l'avis de
-Jack Reeves dans son article "What is Software Design" de 1992.
+Note&nbsp;: cet écart entre ingénierie logiciel et fabrication rejoint l'avis
+de Jack Reeves dans son article "What is Software Design" de 1992.
 
 ### Liens
 
