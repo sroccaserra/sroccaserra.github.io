@@ -8,6 +8,10 @@
             Des notes sur ce que j'observe dans les métiers liés à la
             fabrication de logiciels
         </description>
+        <image>
+            <url>https://sroccaserra.github.io/favicon.ico</url>
+            <link>https://sroccaserra.github.io</link>
+        </image>
         __items
     </channel>
 </rss>
