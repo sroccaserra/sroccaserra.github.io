@@ -13,14 +13,14 @@ index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 		-D __contents="$<" \
 		src/layout.html > "$@"
 
-$(DST_ARTICLES): %.html: fragments/%.html src/layout.html
+$(DST_ARTICLES): %.html: fragments/%.html
 	@m4 \
 		-D __date=$(shell basename "$@" | cut -d_ -f1) \
 		-D __title="$(shell basename "$@" .html | cut -d_ -f2- | tr _ ' ')" \
 		-D __contents="$<" \
 		src/layout.html > "$@"
 
-fragments/%.html: fragments/pages src/%.md
+fragments/%.html: fragments/pages src/%.md src/layout.html
 	markdown "$(word 2, $^)" > "$@"
 
 fragments/pages:
