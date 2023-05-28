@@ -4,7 +4,7 @@ DST_ARTICLES=$(patsubst src/%.md,%.html,$(SRC_ARTICLES))
 .PHONY: all
 all: index.html rss.xml $(DST_ARTICLES)
 
-index.html: src/index.html src/layout.html $(SRC_ARTICLES)
+index.html: src/index.html src/layout.html $(SRC_ARTICLES) src/toc.sh
 	@echo Updating Index...
 	@m4 \
 		-D __date='' \
