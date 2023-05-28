@@ -22,14 +22,18 @@ Dans les suivants, j'ai prévu de partager mes notes sur les interventions de :
 
 ## Dave Farley
 
+Dave Farley est co-auteur du livre Continuous Delivery, auteur du livre
+Modern Software Engineering, et a travaillé sur des projets comme le LMAX
+Disruptor.
+
+Voici quelques notes sur sa keynote, qui a ouvert l'édition 2023 de NewCrafts
+Paris.
+
 Dans le domaine du logiciel, Dave observe souvent une confusion entre
 ingénierie et fabrication. Mais pour lui, la fabrication n'est jamais un
 problème dans le logiciel. Pour lui, dans l'ingénierie comme dans le
 développement logiciel, le sujet est toujours l'exploration et la découverte.
 Il propose donc d'optimiser pour l'apprentissage.
-
-Note : cet écart entre ingénierie logiciel et fabrication rejoint l'avis de
-Jack Reeves dans son article "What is Software Design" de 1992.
 
 > Optimize for learning.
 
@@ -40,19 +44,35 @@ Dave propose également de faire des choix qui favorise la modularité :
 > gather a bunch of stupid ideas and find cheap ways to try some of them and
 > learn more on the way.
 
-On retrouvera cette idée dans l'intervention de Kent Beck à la fin de la conférence.
+On retrouvera une discussion sur couplage et cohésion dans l'intervention de
+Kent Beck à la fin de la conférence.
+
+Note : cet écart entre ingénierie logiciel et fabrication rejoint l'avis de
+Jack Reeves dans son article "What is Software Design" de 1992.
 
 ### Liens
 
 - [La chaîne Youtube de Dave Farley][cd]
+- [Le livre Continuous Delivery][cdb]
+- [Le livre Modern Software Engineering][mse]
+- [Le projet LMAX Disruptor][lmd]
 - [What is Software Design][wisd] ~ article de Jack Reeves, 1992
 
 [cd]: https://www.youtube.com/c/ContinuousDelivery
+[cdb]: https://martinfowler.com/books/continuousDelivery.html
+[mse]: https://www.davefarley.net/?p=352
+[lmd]: https://lmax-exchange.github.io/disruptor/
 [wisd]: http://www.bleading-edge.com/Publications/C++Journal/Cpjour2.htm
 
 ## Emily Bache
 
-Emily Bache a animé un atelier de refactoring. Dans cet atelier, elle a présenté deux techniques simples de refactoring sur du code legacy : Peel & Slice.
+Emily Bache est autrice des livres The Coding Dojo Handbook et Technical Agile
+Coaching with the Samman Method. Elle a également publié de nombreux katas de
+refactoring sur sa page GitHub.
+
+Pour NewCrafts 2023, Emily Bache a animé un atelier de refactoring. Dans cet
+atelier, elle a présenté deux techniques simples de refactoring sur du code
+legacy : Peel & Slice.
 
 Je vous invite à explorer les liens ci-dessous pour en savoir plus sur ces deux techniques.
 
@@ -90,11 +110,20 @@ banane et des cerises.
 ### Lien
 
 - [Présentation d'Emily Bache sur le site Samman Coaching][sc]
+- [Le livre Coding Dojo Handbook][cdh]
+- [Le livre Technical Agile Coaching with the Samman method][scb]
 - <https://github.com/emilybache> ~ La page GitHub d'Emily Bache, avec plein d'exercices de refactoring
 - [Vidéo de Llewellyn Falco][ll] présentant Peel & Slice
 - [Un très bon article][nc] de Nicolas Carlo présentant Peel & Slice
 
 [sc]: https://sammancoaching.org/society/contributors/emilybache.html
+[cdh]: https://leanpub.com/codingdojohandbook
+[scb]: https://leanpub.com/techagilecoach
 [nc]: https://understandlegacycode.com/blog/another-way-of-refactoring-untested-code/
 [ll]: https://www.youtube.com/watch?v=sXqRWXWiXYo
 
+## À Suivre...
+
+C'est tout pour ce premier article. Comme indiqué en introduction, je prévois
+de publier quelques autres notes sur cette conférence NewCrafts 2023. À
+suivre :)
