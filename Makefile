@@ -4,10 +4,6 @@ DST_ARTICLES=$(patsubst src/%.md,%.html,$(SRC_ARTICLES))
 .PHONY: all
 all: index.html rss.xml $(DST_ARTICLES)
 
-.PHONY: watch
-watch:
-	rg --files src style images Makefile | entr make
-
 index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 	@echo Updating Index...
 	@m4 \
@@ -44,3 +40,7 @@ clean:
 .PHONY: serve
 serve:
 	python3 -m http.server 8080
+
+.PHONY: watch
+watch:
+	rg --files src style images Makefile | entr make
