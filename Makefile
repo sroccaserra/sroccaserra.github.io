@@ -9,7 +9,8 @@ watch:
 	rg --files src style images Makefile | entr make
 
 index.html: src/index.html src/layout.html $(SRC_ARTICLES)
-	m4 \
+	@echo Updating Index...
+	@m4 \
 		-D __date='' \
 		-D __title="Journal d'Exploration Logicielle" \
 		-D __toc="$(shell bash src/toc.sh $(DST_ARTICLES))" \
@@ -17,7 +18,7 @@ index.html: src/index.html src/layout.html $(SRC_ARTICLES)
 		src/layout.html > "$@"
 
 $(DST_ARTICLES): %.html: fragments/%.html src/layout.html
-	m4 \
+	@m4 \
 		-D __date=$(shell basename "$@" | cut -d_ -f1) \
 		-D __title="$(shell basename "$@" .html | cut -d_ -f2- | tr _ ' ')" \
 		-D __contents="$<" \
@@ -30,13 +31,14 @@ fragments/pages:
 	mkdir -p fragments/pages
 
 rss.xml: index.html src/rss.xml
-	m4 \
+	@echo Updating RSS...
+	@m4 \
 		-D __items="$(shell bash src/rss_items.sh $(DST_ARTICLES))" \
 		src/rss.xml > "$@"
 
 .PHONY: clean
 clean:
-	rm -f index.html rss.xml $(DST_ARTICLES)
+	rm -f index.html rss.xml pages/*
 	rm -rf fragments
 
 .PHONY: serve
