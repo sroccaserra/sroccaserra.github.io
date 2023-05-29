@@ -7,7 +7,7 @@ ou révisé.
 
 Ce sont des notes très partielles, à mon usage personnel. Je vous invite à voir
 les vidéos des conférences qui vous intéressent quand elles seront publiées (le
-mois prochain normallement).
+mois prochain normalement).
 
 Dans ce premier article, mes notes sur les présentations de Dave Farley et
 Emily Bache.
