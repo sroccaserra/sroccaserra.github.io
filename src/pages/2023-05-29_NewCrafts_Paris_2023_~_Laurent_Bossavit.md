@@ -9,7 +9,7 @@ Ce sont des notes très partielles, à mon usage personnel. Je vous invite à vo
 les vidéos des conférences qui vous intéressent quand elles seront publiées (le
 mois prochain normalement).
 
-Dans ce deuxième article, mes notes sur les présentations de Laurent Bossavit.
+Dans ce deuxième article, mes notes sur la présentation de Laurent Bossavit.
 
 Dans les articles suivants, j'ai prévu de partager mes notes sur les
 interventions de&nbsp;:
