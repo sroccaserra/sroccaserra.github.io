@@ -140,10 +140,12 @@ Quand une fleur ne pousse pas, on regarde son environnement, pas la fleur.
 - [Le livre The Leprechauns of Software Engineering][lb]
 - <http://institut-agile.fr/> ~ Le site de l'Institut Agile
 - [Le livre What did you Say?][wdys] de Jerry Weinberg
+- [Présentation de la Girafe et du Chacal][gc] par Marshall Rosenberg
 - [Un article de Bloculus][osbd] présentant OSCAR et autres DESC
 - [Un outil][loop] pour faire des Causal Loop Diagrams
 
 [lb]: https://leanpub.com/leprechauns
 [wdys]: https://leanpub.com/Feedback
+[gc]: https://www.youtube.com/watch?v=Xov5z_GJ9Zs
 [osbd]: https://bloculus.com/sauvez-des-vies-faites-des-feedbacks/
 [loop]: https://ncase.me/loopy/
