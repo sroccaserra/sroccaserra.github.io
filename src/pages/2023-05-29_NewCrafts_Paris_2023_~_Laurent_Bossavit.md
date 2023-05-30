@@ -35,7 +35,7 @@ Laurent a aussi fait parler des marionnettes qui représentaient la peur, le
 morse, le chacal et la girafe. C'était intéressant je trouve, car ça nous
 permet de les identifier comme des personnages et d'incarner leur discours.
 
-<img class="center" src="/images/walrus.jpeg" width="320" height="auto">
+<img class="center" src="/images/walrus.jpeg" width="320px" height="427px">
 
 Voilà quelques points dont j'ai eu envie de me souvenir.
 
