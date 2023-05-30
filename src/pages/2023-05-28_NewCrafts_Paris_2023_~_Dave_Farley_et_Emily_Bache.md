@@ -15,11 +15,12 @@ Emily Bache.
 Dans les suivants, j'ai prévu de partager mes notes sur les interventions
 de&nbsp;:
 
-- Laurent Bossavit
+- [Laurent Bossavit][lb]
 - Clare Sudbery
 - Jessica Kerr
 - Kent Beck
 
+[lb]: /pages/2023-05-29_NewCrafts_Paris_2023_~_Laurent_Bossavit.html
 
 ## Dave Farley
 
