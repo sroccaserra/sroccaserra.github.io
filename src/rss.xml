@@ -12,6 +12,8 @@
             <url>https://sroccaserra.github.io/favicon.ico</url>
             <link>https://sroccaserra.github.io</link>
         </image>
-        __items
+
+m4_patsubst(__items, `\\n',`\
+')
     </channel>
 </rss>

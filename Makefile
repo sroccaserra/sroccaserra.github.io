@@ -28,8 +28,8 @@ fragments/pages:
 
 rss.xml: index.html src/rss.xml
 	@echo Updating RSS...
-	@m4 \
-		-D __items="$(shell bash src/rss_items.sh $(DST_ARTICLES))" \
+	@m4 -P \
+		-D __items="$(shell bash src/rss_items.sh "$(DST_ARTICLES)")" \
 		src/rss.xml > "$@"
 
 .PHONY: clean
