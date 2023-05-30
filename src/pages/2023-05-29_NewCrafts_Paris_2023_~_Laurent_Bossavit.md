@@ -98,7 +98,8 @@ meilleure façon de ne pas être clair du tout).
 ### De qui est-ce que je prends soin ?
 
 
-Extreme Programming était un changement, les mouvements agiles étaient une libération. Ce n'étaient pas des outils d'oppression.
+Extreme Programming était un changement social, les mouvements agiles étaient
+une libération. Ce n'étaient pas des outils d'oppression.
 
 Quand je fais un feedback, je peux mettre mes oreilles de girafe et me poser la
 question : quel est l'intention de mon feedback ? De qui est-ce que je prends
