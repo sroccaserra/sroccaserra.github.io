@@ -14,9 +14,11 @@ Dans ce deuxième article, mes notes sur la présentation de Laurent Bossavit.
 Dans les articles suivants, j'ai prévu de partager mes notes sur les
 interventions de&nbsp;:
 
-- Clare Sudbery
+- [Clare Sudbery][cs]
 - Jessica Kerr
 - Kent Beck
+
+[cs]: /pages/2023-06-08_NewCrafts_Paris_2023_~_Clare_Sudbery.html
 
 ## Laurent Bossavit
 

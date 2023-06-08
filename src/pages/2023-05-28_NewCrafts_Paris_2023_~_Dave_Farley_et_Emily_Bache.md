@@ -16,11 +16,12 @@ Dans les suivants, j'ai prévu de partager mes notes sur les interventions
 de&nbsp;:
 
 - [Laurent Bossavit][lb]
-- Clare Sudbery
+- [Clare Sudbery][cs]
 - Jessica Kerr
 - Kent Beck
 
 [lb]: /pages/2023-05-29_NewCrafts_Paris_2023_~_Laurent_Bossavit.html
+[cs]: /pages/2023-06-08_NewCrafts_Paris_2023_~_Clare_Sudbery.html
 
 ## Dave Farley
 
