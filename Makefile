@@ -1,5 +1,6 @@
 SRC_ARTICLES=$(wildcard src/**/*.md)
 DST_ARTICLES=$(patsubst src/%.md,%.html,$(SRC_ARTICLES))
+MARKDOWN=perl lib/Markdown_1.0.1/Markdown.pl
 
 .PHONY: all
 all: index.html rss.xml $(DST_ARTICLES)
@@ -21,7 +22,7 @@ $(DST_ARTICLES): %.html: fragments/%.html
 		src/layout.html > "$@"
 
 fragments/%.html: fragments/pages src/%.md src/layout.html
-	markdown "$(word 2, $^)" > "$@"
+	$(MARKDOWN) "$(word 2, $^)" > "$@"
 
 fragments/pages:
 	mkdir -p fragments/pages
@@ -31,6 +32,9 @@ rss.xml: index.html src/rss.xml
 	@m4 -P \
 		-D __items="$(shell bash src/rss_items.sh "$(DST_ARTICLES)")" \
 		src/rss.xml > "$@"
+
+site.tar.gz: index.html
+	tar --exclude-vcs --exclude-vcs-ignore -cvz . > site.tar.gz
 
 .PHONY: clean
 clean:

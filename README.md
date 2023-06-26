@@ -10,8 +10,8 @@ possible ce qui est déjà installé sur un Linux pour développer.
 Quelques détails techniques :
 - Tous les fichiers sources sont dans `src/`, sauf le Makefile qui est à la
   racine.
-- Les articles sont écrits en [markdown][md] basique (`sudo apt install
-  markdown`, c'est quelques ko).
+- Les articles sont écrits en [markdown][md] basique (inclus dans le dossier
+  `lib/`, ou `sudo apt install markdown`, c'est quelques ko).
 - Le header et footer sont ajoutés par [m4][m4], qui est souvent installé par
   défaut.
 - Les fichiers HTML complets sont générés par une règle [Make][make],
