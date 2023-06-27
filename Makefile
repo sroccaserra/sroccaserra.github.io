@@ -10,7 +10,7 @@ index.html: src/index.html src/layout.html $(SRC_ARTICLES) src/toc.sh
 	@m4 -P \
 		-D __date='' \
 		-D __title="Apprendre + Équipe = Programmes" \
-		-D __toc="$(shell bash src/toc.sh $(DST_ARTICLES))" \
+		-D __toc='`'"$(shell bash src/toc.sh $(DST_ARTICLES))""'" \
 		-D __contents="$<" \
 		src/layout.html > "$@"
 
@@ -18,7 +18,7 @@ $(DST_ARTICLES): %.html: fragments/%.html
 	@m4 -P \
 		-D __date=$(shell basename "$@" | cut -d_ -f1) \
 		-D __title="$(shell basename "$@" .html | cut -d_ -f2- | tr _ ' ')" \
-		-D __contents="$<" \
+		-D __contents='`'"$<'" \
 		src/layout.html > "$@"
 
 fragments/%.html: fragments/pages src/%.md src/layout.html
@@ -30,7 +30,7 @@ fragments/pages:
 rss.xml: index.html src/rss.xml
 	@echo Updating RSS...
 	@m4 -P \
-		-D __items="$(shell bash src/rss_items.sh "$(DST_ARTICLES)")" \
+		-D __items='`'"$(shell bash src/rss_items.sh "$(DST_ARTICLES)")""'" \
 		src/rss.xml > "$@"
 
 site.tar.gz: index.html
