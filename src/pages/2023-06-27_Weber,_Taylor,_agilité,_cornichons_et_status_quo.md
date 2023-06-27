@@ -1,5 +1,5 @@
 Depuis une quinzaine d'années, j'observe dans une dizaine de projets (je me
-garde donc de généraliser) des personnes qui essaient de travailler
+garderai donc de généraliser) des personnes qui essaient de travailler
 autrement&nbsp;:
 
 - moins de "deadlines avec tout dedans",
@@ -18,11 +18,11 @@ concombre plongé dans un bocal de cornichons a plus de chances de se
 transformer en cornichon que de transformer le bocal en bocal de concombres
 (mon souvenir de l'anecdote, il y a un lien vers le livre en bas pour aller
 plutôt à la source). Dans cette idée, le concombre représente les personnes qui
-essaient de travailler autrement, et le bocal de cornichon représente
+essaient de travailler autrement, et le bocal de cornichons représente
 l'entreprise / le contexte plus grand dans lequel elles s'inscrivent.
 
-En parallèle de ça, je vois un mix de mots issus de méthodes dites agiles (user
-story, sprint, product owner, équipe de dev, rétro) être devenu le vocabulaire
+En parallèle de ça, j'ai vu un mix de mots issus de méthodes dites agiles (user
+story, sprint, product owner, équipe de dev, rétro) devenir le vocabulaire
 utilisé dans le bocal de cornichons, tout en conservant le mode de
 fonctionnement en deadlines de type "clé en main" et les grosses périodes de
 recette en fin de projet. Ces éléments sont souvent difficiles à négocier car
@@ -39,7 +39,7 @@ de quelques mois ou années, une personne extérieure à l'équipe  met son nez
 dans l'affaire et demande à "rationaliser tout ça". Ça peut être par exemple
 une personne plus haut dans la hiérarchie, qui a peut-être changé, ou une
 cellule d'architectes non codeurs chargée de tout ré-urbaniser. Souvent ça se
-traduit par quelque-chose qui ressemble à réimpose les anciennes façons de
+traduit par quelque-chose qui ressemble à réimposer les anciennes façons de
 faire plus ou moins directement, en concédant que le "nouveau" vocabulaire
 reste.
 
@@ -71,24 +71,29 @@ C'est une description indirecte, je n'en ai pas encore trouvé la source : si
 quelqu'un connaît et peu m'envoyer un pointeur je serai reconnaissant.
 
 Le parallèle ne colle pas vraiment 100 %, on ne peut pas dire "agilité =
-prophètes" ni "non-agilité = prêtres", mais est-ce qu'il n'y a pas un petit
-quelque-chose de similaire, où personnellement je serais plus intéressé par une
-approche de type prophète, et très peu attiré par la "rationalisation", la
-transformation en nouveau status quo de quelque-chose qui était en évolution
-permanente ? Je crois que ce qui me réveille au quotidien, ce sont les
-collectifs qui sont en train de découvrir quelque-chose, qui ne savent pas
-encore ce qu'ils font, et ensuite quand la rationalisation arrive, et bien ça
-ne m'intéresse plus autant.  Dans ce contexte j'appelle "rationalisation" le
-fait de revenir au status quo précédent, ou de remplacer un status quo par un
-autre. Je pense que c'est ce que je veux dire quand je dis que "j'aime bien le
-bazar" : il ne s'agit pas de valoriser le chaos, mais de rester éveillé par la
+prophètes" ni "non-agilité = prêtres". Car oui, quand je décrivais de nouvelles
+façons de travailler en début d'article, je parlais d'agilité. Ça ne colle pas
+exactement, mais est-ce qu'il n'y a pas un petit quelque-chose de similaire, où
+personnellement je serais plus intéressé par une approche de type prophète, et
+très peu attiré par la "rationalisation", la transformation en nouveau status
+quo de quelque-chose qui était en évolution permanente ?
+
+Je crois que ce qui me réveille au quotidien, ce sont les collectifs qui sont
+en train de découvrir quelque-chose, qui ne savent pas encore ce qu'ils font,
+et ensuite quand la rationalisation arrive, et bien ça ne m'intéresse plus
+autant. Dans ce contexte j'appelle "rationalisation" le fait de revenir au
+status quo précédent, ou de remplacer un status quo par un autre.
+
+Je pense que c'est ce que je veux dire quand je dis que "j'aime bien le bazar"
+: il ne s'agit pas de valoriser le chaos, mais de rester éveillé par la
 redécouverte au quotidien. En tout cas je pense que c'est cette approche qui
 m'a fait le plus progresser dans mon métier et apporté le plus de satisfaction
-au fil des années. Et si on devait se concentrer sur le budget et le résultat,
-je pense aussi que c'est dans des équipes "éveillées" que j'ai observé les
-meilleurs résultats pour un budget donné. C'est dans cette direction que j'ai
-envie d'aller, c'est à aller dans cette direction que j'essaie d'aider mon
-équipe.
+au fil des années.
+
+Et si on devait se concentrer sur le budget et le résultat, je pense aussi que
+c'est dans des équipes "éveillées" que j'ai observé les meilleurs résultats
+pour un budget donné. C'est dans cette direction que j'ai envie d'aller, c'est
+à aller dans cette direction que j'essaie d'aider mon équipe.
 
 Je repense aussi à un passage lu dans The Art of Action, de Bungay, qui donne
 ces trois axiomes du Taylorisme et du Scientific Management, vers 1911 :
@@ -130,8 +135,12 @@ corriger les gens sans corriger le système ne peut aboutir qu'à du gâchis.
 
 Avant de terminer, je me sens obligé de préciser que je ne suis pas absolument
 opposé au status quo, et que dans certains contextes je lui trouve beaucoup de
-valeur et je le préfère. J'en profite pour partager une très belle citation de
-Virginia Satir&nbsp;:
+valeur et je le préfère. Et que je n'essaie surtout pas de changer
+systématiquement les environnements de travail ou j'interviens : je fais des
+propositions et je fais des choix.
+
+J'en profite pour partager une très belle citation de Virginia Satir au sujet
+du status quo et du changement&nbsp;:
 
 > I have such respect for the status quo because I know that it’s in the status
 > quo where people are sensing the familiar, and therefore they are feeling
