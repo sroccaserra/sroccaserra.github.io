@@ -44,31 +44,34 @@ faire plus ou moins directement, en concédant que le "nouveau" vocabulaire
 reste.
 
 Et c'est là qu'intervient ma découverte récente d'une vieille idée : la
-description des prêtres et des prophètes par Max Weber.
+description des prêtres et des prophètes par Max Weber dans Économie et Société
+en 1920 (partie 2, chapitre "Sociologie des Religions").
 
-> The Priest and the Prophet (Max Weber)
+> Prophète : soit un rénovateur d'une religion, soit un fondateur d'une
+> nouvelle religion
 >
-> Prophet: either a renewer of a religion or a founder of a new religion
+> - l'autorité est charismatique (à part des humains ordinaires et considérée
+>   comme extraordinaire)
+> - irrationnel (ne correspond pas aux règles)
+> - réorientation radicale des valeurs
+> - hostile aux préoccupations quotidiennes
+> - ne peut que naître, ne peut pas durer
+> - manque d'organisation formelle
+> - présent à la genèse des choses, doit éventuellement devenir "routinisé"
+> - une méthode de routinisation est le prêtre
 >
-> - authority is charismatic (set apart from ordinary humans and regarded as extraordinary)
-> - irrational (does not fit rules)
-> - radical reorientation of values
-> - hostile to everyday concerns
-> - can only originate, cannot sustain
-> - lack of formal organization
-> - present at genesis of things, must eventually become "routinized"
-> - one method of routinization is the priest
+> Prêtre: maintient le statu quo et a servi de "renforcement de la stabilité
+> des sociétés"
 >
-> Priest: upholds the status quo and served as the "reinforcement of the stability of societies"
->
-> - authority rests in his office rather than in his person
-> - rule-following
-> - focused upon everyday living
-> - highly organized methods for transferring authority
-> - a ritual functionary who is part of an organized system
+> - l'autorité repose sur sa fonction plutôt que sur sa personne
+> - respect des règles
+> - axé sur la vie quotidienne
+> - méthodes très organisées de transfert d'autorité
+> - un fonctionnaire de rituel qui fait partie d'un système organisé
 
-C'est une description indirecte, je n'en ai pas encore trouvé la source : si
-quelqu'un connaît et peu m'envoyer un pointeur je serai reconnaissant.
+Malheureusement je n'ai pas l'ouvrage original, c'est une traduction et
+interprétation de fragments que j'ai lu dans des articles. De ce que j'en ai
+vu, le texte de Weber est plus subtil et plus intéressant.
 
 Le parallèle ne colle pas vraiment 100 %, on ne peut pas dire "agilité =
 prophètes" ni "non-agilité = prêtres". Car oui, quand je décrivais de nouvelles
@@ -158,11 +161,12 @@ du status quo et du changement&nbsp;:
 > resistance as a survival factor, and move into some new way to survive
 > without the resistance.
 
-J'arrête là mes réflexions du jour, avec des liens vers deux des ouvrages
+J'arrête là mes réflexions du jour, avec des liens vers trois des ouvrages
 cités et une vidéo de Virginia Satir.
 
 ### Liens
 
 - The Secrets of Consulting, Jerry Weinberg ~ <https://geraldmweinberg.com/Site/Consulting_Secrets.html>
+- Économie et Société, Max Weber ~ <https://fr.wikipedia.org/wiki/%C3%89conomie_et_soci%C3%A9t%C3%A9>
 - The Art of Action, Stephen Bungay ~ <https://www.stephenbungay.com/Books.ink>
 - The Process of Change, Virginia Satir ~ <https://www.youtube.com/watch?v=tnXY_aetEnU>
