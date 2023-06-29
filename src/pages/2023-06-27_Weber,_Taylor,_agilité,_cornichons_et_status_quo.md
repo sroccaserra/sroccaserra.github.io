@@ -166,7 +166,12 @@ cités et une vidéo de Virginia Satir.
 
 ### Liens
 
-- The Secrets of Consulting, Jerry Weinberg ~ <https://geraldmweinberg.com/Site/Consulting_Secrets.html>
-- Économie et Société, Max Weber ~ <https://fr.wikipedia.org/wiki/%C3%89conomie_et_soci%C3%A9t%C3%A9>
-- The Art of Action, Stephen Bungay ~ <https://www.stephenbungay.com/Books.ink>
-- The Process of Change, Virginia Satir ~ <https://www.youtube.com/watch?v=tnXY_aetEnU>
+- [The Secrets of Consulting][sc], Jerry Weinberg
+- [Économie et Société][es], Max Weber
+- [The Art of Action][aa], Stephen Bungay
+- [The Process of Change][pc], Virginia Satir (vidéo)
+
+[sc]: https://geraldmweinberg.com/Site/Consulting_Secrets.html
+[es]: https://fr.wikipedia.org/wiki/%C3%89conomie_et_soci%C3%A9t%C3%A9
+[aa]: https://www.stephenbungay.com/Books.ink
+[pc]: https://www.youtube.com/watch?v=tnXY_aetEnU
