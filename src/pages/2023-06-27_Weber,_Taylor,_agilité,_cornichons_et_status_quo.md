@@ -73,6 +73,21 @@ Malheureusement je n'ai pas l'ouvrage original, c'est une traduction et
 interprétation de fragments que j'ai lu dans des articles. De ce que j'en ai
 vu, le texte de Weber est plus subtil et plus intéressant.
 
+Dans cette idée il y a quelque-chose qui ressemble à ce que j'observe et que
+j'ai l'impression de voir se répéter :
+
+- une idée impliquant une _réorientation radicale_ des valeurs apparaît
+- elle a suffisamment de succès pour inquiéter un status quo
+- elle est reprise par les tenants du status quo, mais _organisée_, on la
+  codifie, on l'aménage pour respecter les _fonctions d'aurorité_ en place, on
+  la transforme en une liste de _règles_ à _respecter_
+- au final les mots initiaux désigne maintenant une recette, une version
+  édulcorée qui est au service du status quo (status quo qui en a profité pour
+  ne pas beaucoup bouger).
+
+Une idée vivante énoncée par des prophètes est traduite et gravée dans la
+pierre par des prêtres qui en font des lois ?
+
 Le parallèle ne colle pas vraiment 100 %, on ne peut pas dire "agilité =
 prophètes" ni "non-agilité = prêtres". Car oui, quand je décrivais de nouvelles
 façons de travailler en début d'article, je parlais d'agilité. Ça ne colle pas
