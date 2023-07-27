@@ -12,6 +12,8 @@ autorité et de feedback rapide est la meilleure façon de dépenser un budget, 
 de loin, quand il s'agit d'obtenir un logiciel adapté au besoin et qui
 fonctionne le mieux possible.
 
+## Les cornichons de Secrets of Consulting
+
 Cependant, je pourrais interpréter ce que je vois / ce que je vis dans ces
 projets comme une anecdote de Jerry Weinberg dans Secrets of Consulting : un
 concombre plongé dans un bocal de cornichons a plus de chances de se
@@ -42,6 +44,8 @@ cellule d'architectes non codeurs chargée de tout ré-urbaniser. Souvent ça se
 traduit par quelque-chose qui ressemble à réimposer les anciennes façons de
 faire plus ou moins directement, en concédant que le "nouveau" vocabulaire
 reste.
+
+## Prophètes et prêtres dans Sociologie des Religions
 
 Et c'est là qu'intervient ma découverte récente d'une vieille idée : la
 description des prêtres et des prophètes par Max Weber dans Économie et Société
@@ -76,7 +80,7 @@ vu, le texte de Weber est plus subtil et plus intéressant.
 Dans cette idée il y a quelque-chose qui ressemble à ce que j'observe et que
 j'ai l'impression de voir se répéter :
 
-- une idée impliquant une _réorientation radicale_ des valeurs apparaît
+- une idée impliquant une _réorientation radicale des valeurs_ apparaît
 - elle a suffisamment de succès pour inquiéter un status quo
 - elle est reprise par les tenants du status quo, mais _organisée_, on la
   codifie, on l'aménage pour respecter les _fonctions d'aurorité_ en place, on
@@ -112,6 +116,8 @@ Et si on devait se concentrer sur le budget et le résultat, je pense aussi que
 c'est dans des équipes "éveillées" que j'ai observé les meilleurs résultats
 pour un budget donné. C'est dans cette direction que j'ai envie d'aller, c'est
 à aller dans cette direction que j'essaie d'aider mon équipe.
+
+## Taylorisme et Scientific Management
 
 Je repense aussi à un passage lu dans The Art of Action, de Bungay, qui donne
 ces trois axiomes du Taylorisme et du Scientific Management, vers 1911 :
@@ -151,6 +157,8 @@ d'autant plus de chance d'exister quand on sépare décision et exécution. Et
 c'est une source de perte d'énergie, car à mon avis toute incitation visant à
 corriger les gens sans corriger le système ne peut aboutir qu'à du gâchis.
 
+## Conclusion et Status Quo
+
 Avant de terminer, je me sens obligé de préciser que je ne suis pas absolument
 opposé au status quo, et que dans certains contextes je lui trouve beaucoup de
 valeur et je le préfère. Et que je n'essaie surtout pas de changer
@@ -179,7 +187,7 @@ du status quo et du changement&nbsp;:
 J'arrête là mes réflexions du jour, avec des liens vers trois des ouvrages
 cités et une vidéo de Virginia Satir.
 
-### Liens
+## Liens
 
 - [The Secrets of Consulting][sc], Jerry Weinberg
 - [Économie et Société][es], Max Weber
