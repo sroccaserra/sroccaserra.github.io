@@ -25,16 +25,16 @@ Let's suppose we have chosen to practice with the famous Bowling kata.
 Project start:
 
 <pre>
-$ mkdir bowling-kata
-$ cd bowling-kata
+$ <b>mkdir</b> bowling-kata
+$ <b>cd</b> bowling-kata
 </pre>
 
 Create a virtualenv, activate it (⚠️ shell dependent ⚠️) and install pytest.
 
 <pre>
-$ virtualenv -p python3 venv
-$ source venv/bin/activate
-$ pip install pytest
+$ <b>virtualenv</b> -p python3 venv
+$ <b>source</b> venv/bin/activate
+$ <b>pip</b> install pytest
 </pre>
 
 Note: if you know & prefer the unittest module from the Python standard lib,
@@ -43,8 +43,8 @@ you don't even need this virtualenv & pytest installation step.
 Write the shortest possible failing test in your favorite editor in "bowling_test.py", for example:
 
 <pre>
-def test_fails():
-    assert 0 == 1
+<b>def</b> test_fails()<b>:</b>
+    <b>assert</b> 0 <b>==</b> 1
 </pre>
 
 Run the test, it should fail with the correct error message:
@@ -68,7 +68,7 @@ ___________________________________ test_fails _________________________________
 
 bowling_test.py:2: AssertionError
 ============================ short test summary info =============================
-FAILED bowling_test.py::test_fails - assert 0 == 1
+<b>FAILED bowling_test.py::test_fails - assert 0 == 1</b>
 =============================== 1 failed in 0.01s ================================
 (venv)
 
@@ -81,25 +81,25 @@ errors already. Optional: `pip install flake8` if needed.
 ## (Optional) Create a more elaborate directory structure
 
 <pre>
-$ mkdir src
-$ mkdir test
-$ mv bowling_test.py test
+$ <b>mkdir</b> src
+$ <b>mkdir</b> test
+$ <b>mv</b> bowling_test.py test
 </pre>
 
 Add a bowling function in `src/bowling.py`:
 
 <pre>
-def bowling():
-    return 1
+<b>def</b> bowling()<b>:</b>
+    <b>return</b> 1
 </pre>
 
 Import it from `test/bowling_test.py`:
 
 <pre>
-from bowling import bowling
+<b>from</b> bowling <b>import</b> bowling
 
-def test_fails():
-    assert 0 == bowling()
+<b>def</b> test_fails()<b>:</b>
+    <b>assert</b> 0 <b>==</b> bowling()
 </pre>
 
 Add `src` to pytest’s pythonpath in `pytest.ini`:
@@ -114,7 +114,7 @@ Running `pytest` again should give you the same correct error message.
 The final structure:
 
 <pre>
-$ tree -I __pycache__/ -I venv -I .pytest_cache/
+$ <b>tree</b> -I __pycache__/ -I venv -I .pytest_cache/
 .
 ├── pytest.ini
 ├── src
@@ -128,12 +128,12 @@ $ tree -I __pycache__/ -I venv -I .pytest_cache/
 This is useful in remote contexts if you want to take turns in the session.
 
 <pre>
-$ echo venv >> .gitignore
-$ echo __pycache__ >> .gitignore
-$ echo .pytest_cache >> .gitignore
-$ git init
-$ git add .
-$ git commit -m first
+$ <b>echo</b> venv >> .gitignore
+$ <b>echo</b> __pycache__ >> .gitignore
+$ <b>echo</b> .pytest_cache >> .gitignore
+$ <b>git</b> init
+$ <b>git</b> add .
+$ <b>git</b> commit -m first
 </pre>
 
 Create a new repo on github or gitlab or ..., then copy / paste the github
