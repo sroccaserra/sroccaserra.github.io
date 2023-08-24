@@ -1,11 +1,12 @@
 * {
-    font-size: 100%;
+    font-size: 18px;
 }
 
 html {
     font-family : Verdana, "Bitstream Vera Sans", "DejaVu Sans", Tahoma, Geneva, Arial, "Sans-serif";
-    max-width: 900px;
+    max-width: 1024px;
     margin: 0 auto;
+    background-color: #eeeeee;
 }
 
 .center {
@@ -45,7 +46,7 @@ code {
 }
 
 blockquote {
-    background-color: #f2f2f5;
+    background-color: #dedede;
     color: #393939;
     font-style: italic;
     text-align: justify;
@@ -69,4 +70,8 @@ h2 {
 h3 {
     color: #393939;
     font-weight: bold;
+}
+
+a {
+    color: #393939;
 }
