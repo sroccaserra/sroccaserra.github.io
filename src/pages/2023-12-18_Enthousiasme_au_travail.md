@@ -12,7 +12,7 @@ personnes sont efficaces parce-qu’elles sont joyeuses. Ou bien : ces personnes
 sont enthousiastes parce-qu’elles se perçoivent comme efficaces.
 
 Et il me semble observer des entreprises qui ont fait la première
-interprétation : si on rend les personnes joyeuses, on les rendra efficace.
+interprétation : si on rend les personnes joyeuses, on les rendra efficaces.
 
 ## Hypothèse A : Ces personnes sont efficaces parce-qu'elles sont joyeuses
 
