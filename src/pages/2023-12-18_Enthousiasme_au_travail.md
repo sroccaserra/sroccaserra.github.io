@@ -82,7 +82,7 @@ Et vous, quelles observations faites-vous ? Quelles hypothèses faites-vous ?
 Quels sont les cailloux dans votre chaussure ? Qu'est-ce qui vous rend efficace
 ?
 
-[@sroccaserra](https://mastodon.social/@sroccaserra)
+[🧵 @sroccaserra](https://mastodon.social/@sroccaserra/111607521858953348)
 
 [r]: https://pablopernot.fr/2021/02/agilite-regard-critique-sur-les-dernieres-annees-pour-bien-debuter-les-suivantes/
 [h]: https://pablopernot.fr/2020/11/une-possible-histoire-de-lagilite/
