@@ -2,8 +2,8 @@ Quand j'ai la chance de travailler avec des équipes qui suivent un process
 léger (agile ?) parce qu'elles l'ont choisi, mon ressenti est que ces personnes
 sont souvent un peu plus enthousiastes ou joyeuses qu'avant, et il arrive même
 que parfois elles semblent s’amuser tout en travaillant. Pas tout le temps,
-mais disons un peu plus que la moyenne.  J'observe aussi que ces équipes me
-paraissent un peu plus efficaces que la moyenne. C'est difficile à mesurer, ces
+mais disons un peu plus que la moyenne. J'observe aussi que ces équipes se
+sentent un peu plus efficaces que la moyenne. C'est difficile à mesurer, ces
 observations n'engagent que moi. Mais supposons le temps d'un court article
 qu’elles soient vraies.
 
