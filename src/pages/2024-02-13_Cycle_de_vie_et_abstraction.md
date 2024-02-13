@@ -30,6 +30,12 @@ d'abstraction. Et la phase exécution pouvant être une descente dans le
 niveau d'abstraction qui à son tour peut se modéliser comme une
 "préparation" / "exécution" / "bouclage" (avec des tortues jusqu'en bas).
 
+J'apprécie ce genre de mini patterns, ça m'aide souvent à structurer ma
+pensée. Je le perçois comme du "micro-design" (nom inspiré des
+"microtests", un nom que je préfère à Unit Test). Un autre exemple connu
+auquel je pense aussi comme du "micro-design" est les Four Elements of
+Simple Design (voir liens ci-dessous).
+
 🧵&nbsp;[@sroccaserra](https://mastodon.social/@sroccaserra/111924533437429454)
 
 ## Liens
@@ -37,3 +43,5 @@ niveau d'abstraction qui à son tour peut se modéliser comme une
 - <https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization>
 - <https://www.stroustrup.com/tour3.html>
 - <https://en.wikipedia.org/wiki/Turtles_all_the_way_down>
+- <http://anarchycreek.com/2009/05/20/theyre-called-microtests/>
+- <https://blog.jbrains.ca/permalink/the-four-elements-of-simple-design>
