@@ -23,12 +23,13 @@ des traitements qui peuvent bien se modéliser en poupées gigognes de&nbsp;:
 
 - "préparation"
 - "exécution"
-- "bouclage"
+- "conclusion"
 
-La préparation et le bouclage pouvant être symétriques et au même niveau
-d'abstraction. Et la phase exécution pouvant être une descente dans le
-niveau d'abstraction qui à son tour peut se modéliser comme une
-"préparation" / "exécution" / "bouclage" (avec des tortues jusqu'en bas).
+La préparation et la conclusion pouvant être symétriques et au même
+niveau d'abstraction. Et la phase exécution pouvant être une descente
+dans le niveau d'abstraction qui à son tour peut se modéliser comme une
+"préparation" / "exécution" / "conclusion" (avec des tortues jusqu'en
+bas).
 
 J'apprécie ce genre de mini patterns, ça m'aide souvent à structurer ma
 pensée. Je le perçois comme du "micro-design" (nom inspiré des
