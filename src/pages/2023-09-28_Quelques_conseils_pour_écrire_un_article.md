@@ -67,6 +67,11 @@ aura toujours des gens qui ne vont rien découvrir dans mon article, si le sujet
 de mon article a été nouveau et intéressant pour moi, il sera aussi nouveau et
 intéressant pour d'autres personnes.
 
+> Toutes choses sont dites déjà; mais comme personne n'écoute, il faut sans cesse
+> recommencer.
+>
+> &mdash;&#x202F;André Gide
+
 ## Choix du moment
 
 Le bon moment pour écrire un article pour moi, c'est quand j'ai déjà réfléchi
@@ -248,10 +253,11 @@ d'écrire (c'est une tentative de blague mathématique piquée à Richard Feynma
 
 Voilà quelques astuces dont j'ai pu remarquer qu'elles m'ont aidé, j'espère que
 vous en trouverez quelques-unes qui fonctionnent pour vous. Et vous, quelles
-sont vos astuces ? Je serais content d'avoir vos avis sur le Fediverse&nbsp;:
-[@sroccaserra][masto]
+sont vos astuces ?
 
-[masto]: https://mastodon.social/@sroccaserra
+🧵 [@sroccaserra][masto]
+
+[masto]: https://mastodon.social/@sroccaserra/111148562132279420
 
 ## Liens
 
@@ -259,3 +265,7 @@ sont vos astuces ? Je serais content d'avoir vos avis sur le Fediverse&nbsp;:
 - Pair Programming ~ <https://wiki.c2.com/?PairProgramming>
 - Kent Beck ~ <https://fr.wikipedia.org/wiki/Kent_Beck>
 - Richard Feynman ~ <https://fr.wikipedia.org/wiki/Richard_Feynman>
+
+Voir aussi :
+
+- Nobody cares about your blog ~ <https://www.alexmolas.com/2023/07/15/nobody-cares-about-your-blog.html>
