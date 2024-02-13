@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="/style/main.css" rel="stylesheet">
+        <title>Cycle de vie et abstraction</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <header>
+            <br/>
+            <center>
+                <a class="title" href="/"><b>Apprendre + Équipe = Programmes</b><br/></a>
+            </center>
+        </header>
+        <article>
+                <br/>
+                <time datetime="2024-02-13">2024-02-13</time>
+                <br/>
+                <h1>Cycle de vie et abstraction</h1>
+                <hr/>
+<p>Je refais un peu de C++ en feuilletant la troisième édition de "A Tour of
+C++", et j'aime bien. C'est amusant, car j'ai fait beaucoup de C++ en
+début de carrière, avant de passer à Java, JS, Python et Lua au bout de
+quelques années. Depuis, j'avais gardé un souvenir peu ému de C++, me
+souvenant surtout des footguns. Il a même dû m'arriver d'en dire du mal
+quand j'en avais l'occasion. Aujourd'hui, je suis à nouveau intéressé par
+ce que j'ai appris grâce à ce langage. J'ai l'impression que mes opinions
+suivent des phases.</p>
+
+<p>Dans les choses que j'ai apprises, je suis content d'en avoir fait
+suffisamment à l'époque pour éviter les <code>new</code> et avoir en tête RAII, ça
+semble encore pertinent en C++ moderne.</p>
+
+<p>Je note aussi que le principe RAII (Resource Acquisition Is
+Initialization) m'a donné le goût de la symétrie dans le cycle de vie.
+J'apprécie que la création d'un objet et sa destruction / sortie de
+scope, ou que les ouvertures et fermetures de ressources aient lieu au
+même niveau d'abstraction, et si possible dans des positions symétriques.</p>
+
+<p>Je repense souvent à ce principe, même dans des langages où on ne gère
+pas explicitement la mémoire. Pour essayer de le décrire, souvent il y a
+des traitements qui peuvent bien se modéliser en poupées gigognes de&nbsp;:</p>
+
+<ul>
+<li>"préparation"</li>
+<li>"exécution"</li>
+<li>"bouclage"</li>
+</ul>
+
+<p>La préparation et le bouclage pouvant être symétriques et au même niveau
+d'abstraction. Et la phase exécution pouvant être une descente dans le
+niveau d'abstraction qui à son tour peut se modéliser comme une
+"préparation" / "exécution" / "bouclage" (avec des tortues jusqu'en bas).</p>
+
+<p>🧵&nbsp;<a href="https://mastodon.social/@sroccaserra/111924533437429454">@sroccaserra</a></p>
+
+<h2>Liens</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization</a></li>
+<li><a href="https://www.stroustrup.com/tour3.html">https://www.stroustrup.com/tour3.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Turtles_all_the_way_down">https://en.wikipedia.org/wiki/Turtles_all_the_way_down</a></li>
+</ul>
+
+        </article>
+    </body>
+</html>
