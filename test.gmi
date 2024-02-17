@@ -1,0 +1,12 @@
+## Un example
+
+Un exemple de fichier gmi :
+
+* Premier point
+* Deuxième point
+
+> Ca marche ou pas
+>
+> sans doute
+
+=> https://example.com Example
