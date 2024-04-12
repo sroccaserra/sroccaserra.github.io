@@ -171,8 +171,9 @@ Allons voir en quoi consiste ce service.
 ## Le service
 
 Le `IProductService` est ici ce qu'on appelle parfois un *Application Service*.
-On voit parfois un répertoire `usecases`, avec des classes de ce type dedans,
-ça pourrait correspondre.
+À la place du mot *service*, on voit aussi parfois un répertoire `usecases`,
+avec des classes qui ont ce type de responsabilités d'orchestration, ça
+pourrait correspondre.
 
 <pre>
 <i>// src/Commerce.Domain/IProductService.cs</i>
@@ -182,10 +183,10 @@ public interface IProductService
 }
 </pre>
 
-C'est avant tout l'interface `IProductService` ci-dessus, une liste de méthodes
-publiques. Le `HomeController` n'a pas à en savoir plus, et ne doit pas
-dépendre de l'implémentation. Mais comme on veut faire tout le chemin, allons
-observer cette fameuse implémentation.
+L'*application service*, c'est avant tout l'interface `IProductService`
+ci-dessus, une liste de méthodes publiques. Le `HomeController` n'a pas à en
+savoir plus, et ne doit pas dépendre de l'implémentation du service. Mais comme
+on veut faire tout le chemin, allons observer cette fameuse implémentation.
 
 <pre>
 <i>// src/Commerce.Domain/ProductService.cs</i>

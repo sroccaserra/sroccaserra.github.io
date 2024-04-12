@@ -192,8 +192,9 @@ paramètre de constructeur.</p>
 <h2>Le service</h2>
 
 <p>Le <code>IProductService</code> est ici ce qu'on appelle parfois un <em>Application Service</em>.
-On voit parfois un répertoire <code>usecases</code>, avec des classes de ce type dedans,
-ça pourrait correspondre.</p>
+À la place du mot <em>service</em>, on voit aussi parfois un répertoire <code>usecases</code>,
+avec des classes qui ont ce type de responsabilités d'orchestration, ça
+pourrait correspondre.</p>
 
 <pre>
 <i>// src/Commerce.Domain/IProductService.cs</i>
@@ -203,10 +204,10 @@ public interface IProductService
 }
 </pre>
 
-<p>C'est avant tout l'interface <code>IProductService</code> ci-dessus, une liste de méthodes
-publiques. Le <code>HomeController</code> n'a pas à en savoir plus, et ne doit pas
-dépendre de l'implémentation. Mais comme on veut faire tout le chemin, allons
-observer cette fameuse implémentation.</p>
+<p>L'<em>application service</em>, c'est avant tout l'interface <code>IProductService</code>
+ci-dessus, une liste de méthodes publiques. Le <code>HomeController</code> n'a pas à en
+savoir plus, et ne doit pas dépendre de l'implémentation du service. Mais comme
+on veut faire tout le chemin, allons observer cette fameuse implémentation.</p>
 
 <pre>
 <i>// src/Commerce.Domain/ProductService.cs</i>
