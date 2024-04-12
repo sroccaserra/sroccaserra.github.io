@@ -470,6 +470,33 @@ requête, mais en pratique c'est rarement un problème. Si vous mesurez que dans
 votre cas c'est effectivement un problème, le livre propose des solutions mais
 je ne rentre pas dans ce détail.
 
+## Pour aller plus loin
+
+Pour aller plus loin, on pourrait observer que certaines dépendances sont
+stables, et ne nécessitent pas d'être injectées. Le livre parle de *stable
+dependencies* et de *volatile dependencies*. Ce sont les dépendances volatiles
+qui nécessitent d'être injectées.
+
+Une dépendance est "volatile" quand elle n'est pas toujours disponible (bases
+de données, services Web, ...), quand elle contient un comportement non
+déterministe (temps, ...) ou qu'elle a besoin d'être remplacée, encapsulée, ou
+interceptée (il reste peu de choses ici normallement une fois qu'on a vu les
+deux premiers groupes).
+
+On pourrait aussi chercher si dans le *Composition Root* il n'y a pas une
+partie configuration des dépendances, et une partie résolution. Un pattern
+possible est de séparer configuration et résolution, en mettant la
+configuration dans un fichier par exemple. Typiquement, la configuration est
+faite au démarrage de l'application, et la résolution peut se faire à chaque
+requête.
+
+On peut également s'intéresser à comment utiliser notre framework ou un
+container d'injection de dépendances, maintenant qu'on a vu une façon de faire
+un peu complète.
+
+Je vous invite à consulter le livre [Dependency Injection][di] ou le blog de
+Mark Seemann pour en savoir plus sur ces patterns.
+
 ## Conclusion
 
 C'est terminé, on a enfin bouclé ce très grand tour qui nous montre
@@ -488,8 +515,9 @@ manque aux exemples qui ne montrent qu'une seule partie.
 
 ## Liens
 
-- <https://www.manning.com/books/dependency-injection-principles-practices-patterns>
-- <https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce>
-- <https://blog.ploeh.dk/tags/#Dependency%20Injection-ref>
+- Le livre Dependency Injection ~ <https://www.manning.com/books/dependency-injection-principles-practices-patterns>
+- L'exemple de code, en un peu plus détaillé ~ <https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce>
+- Le blog de Mark Seemann ~ <https://blog.ploeh.dk/>
+- Les nombreux articles sur l'injection de dépendances dans ce blog ~ <https://blog.ploeh.dk/tags/#Dependency%20Injection-ref>
 
 [di]: https://www.manning.com/books/dependency-injection-principles-practices-patterns
