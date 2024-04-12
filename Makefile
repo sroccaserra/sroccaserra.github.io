@@ -17,9 +17,9 @@ index.html: src/index.html src/layout.html $(SRC_ARTICLES) src/toc.sh
 $(DST_ARTICLES): %.html: fragments/%.html
 	@m4 -P \
 		-D __date=$(shell basename "$@" | cut -d_ -f1) \
-		-D __title="$(shell basename "$@" .html | cut -d_ -f2- | tr _ ' ')" \
+		-D __title='`'"$(shell basename "$@" .html | cut -d_ -f2- | tr _ ' ')'" \
 		-D __contents='`'"$<'" \
-		src/layout.html > "$@"
+		src/layout.html > '$@'
 
 fragments/%.html: fragments/pages src/%.md src/layout.html
 	$(MARKDOWN) "$(word 2, $^)" > "$@"
