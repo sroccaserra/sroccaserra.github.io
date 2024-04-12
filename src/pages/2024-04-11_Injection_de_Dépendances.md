@@ -30,6 +30,7 @@ particulièrement intéressé.
 
 Note : cet article sera sans doute beaucoup plus intéressant si vous avez déjà
 quelques notions sur l'injection de dépendances, car je ne la définie pas ici.
+Je n'aborde pas non plus la notion d'inversion de dépendance.
 
 Note : l'exemple est en C#, mais les principes appliqués devraient fonctionner
 quel que soit le langage et le framework. Ici le choix est fait de ne pas
