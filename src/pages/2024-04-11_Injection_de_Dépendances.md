@@ -515,9 +515,9 @@ manque aux exemples qui ne montrent qu'une seule partie.
 
 ## Liens
 
-- Le livre Dependency Injection ~ <https://www.manning.com/books/dependency-injection-principles-practices-patterns>
-- L'exemple de code, en un peu plus détaillé ~ <https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce>
-- Le blog de Mark Seemann ~ <https://blog.ploeh.dk/>
-- Les nombreux articles sur l'injection de dépendances dans ce blog ~ <https://blog.ploeh.dk/tags/#Dependency%20Injection-ref>
+- Le livre [Dependency Injection: Principles, practices, and Patterns][di]
+- L'[exemple de code](https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce), en un peu plus détaillé
+- Le [blog de Mark Seemann](https://blog.ploeh.dk/)
+- Les [nombreux articles sur l'injection de dépendances](https://blog.ploeh.dk/tags/#Dependency%20Injection-ref) dans ce blog
 
 [di]: https://www.manning.com/books/dependency-injection-principles-practices-patterns
