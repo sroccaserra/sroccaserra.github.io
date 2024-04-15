@@ -74,16 +74,16 @@ partant de l'aspect visible de la fonctionnalité.
 Les parties en gras font le lien d'un bout de code à l'autre.
 
 <pre>
-<i>// src/Commerce.Web/Views/Home/Index.cshtml</i>
+<i>@* src/Commerce.Web/Views/Home/Index.cshtml *@</i>
 @model FeaturedProductsViewModel
 
 &lt;h2&gt;Featured Products&lt;/h2&gt;
-&lt;div&gt;
+&lt;ul&gt;
     @foreach (<b>ProductViewModel</b> product in this.Model.Products)
     {
-        &lt;div&gt;<b>@product.SummaryText</b>&lt;/div&gt;
+        &lt;li&gt;<b>@product.SummaryText</b>&lt;/li&gt;
     }
-&lt;/div&gt;
+&lt;/ul&gt;
 </pre>
 
 Ci dessus, on voit qu'on itère sur des `ProductViewModel` pour afficher leur
@@ -123,7 +123,7 @@ public class ProductViewModel
 </pre>
 
 On peut voir ci-dessus que les infos nécessaires à fabriquer `SummaryText`, le
-nom et le prix des produits, sont passés à la construction des instances de
+nom et le prix des produits, sont passées à la construction des instances de
 `ProductViewModel` sous la forme d'un `DiscountedProduct`, qu'on verra plus
 bas.
 
@@ -388,7 +388,7 @@ public class CommerceContext : DbContext
 ## UserContext et adaptation vers le Framework
 
 Dans cet exemple en ASP.NET, une façon d'implémenter ce UserContext est
-d'utiliser le `HttpContextAccessor` fournit par le framework. Le framework nous
+d'utiliser le `HttpContextAccessor` fourni par le framework. Le framework nous
 dit que cet objet connait les rôles de l'utilisateur dans le contexte de la
 requête. Ici c'est un peu magique à mon goût mais je fais confiance au
 framework. Par exemple :
@@ -406,7 +406,7 @@ public class AspNetUserContextAdapter : IUserContext
 }
 </pre>
 
-On voit que pour le framework, les rôles sont des strings, et qu'on a choisit
+On voit que pour le framework, les rôles sont des strings, et qu'on a choisi
 une enum plus haut. C'est très bien, l'adaptation est faite ici, et on ne se
 plie pas aveuglément aux choix du framework.
 
@@ -480,7 +480,7 @@ qui nécessitent d'être injectées.
 Une dépendance est "volatile" quand elle n'est pas toujours disponible (bases
 de données, services Web, ...), quand elle contient un comportement non
 déterministe (temps, ...) ou qu'elle a besoin d'être remplacée, encapsulée, ou
-interceptée (il reste peu de choses ici normallement une fois qu'on a vu les
+interceptée (il reste peu de choses ici normalement une fois qu'on a vu les
 deux premiers groupes).
 
 On pourrait aussi chercher si dans le *Composition Root* il n'y a pas une
