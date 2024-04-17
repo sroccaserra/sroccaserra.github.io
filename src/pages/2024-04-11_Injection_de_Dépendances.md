@@ -35,8 +35,11 @@ l'exemple de code du livre, décrit en détail dans le chapitre 3. À chaque
 particulièrement intéressé.
 
 Note : cet article sera sans doute beaucoup plus intéressant si vous avez déjà
-quelques notions sur l'injection de dépendances, car je ne la définie pas ici.
-Je n'aborde pas non plus la notion d'inversion de dépendance.
+quelques notions sur l'injection de dépendances. Si vous voulez en savoir plus,
+vous pouvez commencer par lire l'article [Inversion of Control Containers and
+the Dependency Injection pattern][mf] de Martin Fowler.
+
+[mf]: https://martinfowler.com/articles/injection.html
 
 Note : l'exemple est en C#, mais les principes appliqués devraient fonctionner
 quel que soit le langage et le framework. Ici le choix est fait de ne pas
@@ -239,7 +242,7 @@ la méthode `ApplyDiscountFor()` de l'entité `Product`. On verra le détail de
 cette méthode plus bas. Pour le moment, on peut noter que ce `IUserContext` est
 également injecté dans le service au niveau du constructeur.
 
-Comme on le verra plus bas, ce `IUserContexte` est résolu et injecté à chaque
+Comme on le verra plus bas, ce `IUserContext` est résolu et injecté à chaque
 requête.
 
 ## L'entité Product et l'objet DiscountedProduct
@@ -309,7 +312,7 @@ public class DiscountedProduct
 }
 </pre>
 
-Cet objet `DicsountedProduct` est lui un sac de données. C'est un objet
+Cet objet `DiscountedProduct` est lui un sac de données. C'est un objet
 d'échange. C'est lui qui est passé à la vue, qui l'utilise pour produire ses
 `SummaryText` comme on l'a vu plus haut.
 
