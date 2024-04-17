@@ -3,8 +3,14 @@ L'injection de dépendances, c'est à la fois simple et compliqué.
 C'est simple car on voit souvent l'idée que&nbsp;: "c'est juste passer les
 dépendances en paramètre du constructeur". Et dans un sens, "c'est pas faux".
 
-Mais quand on commence à vouloir l'utiliser dans notre code, on commence à se
-poser plusieurs questions. Par exemple :
+Les choses commencent à se compliquer quand on essaie de la définir. Une
+définition pourrait être par exemple&nbsp;:
+
+> On appelle "Injection de Dépendances" un ensemble de principes et de patterns
+> logiciels qui permettent de développer du code faiblement couplé.
+
+Et quand on commence à vouloir utiliser ces principes et patterns dans notre
+code, on commence à se poser plusieurs questions. Par exemple&nbsp;:
 
 - À quoi ça ressemble concrètement ?
 - Qui est responsable d'injecter ces dépendances ?
@@ -12,7 +18,7 @@ poser plusieurs questions. Par exemple :
 - Où est-ce que je vais instancier ces dépendances ?
 - Est-ce que je suis obligé de passer par un framework ?
 - Quelle est la différence entre Injection de Dépendances et Inversion de Dépendances ?
-- Est-ce qu'il y a des patterns classiques ?
+- Quels sont les patterns classiques ?
 - Est-ce qu'il y a des anti-patterns ?
 
 Donc c'est aussi potentiellement un peu compliqué.
