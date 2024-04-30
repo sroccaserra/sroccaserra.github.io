@@ -198,10 +198,14 @@ Allons voir en quoi consiste ce service.
 
 ## Le service
 
-Le `IProductService` est ici ce qu'on appelle parfois un *Application Service*.
-À la place du mot *service*, on voit aussi parfois un répertoire `usecases`,
-avec des classes qui ont ce type de responsabilités d'orchestration, ça
-pourrait correspondre.
+Le `IProductService` est ici ce qu'on appelle parfois un
+*Application Service*. Cette notion d'*Application Service* est
+parfois connue sous d'autre nom, l'important c'est que c'est un
+point d'entrée de la couche métier, souvent avec un rôle
+d'orchestration. Pour nommer cette couche métier, on entend
+souvent parler de *Domain*, de *Business Logic*, de *Use Cases*
+en fonction du vocabulaire que vous avez choisi dans votre
+équipe.
 
 <pre>
 <i>// src/Commerce.Domain/IProductService.cs</i>

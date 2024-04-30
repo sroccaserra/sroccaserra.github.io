@@ -219,10 +219,14 @@ paramètre de constructeur.</p>
 
 <h2>Le service</h2>
 
-<p>Le <code>IProductService</code> est ici ce qu'on appelle parfois un <em>Application Service</em>.
-À la place du mot <em>service</em>, on voit aussi parfois un répertoire <code>usecases</code>,
-avec des classes qui ont ce type de responsabilités d'orchestration, ça
-pourrait correspondre.</p>
+<p>Le <code>IProductService</code> est ici ce qu'on appelle parfois un
+<em>Application Service</em>. Cette notion d'<em>Application Service</em> est
+parfois connue sous d'autre nom, l'important c'est que c'est un
+point d'entrée de la couche métier, souvent avec un rôle
+d'orchestration. Pour nommer cette couche métier, on entend
+souvent parler de <em>Domain</em>, de <em>Business Logic</em>, de <em>Use Cases</em>
+en fonction du vocabulaire que vous avez choisi dans votre
+équipe.</p>
 
 <pre>
 <i>// src/Commerce.Domain/IProductService.cs</i>
