@@ -18,108 +18,128 @@
                 <br/>
                 <h1>Injection de Dépendances</h1>
                 <hr/>
-<p>L'injection de dépendances, c'est à la fois simple et compliqué.</p>
+<!--
 
-<p>C'est simple car on voit souvent l'idée que&nbsp;: "c'est juste passer les
-dépendances en paramètre du constructeur". Et dans un sens, "c'est pas faux".</p>
+Cool, ça ressemblerait à quoi de la composition ? Qu'est-ce qui contiendrait
+quoi ?
 
-<p>Les choses commencent à se compliquer quand on essaie de la définir. Une
-définition pourrait être par exemple&nbsp;:</p>
+Si je dérive de Product (pour une spécialisation), j'hérite de la même méthode
+avec les mêmes arguments donc l'injection par méthode fonctionne aussi je pense
+?
 
-<blockquote>
-  <p>On appelle "Injection de Dépendances" un ensemble de principes et de patterns
-logiciels qui permettent de développer du code faiblement couplé.</p>
-</blockquote>
+L'interface permet d'avoir une signature qui ne dépend pas du framework,
+et une implémentation qui dépend du framework. On voit l'implémentation plus
+bas, pour le framework un role est une string quelconque, pour la signature un
+Role est un type précis. Est-ce que ça répond à ta question ? Si oui, est-ce
+que tu penses que ça vaut le coup d'ajouter quelque-chose à ce sujet ?
 
-<p>Et quand on commence à vouloir utiliser ces principes et patterns dans notre
-code, on commence à se poser plusieurs questions. Par exemple&nbsp;:</p>
+Une fonction fonctionnerait ici car il n'y a qu'une méthode. Avoir une
+interface est plus extensible et plus courant en Java. Il n'est pas impossible
+que je n'ai pas suivi les dernières tendances majoritaires, si c'est le cas je
+veux bien des pointeurs vers une communauté qui a un peu pignon sur rue et qui
+va privilégier des functions pour ce genre d'usage (?)
 
-<ul>
-<li>À quoi ça ressemble concrètement ?</li>
-<li>Qui est responsable d'injecter ces dépendances ?</li>
-<li>À quel moment est-ce que j'injecte mes dépendances ?</li>
-<li>Où est-ce que je vais instancier ces dépendances ?</li>
-<li>Est-ce que je suis obligé de passer par un framework ?</li>
-<li>Quelle est la différence entre Injection de Dépendances et Inversion de Dépendances ?</li>
-<li>Quels sont les patterns classiques ?</li>
-<li>Est-ce qu'il y a des anti-patterns ?</li>
-</ul>
+Merci, oui ça mérite explication. Ce que j'ai en tête c'est qu'ici on va
+entendre parler d'Application Service en général, mais que sur certains projets
+on voit un répertoire "usecases", avec des classes représentant les
+transactions métier, avec une seule méthode "handle" ou "execute". Un genre de
+pattern command. Ces deux patterns jouent le même rôle en général, un rôle
+d'orchestration, et les patterns sont interchangeables à peu de choses près.
 
-<p>Donc c'est aussi potentiellement un peu compliqué.</p>
+J'ai l'impression que je pourrais simplement supprimer cette ref au pattern
+"usecase", ça n'ajoute rien.
 
-<p>J'ai récemment lu le livre <a href="https://www.manning.com/books/dependency-injection-principles-practices-patterns">Dependency Injection: Principles, Practices, and
-Patterns</a>, de Stephan van Deursen et Mark Seemann. Ce livre apporte
+-->
+L'injection de dépendances, c'est à la fois simple et compliqué.
+
+C'est simple car on voit souvent l'idée que&nbsp;: "c'est juste passer les
+dépendances en paramètre du constructeur". Et dans un sens, "c'est pas faux".
+
+Les choses commencent à se compliquer quand on essaie de la définir. Une
+définition pourrait être par exemple&nbsp;:
+
+> On appelle "Injection de Dépendances" un ensemble de principes et de patterns
+> logiciels qui permettent de développer du code faiblement couplé.
+
+Et quand on commence à vouloir utiliser ces principes et patterns dans notre
+code, on commence à se poser plusieurs questions. Par exemple&nbsp;:
+
+- À quoi ça ressemble concrètement ?
+- Qui est responsable d'injecter ces dépendances ?
+- À quel moment est-ce que j'injecte mes dépendances ?
+- Où est-ce que je vais instancier ces dépendances ?
+- Est-ce que je suis obligé de passer par un framework ?
+- Quelle est la différence entre Injection de Dépendances et Inversion de Dépendances ?
+- Quels sont les patterns classiques ?
+- Est-ce qu'il y a des anti-patterns ?
+
+Donc c'est aussi potentiellement un peu compliqué.
+
+J'ai récemment lu le livre [Dependency Injection: Principles, Practices, and
+Patterns][di], de Stephan van Deursen et Mark Seemann. Ce livre apporte
 beaucoup de réponses, et j'ai été surpris et très intéressé par la richesse du
 sujet. (Et si vous êtes comme moi, vous apprécierez la virgule de série du
-sous-titre).</p>
+sous-titre).
 
-<p>Pour partager une petite partie de ce que j'ai vu, je propose de regarder
+Pour partager une petite partie de ce que j'ai vu, je propose de regarder
 l'exemple de code du livre, décrit en détail dans le chapitre 3. À chaque
 étape, j'essaierai de mettre en valeur quelques points qui m'ont
-particulièrement intéressé.</p>
+particulièrement intéressé.
 
-<p>Note : cet article sera sans doute beaucoup plus intéressant si vous avez déjà
+Note : cet article sera sans doute beaucoup plus intéressant si vous avez déjà
 quelques notions sur l'injection de dépendances. Si vous voulez en savoir plus,
-vous pouvez commencer par lire l'article <a href="https://martinfowler.com/articles/injection.html">Inversion of Control Containers and
-the Dependency Injection pattern</a> de Martin Fowler.</p>
+vous pouvez commencer par lire l'article [Inversion of Control Containers and
+the Dependency Injection pattern][mf] de Martin Fowler.
 
-<p>Note : l'exemple est en C#, mais les principes appliqués devraient fonctionner
+[mf]: https://martinfowler.com/articles/injection.html
+
+Note : l'exemple est en C#, mais les principes appliqués devraient fonctionner
 quel que soit le langage et le framework. Ici le choix est fait de ne pas
 utiliser de container d'injection de dépendance, afin de bien voir toutes les
-parties.</p>
+parties.
 
-<p>Avertissement / Disclaimer : ce qui suit est un exemple qui illustre très bien
+Avertissement / Disclaimer : ce qui suit est un exemple qui illustre très bien
 de nombreux points mais ce n'est pas "the only true way" pour gérer les
 dépendances. Si vous avez d'autres façons de faire, si vous utilisez le
 framework X ou Y, c'est très bien, voyez ce qui fonctionne pour vous.
 L'important est que vous ayez une bonne compréhension de vos pratiques et de ce
-qu'elles vous apportent.</p>
+qu'elles vous apportent.
 
-<h2>La fonctionnalité</h2>
+## La fonctionnalité
 
-<p>L'exemple décrit une fonctionnalité d'un site d'e-commerce. Cette
-fonctionnalité consiste à afficher une liste de <em>featured products</em> (produits
-phares) avec leurs prix. Si le client connecté est un <em>preffered customer</em>
-(client privilégié), alors il a droit à un <em>discount</em> (rabais) de 5 % sur ces
-<em>featured products</em> et les prix affichés doivent tenir compte de ce rabais.</p>
+L'exemple décrit une fonctionnalité d'un site d'e-commerce. Cette
+fonctionnalité consiste à afficher une liste de *featured products* (produits
+phares) avec leurs prix. Si le client connecté est un *preffered customer*
+(client privilégié), alors il a droit à un *discount* (rabais) de 5 % sur ces
+*featured products* et les prix affichés doivent tenir compte de ce rabais.
 
-<p>Exemple de résultat attendu (imaginer une vue en joli HTML ici):</p>
+Exemple de résultat attendu (imaginer une vue en joli HTML ici):
 
-<pre>
-<b>Featured Products</b>
 
-- Criollo Chocolate ($34.95)
-- Gruyère ($48.50)
-- White Asparagus ($39.80)
-- Anchovies ($18.75)
-- Arborio Rice ($22.75)
-</pre>
 
-<h2>La vue</h2>
+e8459f9052c8b68b1d793200f8aa2578
 
-<p>Je vais commencer à décrire tout le code en commençant par la vue. Ce n'est pas
+
+
+
+## La vue
+
+Je vais commencer à décrire tout le code en commençant par la vue. Ce n'est pas
 très intéressant tout de suite, mais ça permet de bien voir l'ensemble en
-partant de l'aspect visible de la fonctionnalité.</p>
+partant de l'aspect visible de la fonctionnalité.
 
-<p>Les parties en gras font le lien d'un bout de code à l'autre.</p>
+Les parties en gras font le lien d'un bout de code à l'autre.
 
-<pre>
-<i>@* src/Commerce.Web/Views/Home/Index.cshtml *@</i>
-@model FeaturedProductsViewModel
 
-&lt;h2&gt;Featured Products&lt;/h2&gt;
-&lt;ul&gt;
-    @foreach (<b>ProductViewModel</b> product in this.Model.Products)
-    {
-        &lt;li&gt;<b>@product.SummaryText</b>&lt;/li&gt;
-    }
-&lt;/ul&gt;
-</pre>
 
-<p>Ci dessus, on voit qu'on itère sur des <code>ProductViewModel</code> pour afficher leur
-<code>SummaryText</code>. Comme on l'a vu dans la liste de Featured Products affichée
-ci-dessus, ces <code>SummaryText</code> montrent un nom et un prix. Voyons d'où viennent
-ces informations.</p>
+648dd88a3206d88f671eea66d11bb706
+
+
+
+Ci dessus, on voit qu'on itère sur des ProductViewModel` pour afficher leur
+`SummaryText`. Comme on l'a vu dans la liste de Featured Products affichée
+ci-dessus, ces `SummaryText` montrent un nom et un prix. Voyons d'où viennent
+ces informations.
 
 <!--
 // src/Commerce.Web/Models/FeaturedProductsViewModel.cs
@@ -194,7 +214,7 @@ public class HomeController : Controller
 
 <p>Comme on le voit ci-dessus, c'est un <code>IProductService</code> qui a la responsabilité
 de fournir la liste des <em>featured products</em> au controller. On voit aussi que ce
-service est injecté, c'est le premier exemple de cette fameuse injection par
+service est injecté, cest le premier exemple de cette fameuse injection par
 paramètre de constructeur.</p>
 
 <p>Allons voir en quoi consiste ce service.</p>
@@ -508,6 +528,9 @@ manque aux exemples qui ne montrent qu'une seule partie.</p>
 <li>L'<a href="https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce">exemple de code</a>, en un peu plus détaillé</li>
 <li>Le <a href="https://blog.ploeh.dk/">blog de Mark Seemann</a></li>
 <li>Les <a href="https://blog.ploeh.dk/tags/#Dependency%20Injection-ref">nombreux articles sur l'injection de dépendances</a> dans ce blog</li>
+<li>Si vous voulez découvrir des patterns d'injection de dépendance en
+programmation fonctionnelle, vous pouvez lire <a href="https://fsharpforfunandprofit.com/posts/dependencies/">ces articles</a> de Scott
+Wlaschin, et en profiter pour explorer son blog.</li>
 </ul>
 
         </article>

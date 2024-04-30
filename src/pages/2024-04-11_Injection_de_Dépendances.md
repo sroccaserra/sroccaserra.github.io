@@ -1,3 +1,35 @@
+<!--
+
+Cool, ça ressemblerait à quoi de la composition ? Qu'est-ce qui contiendrait
+quoi ?
+
+Si je dérive de Product (pour une spécialisation), j'hérite de la même méthode
+avec les mêmes arguments donc l'injection par méthode fonctionne aussi je pense
+?
+
+L'interface permet d'avoir une signature qui ne dépend pas du framework,
+et une implémentation qui dépend du framework. On voit l'implémentation plus
+bas, pour le framework un role est une string quelconque, pour la signature un
+Role est un type précis. Est-ce que ça répond à ta question ? Si oui, est-ce
+que tu penses que ça vaut le coup d'ajouter quelque-chose à ce sujet ?
+
+Une fonction fonctionnerait ici car il n'y a qu'une méthode. Avoir une
+interface est plus extensible et plus courant en Java. Il n'est pas impossible
+que je n'ai pas suivi les dernières tendances majoritaires, si c'est le cas je
+veux bien des pointeurs vers une communauté qui a un peu pignon sur rue et qui
+va privilégier des functions pour ce genre d'usage (?)
+
+Merci, oui ça mérite explication. Ce que j'ai en tête c'est qu'ici on va
+entendre parler d'Application Service en général, mais que sur certains projets
+on voit un répertoire "usecases", avec des classes représentant les
+transactions métier, avec une seule méthode "handle" ou "execute". Un genre de
+pattern command. Ces deux patterns jouent le même rôle en général, un rôle
+d'orchestration, et les patterns sont interchangeables à peu de choses près.
+
+J'ai l'impression que je pourrais simplement supprimer cette ref au pattern
+"usecase", ça n'ajoute rien.
+
+-->
 L'injection de dépendances, c'est à la fois simple et compliqué.
 
 C'est simple car on voit souvent l'idée que&nbsp;: "c'est juste passer les
@@ -525,8 +557,16 @@ manque aux exemples qui ne montrent qu'une seule partie.
 ## Liens
 
 - Le livre [Dependency Injection: Principles, practices, and Patterns][di]
-- L'[exemple de code](https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce), en un peu plus détaillé
-- Le [blog de Mark Seemann](https://blog.ploeh.dk/)
-- Les [nombreux articles sur l'injection de dépendances](https://blog.ploeh.dk/tags/#Dependency%20Injection-ref) dans ce blog
+- L'[exemple de code][dic], en un peu plus détaillé
+- Le [blog de Mark Seemann][ms]
+- Les [nombreux articles sur l'injection de dépendances][msdi] dans ce blog
+- Si vous voulez découvrir des patterns d'injection de dépendance en
+  programmation fonctionnelle, vous pouvez lire [ces articles][sw] de Scott
+  Wlaschin, et en profiter pour explorer son blog.
+
 
 [di]: https://www.manning.com/books/dependency-injection-principles-practices-patterns
+[dic]: https://github.com/DependencyInjection-2nd-edition/codesamples/tree/master/RightECommerce
+[ms]: https://blog.ploeh.dk/
+[msdi]: https://blog.ploeh.dk/tags/#Dependency%20Injection-ref
+[sw]: https://fsharpforfunandprofit.com/posts/dependencies/
