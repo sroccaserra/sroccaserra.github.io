@@ -1,3 +1,6 @@
+-- title: How can I become faster?
+-- date: 2024-01-30
+
 I recently saw a request that looked like this in a conversation:
 
 > I am a slow programmer. How can I become faster?

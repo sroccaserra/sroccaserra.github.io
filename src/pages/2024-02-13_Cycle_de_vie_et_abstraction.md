@@ -1,3 +1,6 @@
+-- title: Cycle de vie et abstraction
+-- date: 2024-02-13
+
 Je refais un peu de C++ en feuilletant la troisième édition de "A Tour of C++",
 et j'aime bien. C'est amusant, car j'ai fait beaucoup de C++ en début de
 carrière et j'en avais gardé un souvenir peu ému, je me souvenais surtout des

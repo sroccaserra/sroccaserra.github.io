@@ -12,12 +12,11 @@ Quelques détails techniques :
   racine.
 - Les articles sont écrits en [markdown][md] basique (inclus dans le dossier
   `lib/`, ou `sudo apt install markdown`, c'est quelques ko).
-- Le header et footer sont ajoutés par [m4][m4], qui est souvent installé par
-  défaut.
+- Le titre et la date des articles sont injectés dans le layout par [m4][m4],
+  qui est souvent installé par défaut.
 - Les fichiers HTML complets sont générés par une règle [Make][make],
   uniquement si leurs dépendances ont changé.
-- La liste des articles dans l'index est générée automatiquement par une
-  commande [awk][awk].
+- La liste des articles dans l'index est générée automatiquement.
 - Tapper `make` suffit pour mettre à jour tout ce qui doit l'être.
 - Pour visualiser mes changements, j'utilise Python, installé aussi par défaut,
   pour démarrer un serveur HTTP local.
@@ -42,4 +41,3 @@ Refs techniques :
 [md]: https://daringfireball.net/projects/markdown/
 [m4]: https://www.gnu.org/software/m4/
 [make]: https://www.gnu.org/software/make/
-[awk]: https://www.gnu.org/software/gawk/

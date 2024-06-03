@@ -1,3 +1,6 @@
+-- title: Injection de Dépendances
+-- date: 2024-04-11
+
 <!--
 L'interface permet d'avoir une signature qui ne dépend pas du framework,
 et une implémentation qui dépend du framework. On voit l'implémentation plus

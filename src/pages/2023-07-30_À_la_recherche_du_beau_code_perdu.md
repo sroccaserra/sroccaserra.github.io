@@ -1,3 +1,6 @@
+-- title: À la recherche du beau code perdu
+-- date: 2023-07-30
+
 Ça fait plusieurs fois que dans des conversations Web je pose ou que je vois poser la question :
 
 > Avez-vous des exemples disponibles en open source d'une appli qui ne serait pas un hello world ou un kata qui vous parait intéressante comme modèle? (idéalement dans un langage relativement courant comme java/python/js/C# ou ce genre de truc)

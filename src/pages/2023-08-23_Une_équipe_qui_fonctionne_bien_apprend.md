@@ -1,3 +1,6 @@
+-- title: Une équipe qui fonctionne bien apprend
+-- date: 2023-08-23
+
 Comme beaucoup de personnes dont le métier est en partie de résoudre des problèmes, j’ai tendance à… justement, chercher les problèmes. Chercher ce qui ne fonctionne pas, chercher ce à quoi je pourrais bien m’attaquer.
 
 C’est souvent utile, mais à la longue ça peut créer un biais, une croyance que tout va mal puisqu’à chaque fois que je cherche des problèmes j’en trouve. A minima ça peut donner cette impression vu de l’extérieur.

@@ -1,3 +1,6 @@
+-- title: NewCrafts Paris 2023 ~ Clare Sudbery
+-- date: 2023-06-08
+
 Les 25 et 26 mai, j'ai assisté à la conférence NewCrafts Paris 2023. C'était
 chouette de revoir plein de monde au même endroit ! Il y avait aussi des
 interventions de qualité, voilà une partie de mes notes sur ce que j'ai appris

@@ -1,3 +1,6 @@
+-- title: Quelques conseils pour écrire un article
+-- date: 2023-09-28
+
 Après avoir écrit une douzaine d'articles cette année, je me suis retrouvé à
 donner quelques conseils à des collègues sur le sujet. À cette occasion, j'ai
 remarqué que j'avais des choses à partager. Si vous avez envie d'écrire des

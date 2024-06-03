@@ -1,3 +1,6 @@
+-- title: Découverte du langage OCaml
+-- date: 2020-10-30
+
 Cette semaine j'avais envie d'explorer un nouveau langage. Je souhaitais avoir un typage fort et des fonctions [currifiées][cu] par défaut : j'ai essayé OCaml, et j'ai été agréablement surpris.
 
 [cu]: https://fr.wikipedia.org/wiki/Curryfication

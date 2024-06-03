@@ -1,3 +1,6 @@
+-- title: Les problèmes des recettes tardives
+-- date: 2023-05-11
+
 Disclaimer: well, that’s just, like, my opinion, man.
 
 Pourquoi on s’est mis à utiliser des méthodes agiles autour de l’an 2000 ?

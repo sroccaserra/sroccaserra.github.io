@@ -1,3 +1,6 @@
+-- title: Interface ou classe ? Exemple de micro design
+-- date: 2023-09-06
+
 Aujourd'hui j'ai feuilleté Implementation Patterns de Kent Beck, et ça m'a remis en mémoire quelques détails utiles, comme à chaque fois.
 
 Par exemple : un vieil adage est de coder vers les interfaces, pas vers les implémentations. Interface au sens "un ensemble d'opérations sans implémentations". Comment est-ce qu'on implémente cette idée ? S'il y a plusieurs façons, quels en sont les compromis ?

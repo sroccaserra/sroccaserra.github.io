@@ -1,3 +1,6 @@
+-- title: Découverte du langage Go
+-- date: 2022-07-16
+
 Cette semaine j'ai fait un peu de Go et j'aime bien, voilà ce que j'ai observé en résolvant quelques problèmes d'Advent of Code.
 
 ## TL;DR

@@ -1,3 +1,6 @@
+-- title: Coding kata starter in Python
+-- date: 2023-07-19
+
 This is how I usually start a coding kata, here in Python. It should be easy
 and very fast, so I can move on to the kata (the interesting part).
 

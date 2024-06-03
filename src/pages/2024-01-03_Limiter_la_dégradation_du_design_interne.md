@@ -1,3 +1,6 @@
+-- title: Limiter la dégradation du design interne
+-- date: 2024-01-03
+
 Dans mes conversations, j'ai souvent besoin de donner une vision claire
 de choses qui font partie de "la programmation" à des personnes de
 l'équipe qui ne font pas de dev. J'ai donc deux ou trois notions

@@ -1,3 +1,6 @@
+-- title: Weber, Taylor, agilité, cornichons et status quo
+-- date: 2023-06-27
+
 Depuis une quinzaine d'années, j'observe dans une dizaine de projets (je me
 garderai donc de généraliser) des personnes qui essaient de travailler
 autrement&nbsp;:

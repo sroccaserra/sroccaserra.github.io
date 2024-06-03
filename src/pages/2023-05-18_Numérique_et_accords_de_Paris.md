@@ -1,3 +1,6 @@
+-- title: Numérique et accords de Paris
+-- date: 2023-05-18
+
 Cette semaine j'ai été intéressé par un article du Monde (voir liens) dans
 lequel on trouve que pour respecter les accords de Paris, il faudrait réduire
 les émissions de gaz à effet de serre du secteur du numérique de 7 % par an

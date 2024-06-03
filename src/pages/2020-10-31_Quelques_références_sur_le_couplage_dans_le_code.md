@@ -1,3 +1,6 @@
+-- title: Quelques références sur le couplage dans le code
+-- date: 2020-10-31
+
 Récemment j'ai fait un petit tour des tables des matières d'ouvrages classiques
 pour trouver des références sur le couplage dans le code. Voici ce que j'ai
 récolté, sans ordre de préférence.

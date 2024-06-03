@@ -1,3 +1,6 @@
+-- title: Modèle métier et typage statique
+-- date: 2020-11-17
+
 Pour moi, comprendre un modèle métier précisément est plus difficile dans des langages typés dynamiquement (comme JavaScript, Python, Ruby) que dans des langages à typages forts (comme Java, C#, Haskell).
 
 Pour illustrer les difficultés que je peux avoir, voici un exemple qui utilise une modélisation un peu riche, tirée du livre [Domain Modeling Made Functional](https://pragprog.com/titles/swdddf/domain-modeling-made-functional/) (chapitre 4 : *Understanding Types)*.

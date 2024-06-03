@@ -1,3 +1,6 @@
+-- title: Veille - Strategic Monoliths and Microservices
+-- date: 2024-02-02
+
 Hier j'ai lu les chapitres 1 et 2 de Strategic Monoliths and Microservices, de
 Vaughn Vernon et Tomasz Jaskula, pour aider mon client sur son organisation en
 équipes. J'ai trouvé ça utile, un bon point de départ avant de sortir

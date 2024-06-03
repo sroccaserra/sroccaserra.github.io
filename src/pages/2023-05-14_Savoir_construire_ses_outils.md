@@ -1,3 +1,6 @@
+-- title: Savoir construire ses outils
+-- date: 2023-05-14
+
 Parfois, face à une situation nouvelle que je ne comprends pas, j’ai besoin de
 voir le problème sous un autre angle. Dans ces conditions, je suis content
 d’utiliser tous les outils que j’ai déjà. Et parfois, quand mes outils

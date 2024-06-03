@@ -1,3 +1,6 @@
+-- title: Extreme Programming et simplicité
+-- date: 2023-09-04
+
 Cet été j'ai relu quelques chapitres du livre Extreme Programming Explained, de Kent Beck, et j'ai discuté avec des collègues de la notion de simplicité, et de pourquoi c'est difficile à définir.
 
 Ça m'a donné envie de croiser les deux sujets, ce que je propose dans cet article.

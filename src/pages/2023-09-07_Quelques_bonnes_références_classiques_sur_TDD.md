@@ -1,3 +1,6 @@
+-- title: Quelques bonnes références classiques sur TDD
+-- date: 2023-09-07
+
 Suite à des conversations avec des collègues, voilà la liste des refs classiques sur TDD (Test-Driven Development) auxquelles je me réfère souvent. Super pour s’inspirer et approfondir le sujet.
 
 Note : il y en a d’autres, si vous avez de bonnes refs classiques passez les moi 🙏 [@sroccaserra](https://mastodon.social/@sroccaserra)
