@@ -7,10 +7,10 @@ all: index.html rss.xml $(DST_ARTICLES)
 
 index.html: src/index.html src/layout.html $(SRC_ARTICLES) src/toc.sh
 	@echo Updating Index...
-	@src/build_index.sh "$<" "$@" $(DST_ARTICLES)
+	@src/build_index.sh "$<" $(DST_ARTICLES) > "$@"
 
 $(DST_ARTICLES): %.html: src/%.md | pages
-	src/build_page.sh "$<" "$@"
+	src/build_page.sh "$<" > "$@"
 
 pages:
 	mkdir -p pages
