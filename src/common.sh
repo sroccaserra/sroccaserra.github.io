@@ -36,8 +36,8 @@ function article_date() {
 }
 
 function html_header() {
-    local TITLE=${1:?'Missing title.'}
-    local DATE=${2:?'Missing date.'}
+    local TITLE="${1:?'Missing title.'}"
+    local DATE="${2}"
 
     sed -n '0,/contents/p' src/layout.html | m4 -D __date="${DATE}" -D __title="${TITLE}"
 }
@@ -48,8 +48,5 @@ function html_contents() {
 }
 
 function html_footer() {
-    local TITLE=${1:?'Missing title.'}
-    local DATE=${2:?'Missing date.'}
-
-    sed '0,/contents/d' src/layout.html | m4 -D __date="${DATE}" -D __title="${TITLE}"
+    sed '0,/contents/d' src/layout.html
 }

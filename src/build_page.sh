@@ -10,4 +10,4 @@ DATE=`article_date ${IN_FILE}`
 
 html_header "${TITLE}" "${DATE}" > "${OUT_FILE}"
 html_contents "${IN_FILE}" >> "${OUT_FILE}"
-html_footer "${TITLE}" "${DATE}" >> "${OUT_FILE}"
+html_footer >> "${OUT_FILE}"
