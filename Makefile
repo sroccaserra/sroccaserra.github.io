@@ -7,12 +7,7 @@ all: index.html rss.xml $(DST_ARTICLES)
 
 index.html: src/index.html src/layout.html $(SRC_ARTICLES) src/toc.sh
 	@echo Updating Index...
-	@m4 -P \
-		-D __date='' \
-		-D __title="Apprendre + Équipe = Programmes" \
-		-D __toc='`'"$(shell src/toc.sh $(DST_ARTICLES))""'" \
-		-D __contents="$<" \
-		src/layout.html > "$@"
+	@src/build_index.sh "$<" "$@" $(DST_ARTICLES)
 
 $(DST_ARTICLES): %.html: src/%.md | pages
 	src/build_page.sh "$<" "$@"

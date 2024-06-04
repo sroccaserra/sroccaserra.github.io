@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+MARKDOWN='lib/Markdown_1.0.1/Markdown.pl'
+
 ##
 # Utility functions
 
@@ -31,4 +33,23 @@ function article_date() {
     check_header_line 'date' "${LINE}"
 
     echo ${LINE} | cut -d':' -f2- | xargs
+}
+
+function html_header() {
+    local TITLE=${1:?'Missing title.'}
+    local DATE=${2:?'Missing date.'}
+
+    sed -n '0,/contents/p' src/layout.html | m4 -D __date="${DATE}" -D __title="${TITLE}"
+}
+
+function html_contents() {
+    local IN_FILE=${1:?'Missing filename.'}
+    tail +3 "${IN_FILE}" | perl "${MARKDOWN}"
+}
+
+function html_footer() {
+    local TITLE=${1:?'Missing title.'}
+    local DATE=${2:?'Missing date.'}
+
+    sed '0,/contents/d' src/layout.html | m4 -D __date="${DATE}" -D __title="${TITLE}"
 }
