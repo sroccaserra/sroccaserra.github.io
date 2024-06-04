@@ -3,12 +3,12 @@
 source src/common.sh
 
 function toc_item() {
-    IN_FILE="src/${1%.html}.md"
+    local IN_FILE="src/${1%.html}.md"
 
-    TITLE=`article_title ${IN_FILE}`
-    DATE=`article_date ${IN_FILE}`
+    local TITLE=`article_title ${IN_FILE}`
+    local DATE=`article_date ${IN_FILE}`
 
-    echo -en "<li>${DATE} ~ <a href=\"/${1}\">${TITLE}</a></li>EOL"
+    echo "<li>${DATE} ~ <a href=\"/${1}\">${TITLE}</a></li>"
 }
 
 for file in `echo "$@" | tr ' ' '\n' | sort -r`

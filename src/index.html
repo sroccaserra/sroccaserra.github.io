@@ -25,8 +25,9 @@ Né en 331 PPM.
 
 <ul>
 
-m4_patsubst(__toc, `EOL',`
-')m4_dnl
+m4_changequote([[,]])m4_dnl
+__toc
+m4_changequote()m4_dnl
 
 </ul>
 
