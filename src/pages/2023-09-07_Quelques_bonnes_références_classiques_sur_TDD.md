@@ -38,7 +38,7 @@ Note : il y en a d’autres, si vous avez de bonnes refs classiques passez les m
 - [You Don't Hate Mocks; You Hate Side-Effects](https://blog.thecodewhisperer.com/permalink/you-dont-hate-mocks-you-hate-side-effects)
     - Un bon exemple / explication du lien mock / side effect et comment faire évoluer notre design en écoutant ce que dit le code
 
-## Vidéo
+## Vidéos
 
 - [Rails Conf 2013: The Magic Tricks of Testing by Sandi Metz](https://www.youtube.com/watch?v=URSWYvyc42M)
     - Explication de critères pour décider quoi tester, quoi ne pas tester, pourquoi et comment
@@ -73,3 +73,8 @@ Note : il y en a d’autres, si vous avez de bonnes refs classiques passez les m
     </tbody>
 </table>
 </div>
+
+- Présentation d'Outside-In TDD par l'exemple (Sandro Mancuso) :
+    - [Outside In TDD part I](https://www.youtube.com/watch?v=XHnuMjah6ps)
+    - [Outside In TDD part II](https://www.youtube.com/watch?v=gs0rqDdz3ko)
+    - [Outside In TDD part III](https://www.youtube.com/watch?v=R9OAt9AOrzI)
