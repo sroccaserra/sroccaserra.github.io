@@ -13,7 +13,10 @@
             <link>https://sroccaserra.github.io</link>
         </image>
 
-m4_patsubst(__items, `EOL',`\
-')
+m4_changequote(<!,!>)m4_dnl
+m4_patsubst(__items, EOL,<!\
+!>)m4_dnl
+m4_changequote()m4_dnl
+
     </channel>
 </rss>

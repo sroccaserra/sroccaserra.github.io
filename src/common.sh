@@ -23,7 +23,7 @@ function article_title() {
     local LINE=`sed '1q;d' "${IN_FILE}"`
     check_header_line 'title' "${LINE}"
 
-    echo ${LINE} | cut -d':' -f2- | xargs
+    echo ${LINE} | sed 's/-- [-_a-zA-Z0-9]*: //'
 }
 
 function article_date() {
@@ -32,7 +32,7 @@ function article_date() {
     local LINE=`sed '2q;d' "${IN_FILE}"`
     check_header_line 'date' "${LINE}"
 
-    echo ${LINE} | cut -d':' -f2- | xargs
+    echo ${LINE} | sed 's/-- [-_a-zA-Z0-9]*: //'
 }
 
 function html_header() {
