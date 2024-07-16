@@ -47,8 +47,7 @@ Donc c'est aussi potentiellement un peu compliqué.
 J'ai récemment lu le livre [Dependency Injection: Principles, Practices, and
 Patterns][di], de Stephan van Deursen et Mark Seemann. Ce livre apporte
 beaucoup de réponses, et j'ai été surpris et très intéressé par la richesse du
-sujet. (Et si vous êtes comme moi, vous apprécierez la virgule de série du
-sous-titre).
+sujet.
 
 Pour partager une petite partie de ce que j'ai vu, je propose de regarder
 l'exemple de code du livre, décrit en détail dans le chapitre 3. À chaque
@@ -117,9 +116,10 @@ Les parties en gras font le lien d'un bout de code à l'autre.
 </pre>
 
 Ci dessus, on voit qu'on itère sur des `ProductViewModel` pour afficher leur
-`SummaryText`. Comme on l'a vu dans la liste de Featured Products affichée
-ci-dessus, ces `SummaryText` montrent un nom et un prix. Voyons d'où viennent
-ces informations.
+`SummaryText`. Je note aussi la notion de _ViewModel_ : c'est un modèle dédié à
+la vue. Comme on l'a vu dans la liste de Featured Products affichée ci-dessus,
+ces `SummaryText` montrent un nom et un prix. Voyons d'où viennent ces
+informations.
 
 <!--
 // src/Commerce.Web/Models/FeaturedProductsViewModel.cs
@@ -152,13 +152,12 @@ public class ProductViewModel
 }
 </pre>
 
-On peut voir ci-dessus que les infos nécessaires à fabriquer `SummaryText`, le
-nom et le prix des produits, sont passées à la construction des instances de
-`ProductViewModel` sous la forme d'un `DiscountedProduct`, qu'on verra plus
-bas.
+Le _ViewModel_ est construit à partir d'un `DiscountedProduct`, et c'est le
+_ViewModel_ qui a la responsabilité de construire le `SummaryText` visible par
+l'utilisateur à partir du nom et du prix unitaire du `DiscountedProduct`.
 
-Ça va commencer à devenir intéressant, descendons dans le controller qui traite
-la requête pour voir qui nous fournit ces `DiscountedProducts`.
+Ça va commencer à devenir intéressant, descendons dans le _controller_ qui
+traite la requête pour voir qui nous fournit ces `DiscountedProducts`.
 
 ## Le controller
 
@@ -180,7 +179,7 @@ public class HomeController : Controller
 
     public ViewResult Index()
     {
-        IEnumerable<DiscountedProduct> products =
+        IEnumerable&lt;DiscountedProduct&gt; products =
             <b>this.productService.GetFeaturedProducts()</b>;  <i>// 2) Récupération des DiscountedProduct</i>
 
         var vm = new FeaturedProductsViewModel(
@@ -193,11 +192,15 @@ public class HomeController : Controller
 </pre>
 
 Comme on le voit ci-dessus, c'est un `IProductService` qui a la responsabilité
-de fournir la liste des *featured products* au controller. On voit aussi que ce
-service est injecté, c'est le premier exemple de cette fameuse injection par
-paramètre de constructeur.
+de fournir la liste des *featured products* au _controller_ (2). Ce
+_ProductService_ est injecté dans le _controller_ dès la construction (1). C'est un
+exemple d'injection de dépendance par paramètre de constructeur, un pattern
+classique.
 
-Allons voir en quoi consiste ce service.
+On voit aussi que le _controller_ a la responsabilité de créer les
+`ProductViewModels` passés à la vue (3).
+
+Allons voir en quoi consiste ce _ProductService_.
 
 ## Le service
 

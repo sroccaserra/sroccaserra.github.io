@@ -71,8 +71,7 @@ code, on commence à se poser plusieurs questions. Par exemple&nbsp;:</p>
 <p>J'ai récemment lu le livre <a href="https://www.manning.com/books/dependency-injection-principles-practices-patterns">Dependency Injection: Principles, Practices, and
 Patterns</a>, de Stephan van Deursen et Mark Seemann. Ce livre apporte
 beaucoup de réponses, et j'ai été surpris et très intéressé par la richesse du
-sujet. (Et si vous êtes comme moi, vous apprécierez la virgule de série du
-sous-titre).</p>
+sujet.</p>
 
 <p>Pour partager une petite partie de ce que j'ai vu, je propose de regarder
 l'exemple de code du livre, décrit en détail dans le chapitre 3. À chaque
@@ -138,9 +137,10 @@ partant de l'aspect visible de la fonctionnalité.</p>
 </pre>
 
 <p>Ci dessus, on voit qu'on itère sur des <code>ProductViewModel</code> pour afficher leur
-<code>SummaryText</code>. Comme on l'a vu dans la liste de Featured Products affichée
-ci-dessus, ces <code>SummaryText</code> montrent un nom et un prix. Voyons d'où viennent
-ces informations.</p>
+<code>SummaryText</code>. Je note aussi la notion de <em>ViewModel</em> : c'est un modèle dédié à
+la vue. Comme on l'a vu dans la liste de Featured Products affichée ci-dessus,
+ces <code>SummaryText</code> montrent un nom et un prix. Voyons d'où viennent ces
+informations.</p>
 
 <!--
 // src/Commerce.Web/Models/FeaturedProductsViewModel.cs
@@ -173,13 +173,12 @@ public class ProductViewModel
 }
 </pre>
 
-<p>On peut voir ci-dessus que les infos nécessaires à fabriquer <code>SummaryText</code>, le
-nom et le prix des produits, sont passées à la construction des instances de
-<code>ProductViewModel</code> sous la forme d'un <code>DiscountedProduct</code>, qu'on verra plus
-bas.</p>
+<p>Le <em>ViewModel</em> est construit à partir d'un <code>DiscountedProduct</code>, et c'est le
+<em>ViewModel</em> qui a la responsabilité de construire le <code>SummaryText</code> visible par
+l'utilisateur à partir du nom et du prix unitaire du <code>DiscountedProduct</code>.</p>
 
-<p>Ça va commencer à devenir intéressant, descendons dans le controller qui traite
-la requête pour voir qui nous fournit ces <code>DiscountedProducts</code>.</p>
+<p>Ça va commencer à devenir intéressant, descendons dans le <em>controller</em> qui
+traite la requête pour voir qui nous fournit ces <code>DiscountedProducts</code>.</p>
 
 <h2>Le controller</h2>
 
@@ -201,7 +200,7 @@ public class HomeController : Controller
 
     public ViewResult Index()
     {
-        IEnumerable<DiscountedProduct> products =
+        IEnumerable&lt;DiscountedProduct&gt; products =
             <b>this.productService.GetFeaturedProducts()</b>;  <i>// 2) Récupération des DiscountedProduct</i>
 
         var vm = new FeaturedProductsViewModel(
@@ -214,11 +213,15 @@ public class HomeController : Controller
 </pre>
 
 <p>Comme on le voit ci-dessus, c'est un <code>IProductService</code> qui a la responsabilité
-de fournir la liste des <em>featured products</em> au controller. On voit aussi que ce
-service est injecté, c'est le premier exemple de cette fameuse injection par
-paramètre de constructeur.</p>
+de fournir la liste des <em>featured products</em> au <em>controller</em> (2). Ce
+<em>ProductService</em> est injecté dans le <em>controller</em> dès la construction (1). C'est un
+exemple d'injection de dépendance par paramètre de constructeur, un pattern
+classique.</p>
 
-<p>Allons voir en quoi consiste ce service.</p>
+<p>On voit aussi que le <em>controller</em> a la responsabilité de créer les
+<code>ProductViewModels</code> passés à la vue (3).</p>
+
+<p>Allons voir en quoi consiste ce <em>ProductService</em>.</p>
 
 <h2>Le service</h2>
 
