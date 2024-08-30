@@ -1,7 +1,6 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
@@ -16,16 +15,14 @@ bool starts_with(char *text, char *prefix) {
     return false;
 }
 
+static const char *spaces = " \f\n\r\t\v";
+
 void skip_spaces(char **s) {
-    while (isspace(**s) && '\0' != **s) {
-        ++*s;
-    }
+    *s += strspn(*s, spaces);
 }
 
 void skip_non_spaces(char **s) {
-    while (!isspace(**s) && '\0' != **s) {
-        ++*s;
-    }
+    *s += strcspn(*s, spaces);
 }
 
 #define print(fmt, ...) (printf(fmt"\n", __VA_ARGS__))
