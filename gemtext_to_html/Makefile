@@ -13,18 +13,17 @@ build/gemtext_to_html_test: src/gemtext_to_html_test.c
 build/gemtext_to_html_test: src/gemtext_to_html.h
 build/gemtext_to_html_test: src/arena.c
 build/gemtext_to_html_test: src/arena.h
+build/gemtext_to_html_test: src/astring.c
 build/gemtext_to_html_test: src/astring.h
 build/gemtext_to_html_test: src/testing.h
 build/gemtext_to_html_test: src/text.h
 build/gemtext_to_html_test: | build
-	cc -o "$@" src/gemtext_to_html_test.c src/arena.c
+	cc -o "$@" src/gemtext_to_html_test.c src/arena.c src/astring.c
 
 build/text_test: src/text_test.c
 build/text_test: src/text.h
 build/text_test: src/arena.c
 build/text_test: src/arena.h
-build/text_test: src/astring.h
-build/text_test: src/testing.h
 build/text_test: | build
 	cc -o "$@" src/text_test.c src/arena.c
 
