@@ -19,6 +19,10 @@ static bool is_link(char *line) {
 // Could be made configurable, or arena could be injected, or made static
 #define ARENA_SIZE_FOR_LINKS 128
 
+#define LINK_PRE "<a href=\""
+#define LINK_MID "\">"
+#define LINK_SUF "</a>"
+
 static char *link_to_a(struct arena *a, char *line) {
     struct arena *tmp = arena_init(ARENA_SIZE_FOR_LINKS);
 
@@ -39,9 +43,9 @@ static char *link_to_a(struct arena *a, char *line) {
         }
     }
 
-    struct astring *link_pre = astring_init(tmp, "<a href=\"");
-    struct astring *link_mid = astring_init(tmp, "\">");
-    struct astring *link_suf = astring_init(tmp, "</a>");
+    struct astring *link_pre = astring_init(tmp, LINK_PRE);
+    struct astring *link_mid = astring_init(tmp, LINK_MID);
+    struct astring *link_suf = astring_init(tmp, LINK_SUF);
     int size = link_pre->size + url->size + link_mid->size + description->size + link_suf->size;
     char *result = arena_push(a, size + 1);
     {
