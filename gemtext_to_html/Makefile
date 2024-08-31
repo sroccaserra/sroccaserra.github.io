@@ -13,8 +13,8 @@ test_begin:
 	@$<
 
 .PRECIOUS: build/%_test
-build/%_test: src/%_test.c src/testing.h src/%.h | build
-	cc $< -o $@
+build/%_test: src/%_test.c src/testing.h src/arena.c src/arena.h src/astring.h src/%.h | build
+	cc $? -o $@
 
 ################
 # ~ Building ~ #

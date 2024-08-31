@@ -4,9 +4,9 @@
 // x text line
 // o text line with chars to convert to html, like & and <
 // - text line with chars not to convert to html ? like &nbsp;
-// o heading line
 // x link line
-// o link line with description
+// x link line with description
+// o heading line
 // o list item
 // o quote line
 // o preformated toggle line
@@ -64,7 +64,7 @@ int main() {
     test_a_link_without_description_1();
     test_a_link_without_description_2();
     test_a_link_without_description_without_space();
-    // test_a_link_with_a_description();
+    test_a_link_with_a_description();
     TEST_END;
     return 0;
 }
