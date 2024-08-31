@@ -22,19 +22,20 @@ static bool is_link(char *line) {
 static char *link_to_a(struct arena *a, char *line) {
     struct arena *tmp = arena_init(ARENA_SIZE_FOR_LINKS);
 
-    char *start = line + 2;
-    start += strspn(start, " ");
-    struct astring_list *words = astring_split(tmp, start, spaces);
-    assert(words->size);
+    char *url_start = line + 2;
+    url_start += strspn(url_start, spaces);
+    int url_size = strcspn(url_start, spaces);
 
-    struct astring *url = &words->items[0];
+    char *description_start = url_start + url_size;
+    description_start += strspn(description_start, spaces);
+    int description_size = strlen(description_start);
+
+    struct astring *url = astring_init_ln(tmp, url_start, url_size);
     struct astring *description;
-    if (words->size == 1) {
+    if (description_size == 0) {
         description = url;
     } else {
-        char *description_start = start + url->size;
-        description_start += strspn(description_start, spaces);
-        description = astring_init(tmp, description_start);
+        description = astring_init_ln(tmp, description_start, description_size);
     }
 
     struct astring *link_pre = astring_init(tmp, "<a href=\"");
