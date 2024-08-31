@@ -25,17 +25,18 @@ static char *link_to_a(struct arena *a, char *line) {
     char *url_start = line + 2;
     url_start += strspn(url_start, spaces);
     int url_size = strcspn(url_start, spaces);
-
-    char *description_start = url_start + url_size;
-    description_start += strspn(description_start, spaces);
-    int description_size = strlen(description_start);
-
     struct astring *url = astring_init_ln(tmp, url_start, url_size);
+
     struct astring *description;
-    if (description_size == 0) {
-        description = url;
-    } else {
-        description = astring_init_ln(tmp, description_start, description_size);
+    {
+        char *description_start = url_start + url_size;
+        description_start += strspn(description_start, spaces);
+        int description_size = strlen(description_start);
+        if (description_size == 0) {
+            description = url;
+        } else {
+            description = astring_init_ln(tmp, description_start, description_size);
+        }
     }
 
     struct astring *link_pre = astring_init(tmp, "<a href=\"");
