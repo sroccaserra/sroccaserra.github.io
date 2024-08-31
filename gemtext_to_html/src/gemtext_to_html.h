@@ -20,11 +20,11 @@ static bool is_link(char *line) {
 #define ARENA_SIZE_FOR_LINKS 128
 
 static char *link_to_a(char *line) {
-    struct arena a = arena_init(ARENA_SIZE_FOR_LINKS);
+    struct arena *a = arena_init(ARENA_SIZE_FOR_LINKS);
 
     char *start = line + 2;
     start += strspn(start, " ");
-    struct astring_list *words = astring_split(&a, start, spaces);
+    struct astring_list *words = astring_split(a, start, spaces);
     assert(words->size);
 
     struct astring *url = &words->items[0];
@@ -34,12 +34,12 @@ static char *link_to_a(char *line) {
     } else {
         char *description_start = start + url->size;
         description_start += strspn(description_start, spaces);
-        description = astring_init(&a, description_start);
+        description = astring_init(a, description_start);
     }
 
-    struct astring *link_pre = astring_init(&a, "<a href=\"");
-    struct astring *link_mid = astring_init(&a, "\">");
-    struct astring *link_suf = astring_init(&a, "</a>");
+    struct astring *link_pre = astring_init(a, "<a href=\"");
+    struct astring *link_mid = astring_init(a, "\">");
+    struct astring *link_suf = astring_init(a, "</a>");
     int size = link_pre->size + url->size + link_mid->size + description->size + link_suf->size;
     char *result = malloc(size + 1);
     char *cstr = result;
@@ -50,7 +50,7 @@ static char *link_to_a(char *line) {
     cstr += astring_sprint(link_suf, cstr);
     result[size] = '\0';
 
-    arena_discard(&a);
+    arena_discard(a);
     return result;
 }
 

@@ -57,7 +57,7 @@ struct astring_list* astring_split(struct arena *a, char *cstr, const char *sep)
         return result;
     }
 
-    result->items = arena_pointer(a);
+    result->items = arena_top(a);
     while ('\0' != *cursor) {
         int size = strcspn(cursor, sep);
         astring_init_ln(a, cursor, size);
