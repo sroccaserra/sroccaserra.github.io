@@ -11,17 +11,19 @@ struct arena {
 
 struct arena *arena_init(size_t capacity) {
     assert(capacity);
-    char *mem = malloc(capacity);
-    assert(mem);
     struct arena *result = malloc(sizeof(struct arena));
     assert(result);
-    *result = (struct arena){.mem = mem, .capacity = capacity};
+    result->mem = malloc(capacity);
+    assert(result->mem);
+    result->used = 0;
+    result->capacity = capacity;
     return result;
 }
 
 void arena_discard(struct arena *a) {
     free(a->mem);
     *a = (struct arena){0};
+    free(a);
 }
 
 #define arena_pointer(a) ((void *)((a)->mem + (a)->used))

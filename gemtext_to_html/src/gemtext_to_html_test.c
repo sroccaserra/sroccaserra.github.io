@@ -29,33 +29,43 @@
 ////
 
 void test_a_line_of_text() {
+    struct arena *a = arena_init(256);
     char *line = "a line of text";
-    char *result = convert(line);
+    char *result = convert(a, line);
     assert_equals("a line of text", result);
+    arena_discard(a);
 }
 
 void test_a_link_without_description_1() {
+    struct arena *a = arena_init(256);
     char *line = "=> https://example.com";
-    char *result = convert(line);
+    char *result = convert(a, line);
     assert_equals("<a href=\"https://example.com\">https://example.com</a>", result);
+    arena_discard(a);
 }
 
 void test_a_link_without_description_2() {
+    struct arena *a = arena_init(256);
     char *line = "=> https://geminiprotocol.net";
-    char *result = convert(line);
+    char *result = convert(a, line);
     assert_equals("<a href=\"https://geminiprotocol.net\">https://geminiprotocol.net</a>", result);
+    arena_discard(a);
 }
 
 void test_a_link_without_description_without_space() {
+    struct arena *a = arena_init(256);
     char *line = "=>https://example.com";
-    char *result = convert(line);
+    char *result = convert(a, line);
     assert_equals("<a href=\"https://example.com\">https://example.com</a>", result);
+    arena_discard(a);
 }
 
 void test_a_link_with_a_description() {
+    struct arena *a = arena_init(256);
     char *line = "=> https://example.com An example";
-    char *result = convert(line);
+    char *result = convert(a, line);
     assert_equals("<a href=\"https://example.com\">An example</a>", result);
+    arena_discard(a);
 }
 
 int main() {
