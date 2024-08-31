@@ -12,24 +12,15 @@
 #include "arena.h"
 #include "astring.h"
 
-/*
- * Questions
- *
- * Some strlen are begining to crop up, do I need a type like
- * `struct string {int size; char *cstr;}`?
- *
- * Memory allocation start happening for the result, do I need an arena
- * already?
- */
-
 static bool is_link(char *line) {
     return starts_with(line, "=>");
 }
 
-#define MAX_LINK_SIZE 1000
+// Could be made configurable, or arena could be injected
+#define ARENA_SIZE_FOR_LINKS 128
 
 static char *link_to_a(char *line) {
-    struct arena a = arena_init(128);
+    struct arena a = arena_init(ARENA_SIZE_FOR_LINKS);
 
     char *start = line + 2;
     start += strspn(start, " ");
