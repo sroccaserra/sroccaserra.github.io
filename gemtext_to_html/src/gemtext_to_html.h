@@ -44,13 +44,15 @@ static char *link_to_a(struct arena *a, char *line) {
     struct astring *link_suf = astring_init(tmp, "</a>");
     int size = link_pre->size + url->size + link_mid->size + description->size + link_suf->size;
     char *result = arena_push(a, size + 1);
-    char *cstr = result;
-    cstr += astring_sprint(link_pre, cstr);
-    cstr += astring_sprint(url, cstr);
-    cstr += astring_sprint(link_mid, cstr);
-    cstr += astring_sprint(description, cstr);
-    cstr += astring_sprint(link_suf, cstr);
-    result[size] = '\0';
+    {
+        char *cstr = result;
+        cstr += astring_sprint(link_pre, cstr);
+        cstr += astring_sprint(url, cstr);
+        cstr += astring_sprint(link_mid, cstr);
+        cstr += astring_sprint(description, cstr);
+        cstr += astring_sprint(link_suf, cstr);
+        result[size] = '\0';
+    }
 
     arena_discard(tmp);
     return result;
