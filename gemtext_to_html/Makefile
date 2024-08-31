@@ -3,18 +3,30 @@
 ###############
 
 .PHONY: test
-test: test_begin gemtext_to_html_test text_test
-
-.PHONY: test_begin
-test_begin:
-	@echo '~ Testing ~'
+test: gemtext_to_html_test
+test: text_test
 
 %_test: build/%_test
 	@$<
 
-.PRECIOUS: build/%_test
-build/%_test: src/%_test.c src/testing.h src/arena.c src/arena.h src/astring.h src/%.h | build
-	cc $? -o $@
+build/gemtext_to_html_test: src/gemtext_to_html_test.c
+build/gemtext_to_html_test: src/gemtext_to_html.h
+build/gemtext_to_html_test: src/arena.c
+build/gemtext_to_html_test: src/arena.h
+build/gemtext_to_html_test: src/astring.h
+build/gemtext_to_html_test: src/testing.h
+build/gemtext_to_html_test: src/text.h
+build/gemtext_to_html_test: | build
+	cc -o "$@" src/gemtext_to_html_test.c src/arena.c
+
+build/text_test: src/text_test.c
+build/text_test: src/text.h
+build/text_test: src/arena.c
+build/text_test: src/arena.h
+build/text_test: src/astring.h
+build/text_test: src/testing.h
+build/text_test: | build
+	cc -o "$@" src/text_test.c src/arena.c
 
 ################
 # ~ Building ~ #
