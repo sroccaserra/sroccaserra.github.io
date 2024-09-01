@@ -14,6 +14,52 @@ static bool is_link(char *line) {
     return starts_with(line, "=>");
 }
 
+struct text_chunk {
+    int size;
+    char *pos;
+};
+
+static char *text_to_html(struct arena *a, char *line) {
+    char *result = arena_top(a);
+
+    struct text_chunk input;
+    struct text_chunk output;
+    char *cursor;
+    input.pos = line;
+    cursor = result;
+
+    while ('\0' != *input.pos) {
+        switch (*input.pos) {
+            case '&':
+                input.size = 1;
+                output.pos = "&amp;";
+                output.size = 5;
+                break;
+            case '<':
+                input.size = 1;
+                output.pos = "&lt;";
+                output.size = 4;
+                break;
+            case '>':
+                input.size = 1;
+                output.pos = "&gt;";
+                output.size = 4;
+                break;
+            default:
+                input.size = strcspn(input.pos, "&<>");
+                output = input;
+        }
+        arena_push(a, output.size);
+        strncpy(cursor, output.pos, output.size);
+        input.pos += input.size;
+        cursor += output.size;
+    }
+    int size = cursor - result;
+    result[size] = '\0';
+
+    return result;
+}
+
 // Could be made configurable, or arena could be injected, or made static
 #define ARENA_SIZE_FOR_LINKS 128
 
@@ -64,6 +110,6 @@ char *convert(struct arena *a, char *line) {
     if (is_link(line)) {
         return link_to_a(a, line);
     } else {
-        return line;
+        return text_to_html(a, line);
     }
 }
