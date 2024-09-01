@@ -25,14 +25,14 @@ static char *link_to_a(struct arena *a, char *line) {
     struct arena *tmp = arena_init(ARENA_SIZE_FOR_LINKS);
 
     char *url_start = line + 2;
-    url_start += strspn(url_start, spaces);
-    int url_size = strcspn(url_start, spaces);
+    url_start += strspn(url_start, SPACES);
+    int url_size = strcspn(url_start, SPACES);
     struct astring *url = astring_init_ln(tmp, url_start, url_size);
 
     struct astring *description;
     {
         char *description_start = url_start + url_size;
-        description_start += strspn(description_start, spaces);
+        description_start += strspn(description_start, SPACES);
         int description_size = strlen(description_start);
         if (description_size == 0) {
             description = url;

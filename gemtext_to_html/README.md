@@ -12,12 +12,15 @@ Ne génère pas de head ni de body, uniquement le contenu.
 L'input arrive par stdin et sort par stdout, c'est l'usage utile pour mon
 process actuel.
 
-Exemple d'usage:
+How I could use it:
 
 ```
 cat src/pages/test.gmi | gemtext_to_html > pages/test.html
 ```
 
-Spécifications :
+## References
+
+Specifications:
 
 - https://geminiprotocol.net/docs/gemtext-specification.gmi
+
