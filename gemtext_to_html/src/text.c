@@ -13,11 +13,3 @@ bool starts_with(char *text, char *prefix) {
     }
     return false;
 }
-
-void skip_spaces(char **s) {
-    *s += strspn(*s, SPACES);
-}
-
-void skip_non_spaces(char **s) {
-    *s += strcspn(*s, SPACES);
-}
