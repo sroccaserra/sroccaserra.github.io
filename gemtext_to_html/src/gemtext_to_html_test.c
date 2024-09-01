@@ -10,23 +10,6 @@
 // o list item
 // o quote line
 // o preformated toggle line
-//
-////
-// function to escape html chars (see above)
-//
-// dans une text line on va encoder certains & et certains < :
-// "toto & tata" > "toto &amp; tata"
-// "toto &amp; tata" > "toto &amp; tata"
-// mais si on veut supporter l'html déjà dans l'input on doit :
-// "toto&nbsp;: tata" > "toto&nbsp;: tata"
-// Dans markdown c'est fait par une regex de l'enfer
-// Decision : I don't support html in the input
-//
-// Dans une preformated line :
-// "toto & tata" > "toto &amp; tata"
-// "toto&nbsp;: tata" > "toto&amp;nbsp;: tata"
-//
-////
 
 void test_a_line_of_text() {
     struct arena *a = arena_init(256);
