@@ -62,6 +62,9 @@ static char *text_to_html(struct arena *a, char *line) {
         input.pos += input.size;
         cursor += output.size;
     }
+    arena_push(a, 5);
+    strncpy(cursor, "<br/>", 5);
+    cursor += 5;
     int size = cursor - result;
     result[size] = '\0';
 
