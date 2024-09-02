@@ -1,3 +1,30 @@
+default: test
+
+###############
+# ~ Running ~ #
+###############
+
+run: build/gemtext_to_html
+	@$< test.gmi
+
+build/gemtext_to_html: src/main.c
+build/gemtext_to_html: src/gemtext_to_html.h
+build/gemtext_to_html: src/gemtext_to_html.c
+build/gemtext_to_html: src/arena.c
+build/gemtext_to_html: src/arena.h
+build/gemtext_to_html: src/astring.c
+build/gemtext_to_html: src/astring.h
+build/gemtext_to_html: src/testing.h
+build/gemtext_to_html: src/text.c
+build/gemtext_to_html: src/text.h
+build/gemtext_to_html: | build
+	cc -g -Og -o "$@" \
+		src/main.c \
+		src/gemtext_to_html.c \
+		src/arena.c \
+		src/astring.c \
+		src/text.c
+
 ###############
 # ~ Testing ~ #
 ###############

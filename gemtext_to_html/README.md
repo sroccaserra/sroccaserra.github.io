@@ -9,12 +9,12 @@ Convert a gemtext file to an HTML view.
 
 Will not generate a &lt;head> or &lt;body> tags, only the content.
 
-The input comes from stdin and is output to stdout.
+The input comes from a file and the result is output to stdout.
 
 How I could use it:
 
 ```
-cat src/pages/test.gmi | gemtext_to_html > pages/test.html
+build/gemtext_to_html test.gmi > test.html
 ```
 
 ## Decisions

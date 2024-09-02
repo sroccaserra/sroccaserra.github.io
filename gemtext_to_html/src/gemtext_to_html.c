@@ -151,3 +151,27 @@ char *convert(struct arena *a, char *line) {
         return text_to_html(a, line);
     }
 }
+
+void convert_input(struct arena *a, char *input, int file_size) {
+    int total_bytes_seen = 0;
+    char *line = input;
+    bool is_in_list = false;
+    while (total_bytes_seen < file_size) {
+        if (is_list_item(line)) {
+            if (!is_in_list) {
+                printf("<ul>\n");
+                is_in_list = true;
+            }
+        } else {
+            if (is_in_list) {
+                printf("</ul>\n");
+                is_in_list = false;
+            }
+        }
+        int line_size = strcspn(line, "\n");
+        line[line_size] = '\0';
+        printf("%s\n", convert(a, line));
+        line += line_size + 1;
+        total_bytes_seen += line_size + 1;
+    }
+}

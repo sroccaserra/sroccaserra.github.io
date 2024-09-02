@@ -8,7 +8,7 @@
 // x link line with description
 // x heading line
 // x list item
-// o add opening and closing <ul> tags around lists?
+// x add opening and closing <ul> tags around lists?
 // o quote line
 // o preformated toggle line
 
