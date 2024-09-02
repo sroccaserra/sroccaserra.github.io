@@ -12,6 +12,14 @@
 // o quote line
 // o preformated toggle line
 
+void test_an_empty_line_of_text() {
+    struct arena *a = arena_init(256);
+    char *line = "";
+    char *result = convert(a, line);
+    assert_equals("", result);
+    arena_discard(a);
+}
+
 void test_a_line_of_text() {
     struct arena *a = arena_init(256);
     char *line = "a line of text";
@@ -111,6 +119,7 @@ void test_a_list_item() {
 
 int main() {
     TEST_BEGIN("gemtext_to_html");
+    test_an_empty_line_of_text();
     test_a_line_of_text();
     test_a_line_of_text_with_an_amp();
     test_a_line_of_text_with_two_amps();
