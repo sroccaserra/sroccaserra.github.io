@@ -14,50 +14,40 @@
 void test_a_line_of_text() {
     struct arena *a = arena_init(256);
     char *line = "a line of text";
-
     char *result = convert(a, line);
     assert_equals("a line of text", result);
-
     arena_discard(a);
 }
 
 void test_a_line_of_text_with_an_amp() {
     struct arena *a = arena_init(256);
     char *line = "this & that";
-
     char *result = convert(a, line);
     assert_equals("this &amp; that", result);
-
     arena_discard(a);
 }
 
 void test_a_line_of_text_with_two_amps() {
     struct arena *a = arena_init(256);
     char *line = "good && bad";
-
     char *result = convert(a, line);
     assert_equals("good &amp;&amp; bad", result);
-
     arena_discard(a);
 }
 
 void test_a_line_of_text_with_an_lt() {
     struct arena *a = arena_init(256);
     char *line = "1 < 2";
-
     char *result = convert(a, line);
     assert_equals("1 &lt; 2", result);
-
     arena_discard(a);
 }
 
 void test_a_line_of_text_with_a_gt() {
     struct arena *a = arena_init(256);
     char *line = "1 > 2";
-
     char *result = convert(a, line);
     assert_equals("1 &gt; 2", result);
-
     arena_discard(a);
 }
 
