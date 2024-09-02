@@ -33,6 +33,18 @@ In the original markdown, it is implemented by a complex regex.
 
 Decision: I don't support HTML in the input for the moment.
 
+## Run test
+
+The test files are named `*_test.c`.
+
+To run the tests:
+
+```
+$ make test
+gemtext_to_html... ✅
+text... ✅
+```
+
 ## References
 
 Specifications:
