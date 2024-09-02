@@ -7,7 +7,8 @@
 // x link line
 // x link line with description
 // x heading line
-// o list item
+// x list item
+// o add opening and closing <ul> tags around lists?
 // o quote line
 // o preformated toggle line
 
@@ -100,6 +101,14 @@ void test_a_heading_line_without_space() {
     arena_discard(a);
 }
 
+void test_a_list_item() {
+    struct arena *a = arena_init(256);
+    char *line = "* item 1";
+    char *result = convert(a, line);
+    assert_equals("<li>item 1</li>", result);
+    arena_discard(a);
+}
+
 int main() {
     TEST_BEGIN("gemtext_to_html");
     test_a_line_of_text();
@@ -113,6 +122,7 @@ int main() {
     test_a_link_with_a_description();
     test_a_heading_line();
     test_a_heading_line_without_space();
+    test_a_list_item();
     TEST_END;
     return 0;
 }

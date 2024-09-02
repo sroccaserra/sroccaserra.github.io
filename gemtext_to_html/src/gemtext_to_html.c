@@ -18,6 +18,10 @@ static bool is_heading(char *line) {
     return starts_with(line, "#");
 }
 
+static bool is_list_item(char *line ) {
+    return starts_with(line, "*");
+}
+
 struct text_chunk {
     int size;
     char *pos;
@@ -123,11 +127,23 @@ char *heading_to_html(struct arena *a, char *line) {
     return result;
 }
 
+char *list_item_to_html(struct arena *a, char *line) {
+    char *result = arena_top(a);
+    char *start = line+strspn(line, "*");
+    start += strspn(start, SPACES);
+    int size = sprintf(result, "<li>%s</li>", start);
+    arena_push(a, size+1);
+    result[size] = '\0';
+    return result;
+}
+
 char *convert(struct arena *a, char *line) {
     if (is_link(line)) {
         return link_to_a(a, line);
     } else if (is_heading(line)) {
         return heading_to_html(a, line);
+    } else if (is_list_item(line)) {
+        return list_item_to_html(a, line);
     } else {
         return text_to_html(a, line);
     }
