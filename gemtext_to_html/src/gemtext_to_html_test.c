@@ -6,7 +6,7 @@
 // - text line with chars not to convert to html ? like &nbsp;
 // x link line
 // x link line with description
-// o heading line
+// x heading line
 // o list item
 // o quote line
 // o preformated toggle line
@@ -84,6 +84,22 @@ void test_a_link_with_a_description() {
     arena_discard(a);
 }
 
+void test_a_heading_line() {
+    struct arena *a = arena_init(256);
+    char *line = "# Section 1";
+    char *result = convert(a, line);
+    assert_equals("<h1>Section 1</h1>", result);
+    arena_discard(a);
+}
+
+void test_a_heading_line_without_space() {
+    struct arena *a = arena_init(256);
+    char *line = "###Section 3";
+    char *result = convert(a, line);
+    assert_equals("<h3>Section 3</h3>", result);
+    arena_discard(a);
+}
+
 int main() {
     TEST_BEGIN("gemtext_to_html");
     test_a_line_of_text();
@@ -95,6 +111,8 @@ int main() {
     test_a_link_without_description_2();
     test_a_link_without_description_without_space();
     test_a_link_with_a_description();
+    test_a_heading_line();
+    test_a_heading_line_without_space();
     TEST_END;
     return 0;
 }

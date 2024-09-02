@@ -14,6 +14,10 @@ static bool is_link(char *line) {
     return starts_with(line, "=>");
 }
 
+static bool is_heading(char *line) {
+    return starts_with(line, "#");
+}
+
 struct text_chunk {
     int size;
     char *pos;
@@ -106,9 +110,24 @@ static char *link_to_a(struct arena *a, char *line) {
     return result;
 }
 
+char *heading_to_html(struct arena *a, char *line) {
+    char *result = arena_top(a);
+    int level = strspn(line, "#");
+    assert(1 <= level);
+    assert(level <= 6);
+    char *start = line+level;
+    start += strspn(start, SPACES);
+    int size = sprintf(result, "<h%d>%s</h%d>", level, start, level);
+    arena_push(a, size+1);
+    result[size] = '\0';
+    return result;
+}
+
 char *convert(struct arena *a, char *line) {
     if (is_link(line)) {
         return link_to_a(a, line);
+    } else if (is_heading(line)) {
+        return heading_to_html(a, line);
     } else {
         return text_to_html(a, line);
     }
