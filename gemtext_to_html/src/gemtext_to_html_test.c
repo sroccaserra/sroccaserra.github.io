@@ -127,7 +127,6 @@ void test_an_opening_list_item(void) {
     char *line = "* item 1";
     char *result = convert(a, &state, line);
     assert_equals("<ul>\n<li>item 1</li>", result);
-    assert(state.is_in_list);
     arena_discard(a);
 }
 
@@ -153,7 +152,6 @@ void test_a_text_line_after_a_list_item(void) {
     char *line = "a text line";
     char *result = convert(a, &state, line);
     assert_equals("</ul>\na text line<br/>", result);
-    assert_equals(false, state.is_in_list);
 
     arena_discard(a);
 }

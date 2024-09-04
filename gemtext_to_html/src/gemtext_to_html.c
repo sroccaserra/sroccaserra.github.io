@@ -165,12 +165,10 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
     char *result = arena_top(a);
 
     if (is_starting_type(LIST_ITEM, state, line_type)) {
-        state->is_in_list = true;
         int prefix_size = 5;
         arena_push(a, prefix_size);
         strncpy(result, "<ul>\n", prefix_size);
     } else if (is_ending_type(LIST_ITEM, state, line_type)) {
-        state->is_in_list = false;
         int prefix_size = 6;
         arena_push(a, prefix_size);
         strncpy(result, "</ul>\n", prefix_size);

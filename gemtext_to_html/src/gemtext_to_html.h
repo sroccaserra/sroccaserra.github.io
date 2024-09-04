@@ -14,8 +14,6 @@ enum line_type {
 };
 
 struct convert_state {
-    bool is_in_list;
-    bool is_in_quote;
     enum line_type previous_line_type;
 };
 
