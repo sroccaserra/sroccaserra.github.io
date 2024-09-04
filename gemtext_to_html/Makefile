@@ -5,7 +5,7 @@ default: test
 ###############
 
 run: build/gemtext_to_html
-	@$< test.gmi
+	@cat test.gmi | $<
 
 build/gemtext_to_html: src/main.c
 build/gemtext_to_html: src/gemtext_to_html.h

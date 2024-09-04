@@ -23,19 +23,22 @@ bool starts_with(char *text, char *prefix) {
     }                         \
 } while (0)
 
-long slurp(struct arena *a, char *filename, char **ptext) {
-    errno = 0;
-    FILE *file = fopen(filename, "r");
-    check_errno(filename);
+long slurp(struct arena *a, FILE *file, char **ptext) {
     assert(file);
-    fseek(file, 0, SEEK_END);
-    long size = ftell(file);
-    rewind(file);
+    long size = 0;
+    int chunk_size = 256;
+    char *buffer = arena_push(a, chunk_size);
+    char *buffer_pos = buffer;
+    int read_size = 0;
 
-    char *buffer = arena_push(a, size + 1);
     errno = 0;
-    (void)!fread(buffer, size, 1, file); // We don't need the result, (void)! avoids the warning
-    check_errno(NULL);
+    while (0 != (read_size = fread(buffer_pos, 1, chunk_size, file))) {
+        check_errno(NULL);
+        size += read_size;
+        buffer_pos += read_size;
+        arena_push(a, chunk_size);
+    }
+
     fclose(file);
     buffer[size] = '\0';
 
