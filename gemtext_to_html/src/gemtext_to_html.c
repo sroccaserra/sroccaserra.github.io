@@ -15,11 +15,11 @@ static bool is_link(char *line) {
 }
 
 static bool is_heading(char *line) {
-    return starts_with(line, "#");
+    return *line == '#';
 }
 
 static bool is_list_item(char *line ) {
-    return starts_with(line, "*");
+    return *line == '*';
 }
 
 static bool is_quote(char *line) {
