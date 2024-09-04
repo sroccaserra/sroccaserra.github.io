@@ -156,18 +156,17 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
 void convert_input(struct arena *a, char *input, int file_size) {
     int total_bytes_seen = 0;
     char *line = input;
-    bool is_in_list = false;
     struct convert_state state = {0};
     while (total_bytes_seen < file_size) {
         if (is_list_item(line)) {
-            if (!is_in_list) {
+            if (!state.is_in_list) {
                 printf("<ul>\n");
-                is_in_list = true;
+                state.is_in_list = true;
             }
         } else {
-            if (is_in_list) {
+            if (state.is_in_list) {
                 printf("</ul>\n");
-                is_in_list = false;
+                state.is_in_list = false;
             }
         }
         int line_size = strcspn(line, "\n");

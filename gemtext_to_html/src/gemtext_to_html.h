@@ -6,6 +6,7 @@
 #include "arena.h"
 
 struct convert_state {
+    bool is_in_list;
     bool is_in_quote;
 };
 
