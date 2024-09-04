@@ -10,7 +10,7 @@
 // x list item
 // x add opening and closing <ul> tags around lists
 // x quote line
-// o preformated toggle line
+// x preformated toggle line
 
 void test_an_empty_line_of_text(void) {
     struct arena *a = arena_init(256);
@@ -206,7 +206,7 @@ void test_a_closing_quote(void) {
     arena_discard(a);
 }
 
-void test_entering_preformated_text(void) {
+void test_entering_preformated_mode(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
     char *line = "```";
@@ -215,7 +215,24 @@ void test_entering_preformated_text(void) {
     arena_discard(a);
 }
 
-void test_leaving_preformated_text(void) {
+void test_adding_preformated_text(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *previous_line = "```";
+    convert(a, &state, previous_line);
+
+    char *line = "int f(int a, int b) {";
+    char *result = convert(a, &state, line);
+    assert_equals("int f(int a, int b) {", result);
+
+    line = "    return 1 && 2;";
+    result = convert(a, &state, line);
+    assert_equals("    return 1 && 2;", result);
+
+    arena_discard(a);
+}
+
+void test_leaving_preformated_mode(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
     char *previous_line = "```";
@@ -247,8 +264,9 @@ int main(void) {
     test_a_quote();
     test_quotes_without_space();
     test_a_closing_quote();
-    test_entering_preformated_text();
-    test_leaving_preformated_text();
+    test_entering_preformated_mode();
+    test_adding_preformated_text();
+    test_leaving_preformated_mode();
     TEST_END;
     return 0;
 }

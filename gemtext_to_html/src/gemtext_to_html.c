@@ -168,24 +168,30 @@ char *preformated_end(struct arena *a) {
     return result;
 }
 
+enum line_type line_type_for(char *line) {
+    if (is_link(line)) {
+        return LINK;
+    } else if (is_heading(line)) {
+        return HEADING;
+    } else if (is_list_item(line)) {
+        return LIST_ITEM;
+    } else if (is_quote(line)) {
+        return QUOTE;
+    } else if (is_preformated_toggle(line)) {
+        return PREFORMATED_TOGGLE;
+    }
+
+    return TEXT;
+}
+
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
 #define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
 
 char *convert(struct arena *a, struct convert_state *state, char *line) {
-    enum line_type line_type;
+    enum line_type line_type = line_type_for(line);
 
-    if (is_link(line)) {
-        line_type = LINK;
-    } else if (is_heading(line)) {
-        line_type = HEADING;
-    } else if (is_list_item(line)) {
-        line_type = LIST_ITEM;
-    } else if (is_quote(line)) {
-        line_type = QUOTE;
-    } else if (is_preformated_toggle(line)) {
-        line_type = PREFORMATED_TOGGLE;
-    } else {
-        line_type = TEXT;
+    if (state->is_in_preformated_mode && line_type != PREFORMATED_TOGGLE) {
+        return line;
     }
 
     char *result = arena_top(a);
