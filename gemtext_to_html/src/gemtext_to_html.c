@@ -140,12 +140,6 @@ char *list_item_to_html(struct arena *a, char *line) {
     return result;
 }
 
-char *prepend_prefix(struct arena *a, char *prefix, int prefix_size) {
-    char *result = arena_push(a, prefix_size);
-    strncpy(result, prefix, prefix_size);
-    return result;
-}
-
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
 #define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
 
