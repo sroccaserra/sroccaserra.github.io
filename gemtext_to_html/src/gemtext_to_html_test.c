@@ -206,6 +206,26 @@ void test_a_closing_quote(void) {
     arena_discard(a);
 }
 
+void test_entering_preformated_text(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *line = "```";
+    char *result = convert(a, &state, line);
+    assert_equals("<pre>", result);
+    arena_discard(a);
+}
+
+void test_leaving_preformated_text(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *previous_line = "```";
+    convert(a, &state, previous_line);
+    char *line = "```";
+    char *result = convert(a, &state, line);
+    assert_equals("</pre>", result);
+    arena_discard(a);
+}
+
 int main(void) {
     TEST_BEGIN("gemtext_to_html");
     test_an_empty_line_of_text();
@@ -227,6 +247,8 @@ int main(void) {
     test_a_quote();
     test_quotes_without_space();
     test_a_closing_quote();
+    test_entering_preformated_text();
+    test_leaving_preformated_text();
     TEST_END;
     return 0;
 }

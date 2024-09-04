@@ -12,9 +12,11 @@ enum line_type {
     LINK,
     LIST_ITEM,
     QUOTE,
+    PREFORMATED_TOGGLE,
 };
 
 struct convert_state {
+    bool is_in_preformated_mode;
     enum line_type previous_line_type;
 };
 

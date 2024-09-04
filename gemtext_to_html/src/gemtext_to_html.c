@@ -26,6 +26,10 @@ static bool is_quote(char *line) {
     return *line == '>';
 }
 
+static bool is_preformated_toggle(char *line) {
+    return starts_with(line, "```");
+}
+
 struct text_chunk {
     int size;
     char *pos;
@@ -150,6 +154,20 @@ char *quote_to_html(struct arena *a, char *line) {
     return text_to_html(a, start);
 }
 
+char *preformated_begin(struct arena *a) {
+    int output_size = 6;
+    char *result = arena_push(a, output_size);
+    strncpy(result, "<pre>", output_size);
+    return result;
+}
+
+char *preformated_end(struct arena *a) {
+    int output_size = 7;
+    char *result = arena_push(a, output_size);
+    strncpy(result, "</pre>", output_size);
+    return result;
+}
+
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
 #define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
 
@@ -164,6 +182,8 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         line_type = LIST_ITEM;
     } else if (is_quote(line)) {
         line_type = QUOTE;
+    } else if (is_preformated_toggle(line)) {
+        line_type = PREFORMATED_TOGGLE;
     } else {
         line_type = TEXT;
     }
@@ -203,6 +223,15 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
             break;
         case QUOTE:
             quote_to_html(a, line);
+            break;
+        case PREFORMATED_TOGGLE:
+            if (!state->is_in_preformated_mode) {
+                state->is_in_preformated_mode = true;
+                preformated_begin(a);
+            } else {
+                preformated_end(a);
+                state->is_in_preformated_mode = false;
+            }
             break;
         case TEXT:
             text_to_html(a, line);
