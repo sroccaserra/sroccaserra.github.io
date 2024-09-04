@@ -146,6 +146,9 @@ char *prepend_prefix(struct arena *a, char *prefix, int prefix_size) {
     return result;
 }
 
+#define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
+#define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
+
 char *convert(struct arena *a, struct convert_state *state, char *line) {
     enum line_type line_type;
 
@@ -160,14 +163,13 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
     }
 
     char *result = arena_top(a);
-    if (LIST_ITEM != state->previous_line_type && LIST_ITEM == line_type) {
+
+    if (is_starting_type(LIST_ITEM, state, line_type)) {
         state->is_in_list = true;
         int prefix_size = 5;
         arena_push(a, prefix_size);
         strncpy(result, "<ul>\n", prefix_size);
-    }
-
-    if (LIST_ITEM == state->previous_line_type && LIST_ITEM != line_type) {
+    } else if (is_ending_type(LIST_ITEM, state, line_type)) {
         state->is_in_list = false;
         int prefix_size = 6;
         arena_push(a, prefix_size);
@@ -190,6 +192,8 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         case TEXT:
             text_to_html(a, line);
             break;
+        default:
+            assert(false);
     }
 
     state->previous_line_type = line_type;
