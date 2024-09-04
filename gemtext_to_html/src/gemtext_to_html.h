@@ -11,6 +11,7 @@ enum line_type {
     HEADING,
     LINK,
     LIST_ITEM,
+    QUOTE,
 };
 
 struct convert_state {

@@ -22,6 +22,10 @@ static bool is_list_item(char *line ) {
     return starts_with(line, "*");
 }
 
+static bool is_quote(char *line) {
+    return *line == '>';
+}
+
 struct text_chunk {
     int size;
     char *pos;
@@ -140,6 +144,12 @@ char *list_item_to_html(struct arena *a, char *line) {
     return result;
 }
 
+char *quote_to_html(struct arena *a, char *line) {
+    char *start = line + 1;
+    start += strspn(start, SPACES);
+    return text_to_html(a, start);
+}
+
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
 #define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
 
@@ -152,6 +162,8 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         line_type = HEADING;
     } else if (is_list_item(line)) {
         line_type = LIST_ITEM;
+    } else if (is_quote(line)) {
+        line_type = QUOTE;
     } else {
         line_type = TEXT;
     }
@@ -166,6 +178,14 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         int prefix_size = 6;
         arena_push(a, prefix_size);
         strncpy(result, "</ul>\n", prefix_size);
+    } else if (is_starting_type(QUOTE, state, line_type)) {
+        int prefix_size = 13;
+        arena_push(a, prefix_size);
+        strncpy(result, "<blockquote>\n", prefix_size);
+    } else if (is_ending_type(QUOTE, state, line_type)) {
+        int prefix_size = 14;
+        arena_push(a, prefix_size);
+        strncpy(result, "</blockquote>\n", prefix_size);
     }
 
     switch (line_type) {
@@ -180,6 +200,9 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
             break;
         case LIST_ITEM:
             list_item_to_html(a, line);
+            break;
+        case QUOTE:
+            quote_to_html(a, line);
             break;
         case TEXT:
             text_to_html(a, line);

@@ -9,7 +9,7 @@
 // x heading line
 // x list item
 // x add opening and closing <ul> tags around lists
-// o quote line
+// x quote line
 // o preformated toggle line
 
 void test_an_empty_line_of_text(void) {
@@ -156,6 +156,56 @@ void test_a_text_line_after_a_list_item(void) {
     arena_discard(a);
 }
 
+void test_an_opening_quote(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *line = "> quote";
+    char *result = convert(a, &state, line);
+    assert_equals("<blockquote>\nquote<br/>", result);
+    arena_discard(a);
+}
+
+void test_a_quote(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *previous_line = "> quote 1";
+    convert(a, &state, previous_line);
+
+    char *line = "> quote 2";
+    char *result = convert(a, &state, line);
+    assert_equals("quote 2<br/>", result);
+
+    arena_discard(a);
+}
+
+void test_quotes_without_space(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+
+    char *previous_line = ">quote 1";
+    char *result = convert(a, &state, previous_line);
+    assert_equals("<blockquote>\nquote 1<br/>", result);
+
+    char *line = ">quote 2";
+    result = convert(a, &state, line);
+    assert_equals("quote 2<br/>", result);
+
+    arena_discard(a);
+}
+
+void test_a_closing_quote(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *previous_line = "> quote";
+    convert(a, &state, previous_line);
+
+    char *line = "a non quote line";
+    char *result = convert(a, &state, line);
+    assert_equals("</blockquote>\na non quote line<br/>", result);
+
+    arena_discard(a);
+}
+
 int main(void) {
     TEST_BEGIN("gemtext_to_html");
     test_an_empty_line_of_text();
@@ -173,6 +223,10 @@ int main(void) {
     test_an_opening_list_item();
     test_a_list_item();
     test_a_text_line_after_a_list_item();
+    test_an_opening_quote();
+    test_a_quote();
+    test_quotes_without_space();
+    test_a_closing_quote();
     TEST_END;
     return 0;
 }
