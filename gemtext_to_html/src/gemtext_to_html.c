@@ -140,17 +140,60 @@ char *list_item_to_html(struct arena *a, char *line) {
     return result;
 }
 
+char *prepend_prefix(struct arena *a, char *prefix, int prefix_size) {
+    char *result = arena_push(a, prefix_size);
+    strncpy(result, prefix, prefix_size);
+    return result;
+}
+
 char *convert(struct arena *a, struct convert_state *state, char *line) {
-    (void)state;
+    enum line_type line_type;
+
     if (is_link(line)) {
-        return link_to_a(a, line);
+        line_type = LINK;
     } else if (is_heading(line)) {
-        return heading_to_html(a, line);
+        line_type = HEADING;
     } else if (is_list_item(line)) {
-        return list_item_to_html(a, line);
+        line_type = LIST_ITEM;
     } else {
-        return text_to_html(a, line);
+        line_type = TEXT;
     }
+
+    char *result = arena_top(a);
+    if (LIST_ITEM != state->previous_line_type && LIST_ITEM == line_type) {
+        state->is_in_list = true;
+        int prefix_size = 5;
+        arena_push(a, prefix_size);
+        strncpy(result, "<ul>\n", prefix_size);
+    }
+
+    if (LIST_ITEM == state->previous_line_type && LIST_ITEM != line_type) {
+        state->is_in_list = false;
+        int prefix_size = 6;
+        arena_push(a, prefix_size);
+        strncpy(result, "</ul>\n", prefix_size);
+    }
+
+    switch (line_type) {
+        case NONE:
+            assert(false);
+            break;
+        case LINK:
+            link_to_a(a, line);
+            break;
+        case HEADING:
+            heading_to_html(a, line);
+            break;
+        case LIST_ITEM:
+            list_item_to_html(a, line);
+            break;
+        case TEXT:
+            text_to_html(a, line);
+            break;
+    }
+
+    state->previous_line_type = line_type;
+    return result;
 }
 
 void convert_input(struct arena *a, char *input, int file_size) {
@@ -158,17 +201,6 @@ void convert_input(struct arena *a, char *input, int file_size) {
     char *line = input;
     struct convert_state state = {0};
     while (total_bytes_seen < file_size) {
-        if (is_list_item(line)) {
-            if (!state.is_in_list) {
-                printf("<ul>\n");
-                state.is_in_list = true;
-            }
-        } else {
-            if (state.is_in_list) {
-                printf("</ul>\n");
-                state.is_in_list = false;
-            }
-        }
         int line_size = strcspn(line, "\n");
         line[line_size] = '\0';
         printf("%s\n", convert(a, &state, line));

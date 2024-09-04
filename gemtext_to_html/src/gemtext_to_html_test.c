@@ -121,12 +121,40 @@ void test_a_heading_line_without_space(void) {
     arena_discard(a);
 }
 
-void test_a_list_item(void) {
+void test_an_opening_list_item(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
     char *line = "* item 1";
     char *result = convert(a, &state, line);
-    assert_equals("<li>item 1</li>", result);
+    assert_equals("<ul>\n<li>item 1</li>", result);
+    assert(state.is_in_list);
+    arena_discard(a);
+}
+
+void test_a_list_item(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *previous_line = "* item 1";
+    convert(a, &state, previous_line);
+
+    char *line = "* item 2";
+    char *result = convert(a, &state, line);
+    assert_equals("<li>item 2</li>", result);
+
+    arena_discard(a);
+}
+
+void test_a_text_line_after_a_list_item(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *list_item = "* list item";
+    convert(a, &state, list_item);
+
+    char *line = "a text line";
+    char *result = convert(a, &state, line);
+    assert_equals("</ul>\na text line<br/>", result);
+    assert_equals(false, state.is_in_list);
+
     arena_discard(a);
 }
 
@@ -144,7 +172,9 @@ int main(void) {
     test_a_link_with_a_description();
     test_a_heading_line();
     test_a_heading_line_without_space();
+    test_an_opening_list_item();
     test_a_list_item();
+    test_a_text_line_after_a_list_item();
     TEST_END;
     return 0;
 }
