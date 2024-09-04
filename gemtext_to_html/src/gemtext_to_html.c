@@ -140,7 +140,8 @@ char *list_item_to_html(struct arena *a, char *line) {
     return result;
 }
 
-char *convert(struct arena *a, char *line) {
+char *convert(struct arena *a, struct convert_state *state, char *line) {
+    (void)state;
     if (is_link(line)) {
         return link_to_a(a, line);
     } else if (is_heading(line)) {
@@ -156,6 +157,7 @@ void convert_input(struct arena *a, char *input, int file_size) {
     int total_bytes_seen = 0;
     char *line = input;
     bool is_in_list = false;
+    struct convert_state state = {0};
     while (total_bytes_seen < file_size) {
         if (is_list_item(line)) {
             if (!is_in_list) {
@@ -170,7 +172,7 @@ void convert_input(struct arena *a, char *input, int file_size) {
         }
         int line_size = strcspn(line, "\n");
         line[line_size] = '\0';
-        printf("%s\n", convert(a, line));
+        printf("%s\n", convert(a, &state, line));
         line += line_size + 1;
         total_bytes_seen += line_size + 1;
     }
