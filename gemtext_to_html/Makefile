@@ -1,29 +1,29 @@
+CFLAGS := -g -Og
+
+MAIN_DEPENDENCIES := src/gemtext_to_html.c \
+					 src/gemtext_to_html.h \
+					 src/arena.c \
+					 src/arena.h \
+					 src/astring.c \
+					 src/astring.h \
+					 src/text.c \
+					 src/text.h
+MAIN_C_FILES := $(filter %.c,$(MAIN_DEPENDENCIES))
+
 default: test
 
 ###############
 # ~ Running ~ #
 ###############
 
+.PHONY: run
 run: build/gemtext_to_html
 	@cat test.gmi | $<
 
 build/gemtext_to_html: src/main.c
-build/gemtext_to_html: src/gemtext_to_html.h
-build/gemtext_to_html: src/gemtext_to_html.c
-build/gemtext_to_html: src/arena.c
-build/gemtext_to_html: src/arena.h
-build/gemtext_to_html: src/astring.c
-build/gemtext_to_html: src/astring.h
-build/gemtext_to_html: src/testing.h
-build/gemtext_to_html: src/text.c
-build/gemtext_to_html: src/text.h
+build/gemtext_to_html: $(MAIN_DEPENDENCIES)
 build/gemtext_to_html: | build
-	cc -g -Og -o "$@" \
-		src/main.c \
-		src/gemtext_to_html.c \
-		src/arena.c \
-		src/astring.c \
-		src/text.c
+	cc $(CFLAGS) -o "$@" "$<" $(MAIN_C_FILES)
 
 ###############
 # ~ Testing ~ #
@@ -37,22 +37,10 @@ test: text_test
 	@$<
 
 build/gemtext_to_html_test: src/gemtext_to_html_test.c
-build/gemtext_to_html_test: src/gemtext_to_html.h
-build/gemtext_to_html_test: src/gemtext_to_html.c
-build/gemtext_to_html_test: src/arena.c
-build/gemtext_to_html_test: src/arena.h
-build/gemtext_to_html_test: src/astring.c
-build/gemtext_to_html_test: src/astring.h
+build/gemtext_to_html_test: $(MAIN_DEPENDENCIES)
 build/gemtext_to_html_test: src/testing.h
-build/gemtext_to_html_test: src/text.c
-build/gemtext_to_html_test: src/text.h
 build/gemtext_to_html_test: | build
-	cc -g -Og -o "$@" \
-		src/gemtext_to_html_test.c \
-		src/gemtext_to_html.c \
-		src/arena.c \
-		src/astring.c \
-		src/text.c
+	cc $(CFLAGS) -o "$@" "$<" $(MAIN_C_FILES)
 
 build/text_test: src/text_test.c
 build/text_test: src/text.c
@@ -60,10 +48,7 @@ build/text_test: src/text.h
 build/text_test: src/arena.c
 build/text_test: src/arena.h
 build/text_test: | build
-	cc -g -Og -o "$@" \
-		src/text_test.c \
-		src/arena.c \
-		src/text.c
+	cc $(CFLAGS) -o "$@" "$<" src/arena.c src/text.c
 
 .PHONY: mem_check
 mem_check:
