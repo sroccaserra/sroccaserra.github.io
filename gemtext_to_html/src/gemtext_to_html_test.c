@@ -11,6 +11,7 @@
 // x add opening and closing <ul> tags around lists
 // x quote line
 // x preformated toggle line
+// o if a link is local to an image, generate an img tag (how will it show in a gemini site?)
 
 void test_an_empty_line_of_text(void) {
     struct arena *a = arena_init(256);
