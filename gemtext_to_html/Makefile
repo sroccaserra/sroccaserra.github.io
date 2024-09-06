@@ -1,3 +1,7 @@
+MAKEFLAGS += --warn-undefined-variables
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
+
 CFLAGS := -g -Og
 
 MAIN_DEPENDENCIES := src/gemtext_to_html.c \
