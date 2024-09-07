@@ -1,0 +1,14 @@
+-- title: Apprendre + Équipe = Programmes
+-- date:
+
+Des notes sur ce que j'observe dans les métiers liés à la conception de logiciels.
+
+Je suis Consultant, Réparateur de logiciels, & Manager chez OCTO Technology.
+Je suis aussi mari, père, musicien, et faux magicien.
+Né en 331 PPM.
+
+=> https://mastodon.social/@sroccaserra Mastodon
+=> /rss.xml RSS
+=> https://github.com/sroccaserra/sroccaserra.github.io Code source
+
+## Articles
