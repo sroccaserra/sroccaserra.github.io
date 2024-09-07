@@ -11,7 +11,7 @@
 // x add opening and closing <ul> tags around lists
 // x quote line
 // x preformated toggle line
-// o render links as list items
+// x render links as list items
 // o if a link is local to an image, generate an img tag
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ void test_a_link_without_description_1(void) {
     struct convert_state state = {0};
     char *line = "=> https://example.com";
     char *result = convert(a, &state, line);
-    assert_equals("<li><a href=\"https://example.com\">https://example.com</a></li>", result);
+    assert_equals("<ul>\n<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
 
@@ -88,7 +88,7 @@ void test_a_link_without_description_2(void) {
     struct convert_state state = {0};
     char *line = "=> https://geminiprotocol.net";
     char *result = convert(a, &state, line);
-    assert_equals("<li><a href=\"https://geminiprotocol.net\">https://geminiprotocol.net</a></li>", result);
+    assert_equals("<ul>\n<li><a href=\"https://geminiprotocol.net\">https://geminiprotocol.net</a></li>", result);
     arena_discard(a);
 }
 
@@ -97,7 +97,7 @@ void test_a_link_without_description_without_space(void) {
     struct convert_state state = {0};
     char *line = "=>https://example.com";
     char *result = convert(a, &state, line);
-    assert_equals("<li><a href=\"https://example.com\">https://example.com</a></li>", result);
+    assert_equals("<ul>\n<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
 
@@ -106,7 +106,30 @@ void test_a_link_with_a_description(void) {
     struct convert_state state = {0};
     char *line = "=> https://example.com An example";
     char *result = convert(a, &state, line);
-    assert_equals("<li><a href=\"https://example.com\">An example</a></li>", result);
+    assert_equals("<ul>\n<li><a href=\"https://example.com\">An example</a></li>", result);
+    arena_discard(a);
+}
+
+void test_a_second_link(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *line = "=> https://example.com";
+    convert(a, &state, line);
+
+    char *result = convert(a, &state, line);
+    assert_equals("<li><a href=\"https://example.com\">https://example.com</a></li>", result);
+    arena_discard(a);
+}
+
+void test_a_text_line_after_a_link(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *link_line = "=> https://example.com";
+    convert(a, &state, link_line);
+
+    char *line = "a text line";
+    char *result = convert(a, &state, line);
+    assert_equals("</ul>\na text line<br/>", result);
     arena_discard(a);
 }
 
@@ -279,6 +302,8 @@ int main(void) {
     test_a_link_without_description_2();
     test_a_link_without_description_without_space();
     test_a_link_with_a_description();
+    test_a_second_link();
+    test_a_text_line_after_a_link();
     TEST_END;
 
     TEST_BEGIN(MODULE":heading");

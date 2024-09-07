@@ -212,6 +212,14 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         int prefix_size = 14;
         arena_push(a, prefix_size);
         strncpy(result, "</blockquote>\n", prefix_size);
+    } else if (is_starting_type(LINK, state, line_type)) {
+        int prefix_size = 5;
+        arena_push(a, prefix_size);
+        strncpy(result, "<ul>\n", prefix_size);
+    } else if (is_ending_type(LINK, state, line_type)) {
+        int prefix_size = 6;
+        arena_push(a, prefix_size);
+        strncpy(result, "</ul>\n", prefix_size);
     }
 
     switch (line_type) {
