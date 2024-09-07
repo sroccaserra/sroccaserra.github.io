@@ -258,19 +258,8 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
     return result;
 }
 
-void convert_input(struct arena *a, char *input, int file_size) {
-    int total_bytes_seen = 0;
-    char *line = input;
-    struct convert_state state = {0};
-    while (total_bytes_seen < file_size) {
-        int line_size = strcspn(line, "\n");
-        line[line_size] = '\0';
-        printf("%s\n", convert(a, &state, line));
-        line += line_size + 1;
-        total_bytes_seen += line_size + 1;
-    }
-
-    switch (state.previous_line_type) {
+void close_pending_tags(enum line_type last_line_type) {
+    switch (last_line_type) {
         case LINK:
             printf("</ul>\n");
             break;
@@ -288,4 +277,19 @@ void convert_input(struct arena *a, char *input, int file_size) {
         default:
             assert(false);
     }
+}
+
+void convert_input(struct arena *a, char *input, int file_size) {
+    int total_bytes_seen = 0;
+    char *line = input;
+    struct convert_state state = {0};
+    while (total_bytes_seen < file_size) {
+        int line_size = strcspn(line, "\n");
+        line[line_size] = '\0';
+        printf("%s\n", convert(a, &state, line));
+        line += line_size + 1;
+        total_bytes_seen += line_size + 1;
+    }
+
+    close_pending_tags(state.previous_line_type);
 }
