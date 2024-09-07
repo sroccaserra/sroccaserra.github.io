@@ -49,6 +49,12 @@ serve:
 watch:
 	rg --files $(GMI_ARTICLES) style images Makefile | entr make
 
+###############################################################################
+# Publishing
+
+.PHONY: publish_html
+publish_html: all_html
+	bash scripts/publish_srht.sh
 
 ###############################################################################
 # Cleaning
