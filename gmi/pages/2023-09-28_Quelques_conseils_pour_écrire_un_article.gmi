@@ -1,0 +1,274 @@
+-- title: Quelques conseils pour écrire un article
+-- date: 2023-09-28
+
+Après avoir écrit une douzaine d'articles cette année, je me suis retrouvé à
+donner quelques conseils à des collègues sur le sujet. À cette occasion, j'ai
+remarqué que j'avais des choses à partager. Si vous avez envie d'écrire des
+articles, mais que c'est une activité un peu nouvelle pour vous, j'espère qu'en
+lisant ce qui a fonctionné pour moi vous en retirerez quelques astuces qui
+fonctionneront pour vous, et que vous trouverez vos propres astuces.
+
+## Choix d'un sujet
+
+Comment choisir un sujet ? C'est parfois ce qui bloque, j'aimerais bien écrire
+un article mais je n'ai pas de sujet.
+
+Dans ce cas, peut-être que je n'ai pas besoin d'écrire un article, peut-être
+que c'est trop tôt ? À défaut d'écrire un article, rien ne m'empêche de prendre
+des notes sur les choses que j'observe et que j'ai envie de retenir, sans
+pression, sans objectif autre que de me souvenir d'une expression, d'une
+explication, d'un angle d'approche différent, et ce faisant d'exercer mon
+discours écrit, dans un premier temps à destination de moi-même. Très important
+: pensez à relire vos anciennes notes quand vous en écrivez une nouvelle. Juste
+relire. Il est probable qu'avec le temps, ces notes vont constituer des pierres
+de construction qui vous permettront d'en faire un article. Soit les notes
+elles-mêmes, soit les idées dans votre tête qui se seront structurées grâce à
+vos notes.
+
+Un autre critère de choix, c'est de choisir un sujet qui m'intéresse. C'est ça
+qui me donne l'énergie d'écrire sur ledit sujet. Et l'énergie est importante
+pour mener l'article au bout, éviter de se retrouver avec un stock d'articles
+pas terminés.
+
+Dans mon cas, la façon de choisir un sujet la plus efficace, c'est de détecter
+quand j'explique la même chose à plusieurs personnes. Ça me donne trois
+informations utiles :
+
+- Le sujet intéresse plusieurs personnes
+- J'ai des choses à raconter sur le sujet
+- J'ai déjà commencé à roder ce sujet en l'expliquant plusieurs fois
+
+Ce qui est important également à mon sens, c'est de ne pas trop mélanger de
+sujets, écrire sur une seule chose. Je préfère écrire sur un sujet bien précis
+que d'embarquer trop de sujets. Ça me permet de terminer l'article plus
+rapidement, et tout aussi important ça permet aux personnes qui vont le lire de
+ne pas se retrouver submergées d'informations disparates.
+
+Pour ça je dois prioriser mes articles, et prioriser dans mon article ce que je
+veux que les personnes qui vont le lire retiennent. Si la personne ne retient
+qu'une chose de mon article, ce serait laquelle ?
+
+Il y a une légère exception à ce principe de sujet unique : j'ai écrit quelques
+articles qui combinent deux sujets, comme "Simplicité & Extreme Programming".
+C'est une astuce originale de choix de sujet, ça permet d'aborder les deux
+sujets sous un angle nouveau et d'en retirer pas mal de dynamique. Dans ce cas
+je me garde bien de traiter les deux sujets en profondeur. Je me concentre sur
+les interactions entre ces sujets, et je redirige vers des articles de
+référence pour les personnes qui veulent en savoir plus sur l'un ou l'autre des
+sujets.
+
+Quand je peux le faire, je creuse mon sujet un peu plus que nécessaire. Même si
+ça ne se retrouve pas dans l'article, en savoir un peu plus sur le contexte
+dans lequel s'inscrit le sujet me permet d'avoir la perspective, la vue un peu
+plus large qui aide à organiser mes pensées sur ledit sujet.
+
+J'essaie aussi de me demander ce que mon article va apporter qui n'existe pas
+déjà, j'essaie de ne pas être redondant avec un autre article. Cependant, je ne
+tombe pas dans l'excès inverse, sinon je n'écrirais rien du tout. Le sujet n'a
+pas besoin d'être nouveau ni compliqué pour que j'écrive dessus. Même s'il y
+aura toujours des gens qui ne vont rien découvrir dans mon article, si le sujet
+de mon article a été nouveau et intéressant pour moi, il sera aussi nouveau et
+intéressant pour d'autres personnes.
+
+> Toutes choses sont dites déjà; mais comme personne n'écoute, il faut sans cesse
+> recommencer.
+>
+> &mdash;&#x202F;André Gide
+
+## Choix du moment
+
+Le bon moment pour écrire un article pour moi, c'est quand j'ai déjà réfléchi
+au sujet plusieurs fois récemment. J'ai besoin de ne pas trop attendre entre
+mes réflexions / partages et le moment de l'écriture. Ça m'aide à garder une
+dynamique. Quand c'est possible je préfère profiter de cette dynamique pour
+mener l'article au bout, plutôt que de la laisser retomber et d'avoir à
+reprendre l'article des semaines plus tard.
+
+Pour ça vous aurez peut-être besoin de créer du temps. Mettez un créneau dans
+votre agenda pour cette activité si vous fonctionnez avec un agenda. D'autant
+plus si votre agenda ressemble à un Tetris, et même si votre agenda ressemble à
+un désert de sel.
+
+## La phase d'écriture
+
+Dans la phase d'écriture, soit j'ai déjà un plan de quelques sections en tête
+grâce à mes notes et mes explications préalables, et j'écris le contenu de
+chaque section. Soit je n'ai pas de plan, et j'essaie d'écrire une trame du
+début à la fin. Je n'écris pas forcément tout l'article en une seule séance, je
+peux faire une pause, ou reprendre le lendemain, mais pour la première étape je
+suis le déroulé qui me vient sous les doigts du début à la fin. L'objectif est
+d'avoir une première version brute mais qui couvre l'essentiel.
+
+Pour la taille de l'article, j'aime bien viser 1000 mots environ, soit entre
+cinq et dix minutes de lecture.
+
+Dans cette phase je ne m'interdis pas de ranger rapidement une idée dans une
+section ultérieure ou précédente, mais sans que ça interrompe longtemps le flux
+d'écriture.
+
+Une fois que j'ai cette première version, je relis le texte plusieurs fois. À
+l'occasion de ces relectures, j'alterne entre plusieurs activités :
+
+- Je découpe en sections si ce n'est pas encore fait, et je mets des titres de
+  sections
+- J'organise le contenu entre les diverses sections
+- Je retravaille chaque phrase et chaque paragraphe jusqu'à ce qu'il me
+  convienne
+- Je supprime mes tics de langage que je détecte s'ils n'apportent rien à la
+  phrase. Par exemple "Ensuite, une fois que..." peut devenir "Une fois que..."
+- J'ajoute les idées importantes qui me viennent
+- Je supprime les redites et les parties redondantes
+
+Quand j'ai un texte qui me convient, je vérifie que je n'y ai pas mis trop
+d'informations. Si je vois qu'il y a trop d'éléments, j'ai le choix soit de le
+couper en deux articles, soit de supprimer des éléments.
+
+Ensuite j'aime bien laisser reposer l'article jusqu'au lendemain. Le lendemain,
+je reprends l'étape de relecture ci-dessus, je continue à ranger, modifier
+légèrement, supprimer.
+
+Et en général, c'est prêt. Pour un article à destination de mon blog personnel,
+je commit et je push, l'article est publié, je peux communiquer dessus.
+
+Si mon article est à destination du blog de mon entreprise (👋 coucou OCTO
+Technology), je soumets l'article à un groupe de collègues pour qu'ils me
+fassent des retours, et qu'on vérifie ensemble que l'article a sa place sur
+notre blog. La raison principale est que notre blog présente des opinions
+partagées dans l'entreprise, et pas seulement mon opinion personnelle, donc
+l'exercice est un peu plus collectif.
+
+## Quelques astuces qui ont fonctionné pour moi
+
+### Prendre des notes
+
+Une habitude qui a tout changé pour moi, c'est de commencer à prendre des notes
+pour mon usage personnel. Prendre des notes aide sur trois choses.
+
+Prendre des notes aide à faire grandir une idée. Au début je notais une phrase
+ou quelques mots que je voulais retenir, une citation par exemple. Et petit à
+petit j'ai ajouté aux phrases que je notais une ou deux réflexions
+personnelles. Avec le temps, les réflexions personnelles ont pris plus de
+place. Les notes peuvent aussi se rejoindre, comme des tuiles pour former un
+toit.
+
+Prendre des notes aide aussi à "trouver sa voix", trouver son propre ton dans
+le medium écrit. C'est quelque-chose qui se construit avec la pratique, et qui
+aide beaucoup à fluidifier la phase d'écriture pour moi.
+
+Enfin, prendre des notes aide à muscler son écriture au clavier. Dans mon
+expérience, le medium écrit devient plus agréable quand il est fluide et que la
+frappe n'est pas trop en retard derrière la pensée.
+
+### Améliorer sa vitesse de frappe
+
+Si vous en avez besoin, en plus de prendre des notes, vous pouvez aussi
+utiliser les nombreux sites de dactylo qui aident à s'améliorer en touch
+typing. Partez d'où vous êtes, et si vous sentez que ce qui vous freine dans
+votre expression écrite c'est la vitesse de frappe, prenez du temps pour la
+travailler.
+
+Je ne pense pas que la vitesse de frappe freine beaucoup pour exprimer les
+idées tant que votre frappe ne traîne pas trop derrière vos pensées. Dans mon
+expérience ça va plutôt vous freiner pour mener l'article au bout. Par exemple,
+si vous passez de 30 mots par minutes à 60, vous pouvez boucler un premier jet
+d'article en 30 minutes au lieu d'une heure, et alors vous pouvez profiter des
+30 minutes restantes pour passer à la phase de relecture / retravail. Vous
+pouvez alors terminer une première version en une heure, il n'y a plus qu'à la
+laisser reposer comme une pâte à crêpes. Je trouve ça très satisfaisant dans
+une journée.
+
+Améliorer sa vitesse de frappe peut aussi vous aider à écrire en parlant. En
+passant, c'est aussi une compétence utile pour faire du pair programming ou du
+live coding entre autres.  Si je sais écrire en parlant, je sais aussi penser
+en écrivant, ça aide à penser à la phrase d'après ou au paragraphe d'après, et
+à nouveau ça rend la phase d'écriture plus agréable.
+
+Ça améliore aussi l'endurance dans l'expression d'idées au clavier. Quand je
+dépense moins d'énergie à taper au clavier, ça me laisse d'autant plus
+d'énergie pour formuler ce que j'ai à dire en une traite ou deux dans la phase
+d'écriture.
+
+### Expliquer des choses par écrit
+
+Entraînez vous à expliquer des choses par écrit, à donner votre avis par écrit.
+
+Si votre environnement de travail le permet, vous pouvez intervenir
+régulièrement dans les conversations qui vous intéressent sur votre Mattermost
+ou Slack ou whatever. Un peu comme la prise de note, ça vous aide à développer
+vos idées et votre ton à l'écrit, mais le petit plus c'est que les personnes
+qui vous lisent peuvent vous répondre&nbsp;: vous avez un retour rapide sur ce que
+vous dites.
+
+Même quand j'explique quelque-chose à une personne à l'oral, j'ai pris
+l'habitude de prendre des notes de mon explication. Pour ça, c'est utile de
+savoir écrire en parlant comme vu au dessus, et donc de maîtriser le
+touch-typing. Pas besoin de taper extrêmement vite. Personnellement je tourne à
+environ 50 à 60 mots par minute. Ça me ralentit un peu dans ce que je dis, mais
+je trouve ça suffisant pour écrire en parlant confortablement. Je ne note pas
+tout et j'utilise quelques pauses pour rattraper mon écriture.
+
+### Ces habitudes se renforcent
+
+Je l'ai déjà un peu signalé, mais ces habitudes se combinent et se renforcent
+entre elles.
+
+Par exemple, entraînez vous à prendre des notes verbatim en réunion, à nouveau
+ça renforce un peu tout.
+
+Vous pouvez aussi vous entraîner à faire des transcriptions de vidéos de
+conférences sur des sujets qui vous intéressent. J'ai fait ça pas mal de fois
+pour mon usage personnel, et j'ai remarqué après coup les avantages indirects
+que j'en avais retirés.
+
+Tous ces exercices entraînent à fluidifier le passage pensée / clavier, à
+écrire ce que je pense / penser ce que j'écris.
+
+## L'écriture est un chemin
+
+J'ai posé beaucoup de choses sur la table, comme au petit déjeuner, mais
+heureusement vous n'êtes pas obligé de vous servir de tout tout de suite.
+Partez d'où vous êtes, utilisez ce que vous avez. Développez aussi ce qui
+fonctionne pour vous.
+
+Personnellement, j'ai accepté que les choses arrivent progressivement. Par
+exemple, avant de savoir marcher sur les mains, il va me falloir m'habituer à
+me tenir à l'envers, et il va me falloir développer quelques muscles pour être
+capable de porter mon corps sur les mains. En fonction de où vous en êtes, ça
+peut prendre un certain temps. Toutes les astuces vues au dessus peuvent vous
+aider sur ce chemin. Elles peuvent vous aider à développer votre ton, votre
+efficacité au clavier, votre façon de construire une réflexion à l'écrit.
+
+Il ne s'agit pas non plus d'attendre d'être le nouveau Kent Beck pour publier
+votre premier article : publier des articles fait partie du chemin. Vous pouvez
+accepter que votre premier article ne soit pas parfait. Assurez-vous simplement
+qu'il soit suffisamment bon, et il vous apportera des informations utiles pour
+améliorer votre article suivant. Commencez par écrire des petits articles sur
+des sujets que vous connaissez bien ou qui vous ont intéressé, à destination de
+personnes que vous connaissez, dans vos cercle, dans un wiki interne par
+exemple. Ça va vous aider à construire vos habitudes et à comprendre ce que les
+gens retiennent de ce que vous avez écrit. Votre 10ème article sera sans doute
+meilleur que votre premier, mais sans votre premier article, vous n'écrirez pas
+votre 10ème article. Et je suis désolé de vous le dire, mais environ 50 % de
+vos articles seront en dessous de la moyenne de ce que vous êtes capables
+d'écrire (c'est une tentative de blague mathématique piquée à Richard Feynman).
+
+## Conclusion
+
+Voilà quelques astuces dont j'ai pu remarquer qu'elles m'ont aidé, j'espère que
+vous en trouverez quelques-unes qui fonctionnent pour vous. Et vous, quelles
+sont vos astuces ?
+
+🧵 [@sroccaserra][masto]
+
+[masto]: https://mastodon.social/@sroccaserra/111148562132279420
+
+## Liens
+
+- OCTO Technology ~ <https://octo.com/>
+- Pair Programming ~ <https://wiki.c2.com/?PairProgramming>
+- Kent Beck ~ <https://fr.wikipedia.org/wiki/Kent_Beck>
+- Richard Feynman ~ <https://fr.wikipedia.org/wiki/Richard_Feynman>
+
+Voir aussi :
+
+- Nobody cares about your blog ~ <https://www.alexmolas.com/2023/07/15/nobody-cares-about-your-blog.html>

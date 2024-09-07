@@ -1,0 +1,300 @@
+-- title: Savoir construire ses outils
+-- date: 2023-05-14
+
+Parfois, face à une situation nouvelle que je ne comprends pas, j’ai besoin de
+voir le problème sous un autre angle. Dans ces conditions, je suis content
+d’utiliser tous les outils que j’ai déjà. Et parfois, quand mes outils
+habituels ne sont pas adaptés, savoir fabriquer très vite un nouvel outil
+spécifique à la situation est très utile.
+
+Voici le dernier exemple en date, où j’ai eu besoin de visualiser des
+événements sur un axe temporel pour les corréler et chercher des patterns.
+
+Dans ma mission actuelle, nous avons eu besoin d’établir une connexion VPN
+entre un serveur applicatif et un serveur SMTP pour envoyer des emails. Et nous
+avons détecté que cette connexion était défectueuse régulièrement, car environ
+un email sur dix ne partait pas : le serveur applicatif n’arrivait pas à
+joindre le serveur SMTP.
+
+Autre point important : sur ce projet on n’a pas encore pris le temps ni le
+budget de s’outiller sur l’analyse de logs, avec des outils du marché comme
+Datadog par exemple. Ces outils fonctionnent très bien et je les recommande,
+mais nous ne les avons pas encore sous la main, d’où cette démarche un peu plus
+rustique.
+
+Voilà la démarche que j’ai suivie pour rendre visible les patterns de perte de
+connexion :
+
+- activer les logs de ping VPN
+- extraire des logs de ping les événements qui m’intéressent
+- dessiner un graph avec tous ces événements
+
+## Exploration des logs
+
+Une connexion VPN, pour se maintenir, envoie à interval régulier des pings
+entre client et serveur. J’ai activé les logs de ces pings du point de vue de
+mon serveur applicatif. J’ai donc dans mes logs des pings envoyés et des pings
+reçus.
+
+Ces logs sont très verbeux, ils contiennent beaucoup d’information. En plissant
+les yeux, on peut voir dans ces lignes des lignes `RECEIVED PING PACKET` et
+`SENT PING`. On peut voire aussi des lignes `Inactivity timeout` et
+`ping-restart`&nbsp;: ce sont les lignes qui montrent le problème, le
+redémarrage fréquent de la connexion VPN qui causait les pertes d’emails.
+
+<pre>
+2023-05-12 17:21:28.999239998 +0200 CEST [web-1] 2023-05-12 15:21:28 us=359574 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:21:28.999245803 +0200 CEST [web-1] 2023-05-12 15:21:28 us=364929 UDP READ [41] from [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:21:28.999246770 +0200 CEST [web-1] 2023-05-12 15:21:28 us=364965 TLS: tls_pre_decrypt, key_id=0, IP=[AF_INET]12.34.56.789:1194
+2023-05-12 17:21:28.999247475 +0200 CEST [web-1] 2023-05-12 15:21:28 us=364984 PID_TEST [0] [SSL-0] [] 0:0 0:1 t=1683904888[0] r=[0,64,15,0,1] sl=[0,0,64,528]
+2023-05-12 17:21:28.999248049 +0200 CEST [web-1] 2023-05-12 15:21:28 us=364993 RECEIVED PING PACKET
+2023-05-12 17:21:39.000111417 +0200 CEST [web-1] 2023-05-12 15:21:38 us=479455 TLS: tls_pre_encrypt: key_id=0
+2023-05-12 17:21:39.000143400 +0200 CEST [web-1] 2023-05-12 15:21:38 us=479527 SENT PING
+2023-05-12 17:21:39.000152558 +0200 CEST [web-1] 2023-05-12 15:21:38 us=479567 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:21:49.001203807 +0200 CEST [web-1] 2023-05-12 15:21:48 us=710285 TLS: tls_pre_encrypt: key_id=0
+2023-05-12 17:21:49.001231283 +0200 CEST [web-1] 2023-05-12 15:21:48 us=710359 SENT PING
+2023-05-12 17:21:49.001235143 +0200 CEST [web-1] 2023-05-12 15:21:48 us=710413 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:21:59.002236188 +0200 CEST [web-1] 2023-05-12 15:21:58 us=745173 TLS: tls_pre_encrypt: key_id=0
+2023-05-12 17:21:59.002246836 +0200 CEST [web-1] 2023-05-12 15:21:58 us=745261 SENT PING
+2023-05-12 17:21:59.002287152 +0200 CEST [web-1] 2023-05-12 15:21:58 us=745302 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:22:09.003668616 +0200 CEST [web-1] 2023-05-12 15:22:08 us=957512 TLS: tls_pre_encrypt: key_id=0
+2023-05-12 17:22:09.003689111 +0200 CEST [web-1] 2023-05-12 15:22:08 us=957579 SENT PING
+2023-05-12 17:22:09.003693708 +0200 CEST [web-1] 2023-05-12 15:22:08 us=957618 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:22:20.004539495 +0200 CEST [web-1] 2023-05-12 15:22:19 us=79677 TLS: tls_pre_encrypt: key_id=0
+2023-05-12 17:22:20.004544393 +0200 CEST [web-1] 2023-05-12 15:22:19 us=79749 SENT PING
+2023-05-12 17:22:20.004545188 +0200 CEST [web-1] 2023-05-12 15:22:19 us=79805 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
+2023-05-12 17:22:29.005460487 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327448 [OpenVPN-Server-mon-serveur-vpn.com] Inactivity timeout (--ping-restart), restarting
+2023-05-12 17:22:29.005472487 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327506 PID packet_id_free
+2023-05-12 17:22:29.005495216 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327605 PID packet_id_free
+2023-05-12 17:22:29.005500324 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327617 PID packet_id_free
+2023-05-12 17:22:29.005501491 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327624 PID packet_id_free
+2023-05-12 17:22:29.005552612 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327640 PID packet_id_free
+2023-05-12 17:22:29.005555228 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327647 PID packet_id_free
+2023-05-12 17:22:29.005555749 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327654 PID packet_id_free
+2023-05-12 17:22:29.005556455 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327661 PID packet_id_free
+2023-05-12 17:22:29.005568587 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327672 TCP/UDP: Closing socket
+2023-05-12 17:22:29.005569472 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327690 PID packet_id_free
+2023-05-12 17:22:29.005574817 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327709 SIGUSR1[soft,ping-restart] received, process restarting
+2023-05-12 17:22:29.005575207 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327727 Restart pause, 5 second(s)
+</pre>
+
+On peut déjà en tirer des informations mais ce n’est pas très pratique : dans
+l’exemple il y a une ou deux minutes de logs, et pour mon problème j’ai besoin
+d’analyser un bon quart d’heure pour chercher des patterns.
+
+## Transformation des logs
+
+J’ai commencé par extraire les événements qui m’intéressent avec `rg` (un genre
+de `grep`) et à les structurer pour isoler le timestamp.
+
+Isoler les envois de pings :
+
+<pre>
+$ <b>rg</b> 'SENT PING' logs
+99694:2023-05-12 17:20:53.995533501 +0200 CEST [web-1] 2023-05-12 15:20:53 us=775530 SENT PING
+99697:2023-05-12 17:21:03.996518529 +0200 CEST [web-1] 2023-05-12 15:21:03 us=991544 SENT PING
+99739:2023-05-12 17:21:18.998396048 +0200 CEST [web-1] 2023-05-12 15:21:18 us=82178 SENT PING
+99833:2023-05-12 17:21:28.999163512 +0200 CEST [web-1] 2023-05-12 15:21:28 us=359535 SENT PING
+99840:2023-05-12 17:21:39.000143400 +0200 CEST [web-1] 2023-05-12 15:21:38 us=479527 SENT PING
+99843:2023-05-12 17:21:49.001231283 +0200 CEST [web-1] 2023-05-12 15:21:48 us=710359 SENT PING
+99846:2023-05-12 17:21:59.002246836 +0200 CEST [web-1] 2023-05-12 15:21:58 us=745261 SENT PING
+99849:2023-05-12 17:22:09.003689111 +0200 CEST [web-1] 2023-05-12 15:22:08 us=957579 SENT PING
+99852:2023-05-12 17:22:20.004544393 +0200 CEST [web-1] 2023-05-12 15:22:19 us=79749 SENT PING
+99894:2023-05-12 17:22:34.006820819 +0200 CEST [web-1] 2023-05-12 15:22:33 us=328337 SENT PING
+99992:2023-05-12 17:22:44.007459739 +0200 CEST [web-1] 2023-05-12 15:22:43 us=490301 SENT PING
+99995:2023-05-12 17:22:54.008443004 +0200 CEST [web-1] 2023-05-12 15:22:53 us=684270 SENT PING
+</pre>
+
+Extraire le timestamp avec `cut` (on délimite sur les espaces et on prend les deux premiers champs)  :
+
+<pre>
+$ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2
+2023-05-12 17:20:53.995533501
+2023-05-12 17:21:03.996518529
+2023-05-12 17:21:18.998396048
+2023-05-12 17:21:28.999163512
+2023-05-12 17:21:39.000143400
+2023-05-12 17:21:49.001231283
+2023-05-12 17:21:59.002246836
+2023-05-12 17:22:09.003689111
+2023-05-12 17:22:20.004544393
+2023-05-12 17:22:34.006820819
+2023-05-12 17:22:44.007459739
+2023-05-12 17:22:54.008443004
+</pre>
+
+Ajouter le marqueur ' &gt;' (pour signifier “envoyé”) en fin de ligne, et
+envoyer le résultat dans un fichier “sent” (ici avec `tee` pour visualiser le
+résultat en même temps) :
+
+<pre>
+$ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &gt;' | <b>tee</b> sent
+2023-05-12 17:20:53.995533501 &gt;
+2023-05-12 17:21:03.996518529 &gt;
+2023-05-12 17:21:18.998396048 &gt;
+2023-05-12 17:21:28.999163512 &gt;
+2023-05-12 17:21:39.000143400 &gt;
+2023-05-12 17:21:49.001231283 &gt;
+2023-05-12 17:21:59.002246836 &gt;
+2023-05-12 17:22:09.003689111 &gt;
+2023-05-12 17:22:20.004544393 &gt;
+2023-05-12 17:22:34.006820819 &gt;
+2023-05-12 17:22:44.007459739 &gt;
+2023-05-12 17:22:54.008443004 &gt;
+</pre>
+
+Faire la même chose avec les pings reçus :
+
+<pre>
+$ <b>rg</b> 'RECEIVED PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &lt; Received' | <b>tee</b> received
+2023-05-12 17:20:12.991392556 &lt; Received
+2023-05-12 17:21:28.999248049 &lt; Received
+2023-05-12 17:22:44.007432531 &lt; Received
+2023-05-12 17:22:54.008453476 &lt; Received
+</pre>
+
+Et les redémarrages de session VPN :
+
+<pre>
+$ <b>rg</b> '12 17:.&ast;Inactivity timeout' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' * Restart !!' | <b>tee</b> restart
+2023-05-12 17:21:13.997629899 * Restart !!
+2023-05-12 17:22:29.005460487 * Restart !!
+</pre>
+
+Ensuite on peut joindre les fichiers avec `cat` et les trier (par date puisque c’est le début de ligne) dans un fichier "history"&nbsp;:
+
+<pre>
+$ <b>cat</b> received sent restarts | <b>sort</b> > history
+$ <b>cat</b> history
+2023-05-12 17:20:53.995533501 &gt;
+2023-05-12 17:21:03.996518529 &gt;
+2023-05-12 17:21:13.997629899 * Restart !!
+2023-05-12 17:21:18.998396048 &gt;
+2023-05-12 17:21:28.999163512 &gt;
+2023-05-12 17:21:28.999248049 &lt; Received
+2023-05-12 17:21:39.000143400 &gt;
+2023-05-12 17:21:49.001231283 &gt;
+2023-05-12 17:21:59.002246836 &gt;
+2023-05-12 17:22:09.003689111 &gt;
+2023-05-12 17:22:20.004544393 &gt;
+2023-05-12 17:22:29.005460487 * Restart !!
+2023-05-12 17:22:34.006820819 &gt;
+2023-05-12 17:22:44.007432531 &lt; Received
+2023-05-12 17:22:44.007459739 &gt;
+2023-05-12 17:22:54.008443004 &gt;
+2023-05-12 17:22:54.008453476 &lt; Received
+</pre>
+
+C’est déjà plus lisible, on peut maintenant commencer à corréler et voir des patterns. En plissant les yeux, on peut voir que les pings envoyés sont beaucoup plus fréquents que les pings reçus.
+
+On peut voir aussi que le redémarrage de 17h22 survient une minute et une seconde après le dernier ping reçu : ça correspond à notre configuration VPN : envoyez-vous des pings toutes les 10 secondes, et redémarrez si vous n’avez pas de nouvelles après 1 mn. Mais j’avais envie de voir ces infos sur un graph pendant une longue période pour mieux confirmer mes intuitions.
+
+## Affichage dans un graph
+
+Ça tombe bien, ça fait longtemps que j’avais envie d’explorer l’aspect visuel de Smalltalk, un petit langage qui contient tout ce qu’il faut pour générer des images et les afficher out of the box (petit, en effet : 30 Mo le zip avec la VM, la lib standard, toutes les sources, et un IDE puissant intégré !).
+
+J’ai donc exploré un peu et j’ai trouvé une classe `RSChart` qui pouvait afficher des `RSLinePlot` et des `RSScatterPlot`. Dans les commentaires de la classe il y a même tout ce qu’il faut pour démarrer (voir exemple ci-dessous).
+
+En explorant quelques minutes de plus, j’ai trouvé comment ajouter des marqueurs, et en peu de temps j’avais ce résultat à partir de mes logs, exactement ce dont j’avais besoin :
+
+<img class="center" src="/images/2023-05-14_graph.png" width="800" height="486" />
+
+On peut voir qu’il y a effectivement un pattern super régulier : mon client VPN reçoit des pings du serveur pendant quelques dizaines de secondes, ne reçoit pas les pings du serveur pendant une minute et redémarre. Et ainsi de suite.
+
+En réfléchissant un peu, j’ai pu faire l’hypothèse qu’il y avait une autre machine qui utilisait la même configuration. Quand le serveur voyait cette autre machine arriver, il lui se mettait à lui envoyer les pings et mon serveur ne les recevait plus. Ma connexion redémarre, le serveur m’envoie les pings, (donc l’autre machine ne les reçoit plus et redémarre), et ainsi de suite, à toi, à moi, etc.
+
+Et bingo, j’avais bien utilisé la même conf VPN sur deux de mes serveurs qui se volaient la vedette à chacun leur tour 🤦. Problème enfin résolu ! 🎉
+
+## Conclusion
+
+Pour résumer, bien connaître GNU core-utils et un langage de programmation un peu visuel permet de se fabriquer ses propres outils spécifiques rapidement et à peu de frais, à tel point que je ne “capitalise” pas sur ces outils, je n’en fait surtout pas une librairie. Je conserve quelques snippets pour me rappeler rapidement les détails, et je me reconstruis un outil vite fait à chaque fois, en jetant parfois un œil à un de mes vieux snippets.
+
+## Annexe
+
+### Version awk
+
+On peut faire toute la phase d’exploration de logs en une seule ligne de awk :
+
+<pre>
+$ <b>awk</b> &lt;logs '/SENT PING/ { print $1 $2 " &gt;" } ; /RECEIVED PING/ { print $1 $2 " &lt; Received"} ; /Inactivity/ { print $1 $2 " * Restart !!" }'
+2023-05-1217:20:43.994461854 &gt;
+2023-05-1217:20:53.995533501 &gt;
+2023-05-1217:21:03.996518529 &gt;
+2023-05-1217:21:13.997629899 * Restart !!
+2023-05-1217:21:18.998396048 &gt;
+2023-05-1217:21:28.999163512 &gt;
+2023-05-1217:21:28.999248049 &lt; Received
+2023-05-1217:21:39.000143400 &gt;
+2023-05-1217:21:49.001231283 &gt;
+2023-05-1217:21:59.002246836 &gt;
+2023-05-1217:22:09.003689111 &gt;
+2023-05-1217:22:20.004544393 &gt;
+2023-05-1217:22:29.005460487 * Restart !!
+2023-05-1217:22:34.006820819 &gt;
+2023-05-1217:22:44.007432531 &lt; Received
+2023-05-1217:22:44.007459739 &gt;
+2023-05-1217:22:54.008443004 &gt;
+2023-05-1217:22:54.008453476 &lt; Received
+</pre>
+
+### Code du graph en Pharo Smalltalk
+
+Si vous connaissez Ruby, une bonne partie de Smalltalk va vous paraître familière : les collections, les blocks de code, et le paradigme "tout est message".
+
+Exemple simple pour afficher une sinusoïde :
+
+<pre>
+x := -3.14 to: 3.14 by: 0.1.
+y := x sin.
+
+c := RSChart new.
+c addPlot: (RSLinePlot new x: x y: y).
+c addDecoration: (RSChartTitleDecoration new title: 'hello'; fontSize: 20).
+c addDecoration: (RSXLabelDecoration new title: 'My X Axis'; fontSize: 12).
+c addDecoration: (RSYLabelDecoration new title: 'My Y Axis'; fontSize: 15).
+c show
+</pre>
+
+<img class="center" src="/images/2023-05-14_sinus.png" width="613" height="592" />
+
+Voilà tout le code écrit vite fait pour le graph des redémarrages. Ça tient en
+une vingtaine de lignes&nbsp;:
+
+<pre>
+file := FileSystem disk workingDirectory / 'Developer/projet/history'.
+lines := file contents lines allButFirst: 8.
+
+c := RSChart new.
+
+y := 1.
+xS := (lines select: [ :each | each endsWith: ' >' ]) collect: [ :line |
+    (DateAndTime fromString: (line first: 23)) asUnixTime ].
+c addPlot:
+    (RSScatterPlot new x: xS y: (OrderedCollection new: xS size withAll: y)).
+
+y := 1.5.
+xRc := (lines select: [ :each | each endsWith: 'Received' ]) collect: [ :line |
+    (DateAndTime fromString: (line first: 23)) asUnixTime ].
+c addPlot:
+    (RSScatterPlot new x: xRc y: (OrderedCollection new: xRc size withAll: y)).
+
+((lines select: [ :each | each endsWith: 'Restart !!' ]) collect: [ :line |
+    (DateAndTime fromString: (line first: 23)) asUnixTime ]) do: [ :value |
+    c addDecoration: (RSXMarkerDecoration new value: value) ].
+
+c addDecoration: (RSHorizontalTick new labelConversion: [ :value |
+    (DateAndTime fromUnixTime: value) asTime ]).
+c addDecoration: (RSXLabelDecoration new
+    title: 'Heure';
+    fontSize: 12).
+
+c padding: 0 @ 80.
+c show
+</pre>
+
+## Liens
+
+- Le site de Pharo Smalltalk, qui permet de faire tourner ce code out of the
+  box ~ [pharo.org][ph]
+
+[ph]: https://pharo.org/
