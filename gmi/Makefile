@@ -6,26 +6,41 @@ SHELL := /usr/bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
 BUILD_HTML := build_html
+BUILD_GMI := build_gmi
 CONVERT_TO_HTML := ../gemtext_to_html/build/gemtext_to_html
 
-GMI_ARTICLES=$(wildcard **/*.gmi) index.gmi
-HTML_ARTICLES=$(patsubst %.gmi,$(BUILD_HTML)/%.html,$(GMI_ARTICLES))
+GMI_IN_FILES=$(wildcard pages/*.gmi) index.gmi
+GMI_OUT_FILES=$(patsubst %.gmi,$(BUILD_GMI)/%.gmi,$(GMI_IN_FILES))
+HTML_OUT_FILES=$(patsubst %.gmi,$(BUILD_HTML)/%.html,$(GMI_IN_FILES))
 
 
 ###############################################################################
 # Building
 
-all_html: $(HTML_ARTICLES) sync_public
+.PHONY: all_html
+all_html: $(HTML_OUT_FILES) sync_public
+
+.PHONY: all_gmi
+all_gmi: $(GMI_OUT_FILES)
 
 $(BUILD_HTML)/pages/%.html: pages/%.gmi | $(BUILD_HTML)/pages
 	BUILD="$(BUILD_HTML)" CONVERT="$(CONVERT_TO_HTML)" \
 		  bash scripts/build_page.sh "$<" \
 		  > "$@"
 
+$(BUILD_GMI)/pages/%.gmi: pages/%.gmi | $(BUILD_GMI)/pages
+	tail +3 "$<" > "$@"
+
 $(BUILD_HTML):
 	mkdir -p "$@"
 
+$(BUILD_GMI):
+	mkdir -p "$@"
+
 $(BUILD_HTML)/pages: | $(BUILD_HTML)
+	mkdir -p "$@"
+
+$(BUILD_GMI)/pages: | $(BUILD_GMI)
 	mkdir -p "$@"
 
 $(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
@@ -33,6 +48,13 @@ $(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
 		  bash scripts/build_index.sh "$<" \
 		  | sed 's/\.gmi"/\.html"/g' \
 		  > "$@"
+
+$(BUILD_GMI)/index.gmi: index.gmi | $(BUILD_GMI)
+	head -1 layout.gmi > "$@"
+	tail +5 layout.gmi >> "$@"
+	tail +3 "$<" | sed -n '0,/## Articles/p' >> "$@"
+	bash scripts/toc.sh >> "$@"
+	sed '0,/## Articles/d' "$<" >> "$@"
 
 .PHONY: sync_public
 sync_public: | $(BUILD_HTML)
@@ -47,14 +69,18 @@ serve:
 
 .PHONY: watch
 watch:
-	rg --files $(GMI_ARTICLES) style images Makefile | entr make
+	rg --files $(GMI_IN_FILES) style images Makefile | entr make
 
 ###############################################################################
 # Publishing
 
 .PHONY: publish_html
 publish_html: all_html
-	bash scripts/publish_srht.sh
+	BUILD=$(BUILD_HTML) bash scripts/publish_srht.sh
+
+.PHONY: publish_gmi
+publish_gmi: all_gmi
+	BUILD=$(BUILD_GMI) PROTOCOL=GEMINI bash scripts/publish_srht.sh
 
 ###############################################################################
 # Cleaning
@@ -62,3 +88,4 @@ publish_html: all_html
 .PHONY: clean
 clean:
 	rm -rf $(BUILD_HTML)
+	rm -rf $(BUILD_GMI)

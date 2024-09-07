@@ -1,4 +1,5 @@
-tar -C build -cvz . > site.tar.gz
+set -x
+tar -C ${BUILD} -cvz . > site.tar.gz
 source .env && \
     curl --oauth2-bearer "$srht_token" \
     -Fcontent=@site.tar.gz \
