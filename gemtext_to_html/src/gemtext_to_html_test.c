@@ -11,7 +11,11 @@
 // x add opening and closing <ul> tags around lists
 // x quote line
 // x preformated toggle line
-// o if a link is local to an image, generate an img tag (how will it show in a gemini site?)
+// o render links as list items
+// o if a link is local to an image, generate an img tag
+
+///////////////////////////////////////////////////////////////////////////////
+// Text
 
 void test_an_empty_line_of_text(void) {
     struct arena *a = arena_init(256);
@@ -67,6 +71,8 @@ void test_a_line_of_text_with_a_gt(void) {
     arena_discard(a);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Link
 
 void test_a_link_without_description_1(void) {
     struct arena *a = arena_init(256);
@@ -104,6 +110,9 @@ void test_a_link_with_a_description(void) {
     arena_discard(a);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Heading
+
 void test_a_heading_line(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
@@ -121,6 +130,9 @@ void test_a_heading_line_without_space(void) {
     assert_equals("<h3>Section 3</h3>", result);
     arena_discard(a);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// List
 
 void test_an_opening_list_item(void) {
     struct arena *a = arena_init(256);
@@ -156,6 +168,9 @@ void test_a_text_line_after_a_list_item(void) {
 
     arena_discard(a);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// Quote
 
 void test_an_opening_quote(void) {
     struct arena *a = arena_init(256);
@@ -207,6 +222,9 @@ void test_a_closing_quote(void) {
     arena_discard(a);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Preformated
+
 void test_entering_preformated_mode(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
@@ -244,30 +262,48 @@ void test_leaving_preformated_mode(void) {
     arena_discard(a);
 }
 
+#define MODULE "gemtext_to_html"
+
 int main(void) {
-    TEST_BEGIN("gemtext_to_html");
+    TEST_BEGIN(MODULE":text");
     test_an_empty_line_of_text();
     test_a_line_of_text();
     test_a_line_of_text_with_an_amp();
     test_a_line_of_text_with_two_amps();
     test_a_line_of_text_with_an_lt();
     test_a_line_of_text_with_a_gt();
+    TEST_END;
+
+    TEST_BEGIN(MODULE":link");
     test_a_link_without_description_1();
     test_a_link_without_description_2();
     test_a_link_without_description_without_space();
     test_a_link_with_a_description();
+    TEST_END;
+
+    TEST_BEGIN(MODULE":heading");
     test_a_heading_line();
     test_a_heading_line_without_space();
+    TEST_END;
+
+    TEST_BEGIN(MODULE":list");
     test_an_opening_list_item();
     test_a_list_item();
     test_a_text_line_after_a_list_item();
+    TEST_END;
+
+    TEST_BEGIN(MODULE":quote");
     test_an_opening_quote();
     test_a_quote();
     test_quotes_without_space();
     test_a_closing_quote();
+    TEST_END;
+
+    TEST_BEGIN(MODULE":preformated");
     test_entering_preformated_mode();
     test_adding_preformated_text();
     test_leaving_preformated_mode();
     TEST_END;
+
     return 0;
 }
