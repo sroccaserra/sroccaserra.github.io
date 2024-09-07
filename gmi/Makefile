@@ -5,45 +5,45 @@ MAKEFLAGS += --warn-undefined-variables
 SHELL := /usr/bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
-BUILD := build
+BUILD_HTML := build_html
 CONVERT_TO_HTML := ../gemtext_to_html/build/gemtext_to_html
 
 GMI_ARTICLES=$(wildcard **/*.gmi) index.gmi
-HTML_ARTICLES=$(patsubst %.gmi,$(BUILD)/%.html,$(GMI_ARTICLES))
+HTML_ARTICLES=$(patsubst %.gmi,$(BUILD_HTML)/%.html,$(GMI_ARTICLES))
 
 
 ###############################################################################
 # Building
 
-html_all: $(HTML_ARTICLES) sync_public
+all_html: $(HTML_ARTICLES) sync_public
 
-$(BUILD)/pages/%.html: pages/%.gmi | $(BUILD)/pages
-	BUILD="$(BUILD)" CONVERT="$(CONVERT_TO_HTML)" \
+$(BUILD_HTML)/pages/%.html: pages/%.gmi | $(BUILD_HTML)/pages
+	BUILD="$(BUILD_HTML)" CONVERT="$(CONVERT_TO_HTML)" \
 		  bash scripts/build_page.sh "$<" \
 		  > "$@"
 
-$(BUILD):
+$(BUILD_HTML):
 	mkdir -p "$@"
 
-$(BUILD)/pages: | $(BUILD)
+$(BUILD_HTML)/pages: | $(BUILD_HTML)
 	mkdir -p "$@"
 
-$(BUILD)/index.html: index.gmi | $(BUILD)
-	BUILD=$(BUILD) CONVERT=$(CONVERT_TO_HTML) \
+$(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
+	BUILD=$(BUILD_HTML) CONVERT=$(CONVERT_TO_HTML) \
 		  bash scripts/build_index.sh "$<" \
 		  | sed 's/\.gmi"/\.html"/g' \
 		  > "$@"
 
 .PHONY: sync_public
-sync_public: | $(BUILD)
-	@rsync -au public/ build
+sync_public: | $(BUILD_HTML)
+	@rsync -au public/ $(BUILD_HTML)
 
 ###############################################################################
 # Serving
 
 .PHONY: serve
 serve:
-	python3 -m http.server 8080 --directory build
+	python3 -m http.server 8080 --directory $(BUILD_HTML)
 
 .PHONY: watch
 watch:
@@ -55,4 +55,4 @@ watch:
 
 .PHONY: clean
 clean:
-	rm -rf $(BUILD)
+	rm -rf $(BUILD_HTML)
