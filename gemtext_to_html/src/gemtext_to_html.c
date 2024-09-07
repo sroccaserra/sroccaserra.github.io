@@ -269,4 +269,23 @@ void convert_input(struct arena *a, char *input, int file_size) {
         line += line_size + 1;
         total_bytes_seen += line_size + 1;
     }
+
+    switch (state.previous_line_type) {
+        case LINK:
+            printf("</ul>\n");
+            break;
+        case LIST_ITEM:
+            printf("</ul>\n");
+            break;
+        case QUOTE:
+            printf("</blockquote>\n");
+            break;
+        case HEADING:
+        case NONE:
+        case PREFORMATED_TOGGLE:
+        case TEXT:
+            break;
+        default:
+            assert(false);
+    }
 }
