@@ -73,7 +73,7 @@ void test_a_link_without_description_1(void) {
     struct convert_state state = {0};
     char *line = "=> https://example.com";
     char *result = convert(a, &state, line);
-    assert_equals("<a href=\"https://example.com\">https://example.com</a>", result);
+    assert_equals("<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
 
@@ -82,7 +82,7 @@ void test_a_link_without_description_2(void) {
     struct convert_state state = {0};
     char *line = "=> https://geminiprotocol.net";
     char *result = convert(a, &state, line);
-    assert_equals("<a href=\"https://geminiprotocol.net\">https://geminiprotocol.net</a>", result);
+    assert_equals("<li><a href=\"https://geminiprotocol.net\">https://geminiprotocol.net</a></li>", result);
     arena_discard(a);
 }
 
@@ -91,7 +91,7 @@ void test_a_link_without_description_without_space(void) {
     struct convert_state state = {0};
     char *line = "=>https://example.com";
     char *result = convert(a, &state, line);
-    assert_equals("<a href=\"https://example.com\">https://example.com</a>", result);
+    assert_equals("<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
 
@@ -100,7 +100,7 @@ void test_a_link_with_a_description(void) {
     struct convert_state state = {0};
     char *line = "=> https://example.com An example";
     char *result = convert(a, &state, line);
-    assert_equals("<a href=\"https://example.com\">An example</a>", result);
+    assert_equals("<li><a href=\"https://example.com\">An example</a></li>", result);
     arena_discard(a);
 }
 
