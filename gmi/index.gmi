@@ -12,3 +12,11 @@ Né en 331 PPM.
 => https://github.com/sroccaserra/sroccaserra.github.io Code source
 
 ## Articles
+
+## Articles sur le blog d'OCTO Technology</h2>
+
+=> https://blog.octo.com/injection-de-dependances 2024-08-19 ~ Injection de dépendances
+=> https://blog.octo.com/retour-aux-fondamentaux-du-craft-trois-exemples/ 2022-08-24 ~ Retour aux fondamentaux du craft : trois exemples
+=> https://blog.octo.com/deux-techniques-de-base-pour-le-code-legacy/ 2022-03-22 ~ Deux techniques de base pour le code Legacy
+=> https://blog.octo.com/application-domain-infrastructure-des-mots-de-la-layered-hexagonal-clean-architecture/ 2020-09-15 ~ Application / Domain / Infrastructure : des mots de la ??? Architecture ?
+=> https://blog.octo.com/architecture-hexagonale-trois-principes-et-un-exemple-dimplementation/ 2018-07-17 ~ Architecture Hexagonale : trois principes et un exemple d’implémentation

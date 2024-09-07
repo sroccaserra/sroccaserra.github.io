@@ -8,6 +8,7 @@ src="${1:?'Missing source file name.'}"
 title="$(article_title "$src")"
 
 html_header "$title"
-html_contents "$src"
+up_to "## Articles" "$src" | tail +3 | ${CONVERT}
 bash scripts/toc.sh | ${CONVERT}
+after "## Articles" "$src" | ${CONVERT}
 html_footer
