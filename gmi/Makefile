@@ -1,6 +1,10 @@
 ###############################################################################
 # Config
 
+MAKEFLAGS += --warn-undefined-variables
+SHELL := /usr/bin/bash
+.SHELLFLAGS := -eu -o pipefail -c
+
 BUILD := build
 CONVERT_TO_HTML := ../gemtext_to_html/build/gemtext_to_html
 
