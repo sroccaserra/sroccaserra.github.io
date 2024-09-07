@@ -44,7 +44,9 @@ build/gemtext_to_html_test: src/gemtext_to_html_test.c
 build/gemtext_to_html_test: $(MAIN_DEPENDENCIES)
 build/gemtext_to_html_test: src/testing.h
 build/gemtext_to_html_test: | build
-	cc $(CFLAGS) -o "$@" "$<" $(MAIN_C_FILES)
+	@echo -n building "$@"...
+	@cc $(CFLAGS) -o "$@" "$<" $(MAIN_C_FILES)
+	@echo ✅
 
 build/text_test: src/text_test.c
 build/text_test: src/text.c
@@ -52,7 +54,9 @@ build/text_test: src/text.h
 build/text_test: src/arena.c
 build/text_test: src/arena.h
 build/text_test: | build
-	cc $(CFLAGS) -o "$@" "$<" src/arena.c src/text.c
+	@echo -n building "$@"...
+	@cc $(CFLAGS) -o "$@" "$<" src/arena.c src/text.c
+	@echo ✅
 
 .PHONY: mem_check
 mem_check:
