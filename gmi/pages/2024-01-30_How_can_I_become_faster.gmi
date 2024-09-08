@@ -1,5 +1,5 @@
 -- date: 2024-01-30
--- title: How can I become faster?
+# How can I become faster?
 
 I recently saw a request that looked like this in a conversation:
 

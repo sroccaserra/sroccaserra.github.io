@@ -1,5 +1,5 @@
 -- date: 2023-05-29
--- title: NewCrafts Paris 2023 ~ Laurent Bossavit
+# NewCrafts Paris 2023 ~ Laurent Bossavit
 
 Les 25 et 26 mai, j'ai assisté à la conférence NewCrafts Paris 2023. C'était
 chouette de revoir plein de monde au même endroit ! Il y avait aussi des

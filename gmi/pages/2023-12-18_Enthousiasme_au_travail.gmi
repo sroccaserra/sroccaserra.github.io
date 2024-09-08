@@ -1,5 +1,5 @@
 -- date: 2023-12-18
--- title: Enthousiasme au travail
+# Enthousiasme au travail
 
 Quand j'ai la chance de travailler avec des équipes qui suivent un process
 léger (agile ?) parce qu'elles l'ont choisi, mon ressenti est que ces personnes

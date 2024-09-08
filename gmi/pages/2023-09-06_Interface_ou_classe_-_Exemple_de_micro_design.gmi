@@ -1,5 +1,5 @@
 -- date: 2023-09-06
--- title: Interface ou classe ? Exemple de micro design
+# Interface ou classe ? Exemple de micro design
 
 Aujourd'hui j'ai feuilleté Implementation Patterns de Kent Beck, et ça m'a remis en mémoire quelques détails utiles, comme à chaque fois.
 

@@ -9,8 +9,8 @@ function check_header_line() {
 
     if [[ "${PREFIX}" != `echo "${LINE}" | cut -d':' -f1` ]]
     then
-        echo Line not found: \""${PREFIX}": ...\"
-        echo Check spelling and position?
+        >&2 echo Line not found: \""${PREFIX}": ...\"
+        >&2 echo Check spelling and position?
         exit 1
     fi
 }
@@ -28,9 +28,14 @@ function article_title() {
     local IN_FILE=${1:?'Missing filename'}
 
     local LINE=`sed '2q;d' "${IN_FILE}"`
-    check_header_line 'title' "${LINE}"
+    local PREFIX="${LINE:0:2}"
+    if [[ '# ' != "${PREFIX}" ]]
+    then
+        >&2 echo Title not found.
+        exit 1
+    fi
 
-    echo ${LINE} | sed 's/-- [-_a-zA-Z0-9]*: //'
+    echo ${LINE:2}
 }
 
 function up_to () {

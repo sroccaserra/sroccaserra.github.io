@@ -1,5 +1,5 @@
 -- date: 2023-05-21
--- title: Écrire un générateur de site statique simple
+# Écrire un générateur de site statique simple
 
 J'en avais assez de publier mes textes persos sur dev.to, où je restais
 parce-que je ne savais pas vraiment où publier sans trop m'embêter. Comme j'ai

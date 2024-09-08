@@ -1,5 +1,5 @@
 -- date: 2023-05-18
--- title: Numérique et accords de Paris
+# Numérique et accords de Paris
 
 Cette semaine j'ai été intéressé par un article du Monde (voir liens) dans
 lequel on trouve que pour respecter les accords de Paris, il faudrait réduire
