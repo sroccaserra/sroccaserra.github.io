@@ -184,6 +184,12 @@ enum line_type line_type_for(char *line) {
     return TEXT;
 }
 
+void append(struct arena *a, char *s, int size) {
+        char *pos = arena_top(a);
+        arena_push(a, size);
+        strncpy(pos, s, size);
+}
+
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
 #define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
 
@@ -197,29 +203,17 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
     char *result = arena_top(a);
 
     if (is_starting_type(LIST_ITEM, state, line_type)) {
-        int prefix_size = 5;
-        arena_push(a, prefix_size);
-        strncpy(result, "<ul>\n", prefix_size);
+        append(a, "<ul>\n", 5);
     } else if (is_ending_type(LIST_ITEM, state, line_type)) {
-        int prefix_size = 6;
-        arena_push(a, prefix_size);
-        strncpy(result, "</ul>\n", prefix_size);
+        append(a, "</ul>\n", 6);
     } else if (is_starting_type(QUOTE, state, line_type)) {
-        int prefix_size = 13;
-        arena_push(a, prefix_size);
-        strncpy(result, "<blockquote>\n", prefix_size);
+        append(a, "<blockquote>\n", 13);
     } else if (is_ending_type(QUOTE, state, line_type)) {
-        int prefix_size = 14;
-        arena_push(a, prefix_size);
-        strncpy(result, "</blockquote>\n", prefix_size);
+        append(a, "</blockquote>\n", 14);
     } else if (is_starting_type(LINK, state, line_type)) {
-        int prefix_size = 5;
-        arena_push(a, prefix_size);
-        strncpy(result, "<ul>\n", prefix_size);
+        append(a, "<ul>\n", 5);
     } else if (is_ending_type(LINK, state, line_type)) {
-        int prefix_size = 6;
-        arena_push(a, prefix_size);
-        strncpy(result, "</ul>\n", prefix_size);
+        append(a, "</ul>\n", 6);
     }
 
     switch (line_type) {
