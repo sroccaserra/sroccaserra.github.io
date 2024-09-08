@@ -12,6 +12,13 @@
 // x quote line
 // x preformated toggle line
 // x render links as list items
+// o use <p> tags for text blocks.
+//   - the plan:
+//     - a single long line is rendered as a <p> without <br/>
+//     - inside a <p>, several lines are rendered as several lines using <br/>
+//   - When entering text, start with "<p>\nthefirstline"
+//   - All next lines start with "<br/>\nthenextlines"
+//   - When leaving text, end with "\n</p>\n"
 // o if a link is local to an image, generate an img tag
 
 ///////////////////////////////////////////////////////////////////////////////
