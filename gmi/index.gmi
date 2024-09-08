@@ -1,5 +1,5 @@
--- title: Apprendre + Équipe = Programmes
 -- date:
+-- title: Apprendre + Équipe = Programmes
 
 Des notes sur ce que j'observe dans les métiers liés à la conception de logiciels.
 

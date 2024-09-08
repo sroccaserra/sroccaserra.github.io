@@ -1,5 +1,5 @@
--- title: Quelques réflexions sur le métier de consultant
 -- date: 2024-06-26
+-- title: Quelques réflexions sur le métier de consultant
 
 Depuis que j'ai rejoint OCTO Technology en 2015, quand je me présente professionnellement je dis que je suis "consultant". Avant ça, j'ai travaillé 15 ans chez des éditeurs de logiciels et je me présentais comme "programmeur".
 

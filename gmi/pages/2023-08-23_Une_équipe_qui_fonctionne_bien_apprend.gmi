@@ -1,5 +1,5 @@
--- title: Une équipe qui fonctionne bien apprend
 -- date: 2023-08-23
+-- title: Une équipe qui fonctionne bien apprend
 
 Comme beaucoup de personnes dont le métier est en partie de résoudre des problèmes, j’ai tendance à… justement, chercher les problèmes. Chercher ce qui ne fonctionne pas, chercher ce à quoi je pourrais bien m’attaquer.
 

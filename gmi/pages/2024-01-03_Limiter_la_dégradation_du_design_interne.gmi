@@ -1,5 +1,5 @@
--- title: Limiter la dégradation du design interne
 -- date: 2024-01-03
+-- title: Limiter la dégradation du design interne
 
 Dans mes conversations, j'ai souvent besoin de donner une vision claire
 de choses qui font partie de "la programmation" à des personnes de

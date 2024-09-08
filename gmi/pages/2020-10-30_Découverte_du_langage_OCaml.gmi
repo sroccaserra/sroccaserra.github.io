@@ -1,5 +1,5 @@
--- title: Découverte du langage OCaml
 -- date: 2020-10-30
+-- title: Découverte du langage OCaml
 
 Cette semaine j'avais envie d'explorer un nouveau langage. Je souhaitais avoir un typage fort et des fonctions currifiées par défaut : j'ai essayé OCaml, et j'ai été agréablement surpris.
 

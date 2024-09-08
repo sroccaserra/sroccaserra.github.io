@@ -1,5 +1,5 @@
--- title: L'IA générative : pas encore une révolution ?
 -- date: 2024-06-10
+-- title: L'IA générative : pas encore une révolution ?
 
 Quand je lis des articles ou que j’entends des interviews sur l’IA générative qui mettent en avant "le potentiel" de cette technologie, je ne suis pas convaincu. Pour moi c'est un marqueur des technologies faiblement intéressantes.
 

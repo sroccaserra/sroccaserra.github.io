@@ -1,5 +1,5 @@
--- title: Cycle de vie et abstraction
 -- date: 2024-02-13
+-- title: Cycle de vie et abstraction
 
 Je refais un peu de C++ en feuilletant la troisième édition de "A Tour of C++",
 et j'aime bien. C'est amusant, car j'ai fait beaucoup de C++ en début de

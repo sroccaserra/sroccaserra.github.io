@@ -1,5 +1,5 @@
--- title: Injection de Dépendances
 -- date: 2024-04-11
+-- title: Injection de Dépendances
 
 <!--
 L'interface permet d'avoir une signature qui ne dépend pas du framework,

@@ -15,20 +15,20 @@ function check_header_line() {
     fi
 }
 
-function article_title() {
+function article_date() {
     local IN_FILE=${1:?'Missing filename'}
 
     local LINE=`sed '1q;d' "${IN_FILE}"`
-    check_header_line 'title' "${LINE}"
+    check_header_line 'date' "${LINE}"
 
     echo ${LINE} | sed 's/-- [-_a-zA-Z0-9]*: //'
 }
 
-function article_date() {
+function article_title() {
     local IN_FILE=${1:?'Missing filename'}
 
     local LINE=`sed '2q;d' "${IN_FILE}"`
-    check_header_line 'date' "${LINE}"
+    check_header_line 'title' "${LINE}"
 
     echo ${LINE} | sed 's/-- [-_a-zA-Z0-9]*: //'
 }
