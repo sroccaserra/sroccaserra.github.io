@@ -12,13 +12,7 @@
 // x quote line
 // x preformated toggle line
 // x render links as list items
-// o use <p> tags for text blocks.
-//   - the plan:
-//     - a single long line is rendered as a <p> without <br/>
-//     - inside a <p>, several lines are rendered as several lines using <br/>
-//   - When entering text, start with "<p>\nthefirstline"
-//   - All next lines start with "<br/>\nthenextlines"
-//   - When leaving text, end with "\n</p>\n"
+// x use <p> tags for text blocks.
 // o if a link is local to an image, generate an img tag
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -29,7 +23,7 @@ void test_an_empty_line_of_text(void) {
     struct convert_state state = {0};
     char *line = "";
     char *result = convert(a, &state, line);
-    assert_equals("<br/>", result);
+    assert_equals("", result);
     arena_discard(a);
 }
 
@@ -38,7 +32,7 @@ void test_a_line_of_text(void) {
     struct convert_state state = {0};
     char *line = "a line of text";
     char *result = convert(a, &state, line);
-    assert_equals("a line of text<br/>", result);
+    assert_equals("<p>\na line of text", result);
     arena_discard(a);
 }
 
@@ -47,7 +41,7 @@ void test_a_line_of_text_with_an_amp(void) {
     struct convert_state state = {0};
     char *line = "this & that";
     char *result = convert(a, &state, line);
-    assert_equals("this &amp; that<br/>", result);
+    assert_equals("<p>\nthis &amp; that", result);
     arena_discard(a);
 }
 
@@ -56,7 +50,7 @@ void test_a_line_of_text_with_two_amps(void) {
     struct convert_state state = {0};
     char *line = "good && bad";
     char *result = convert(a, &state, line);
-    assert_equals("good &amp;&amp; bad<br/>", result);
+    assert_equals("<p>\ngood &amp;&amp; bad", result);
     arena_discard(a);
 }
 
@@ -65,7 +59,7 @@ void test_a_line_of_text_with_an_lt(void) {
     struct convert_state state = {0};
     char *line = "1 < 2";
     char *result = convert(a, &state, line);
-    assert_equals("1 &lt; 2<br/>", result);
+    assert_equals("<p>\n1 &lt; 2", result);
     arena_discard(a);
 }
 
@@ -74,7 +68,79 @@ void test_a_line_of_text_with_a_gt(void) {
     struct convert_state state = {0};
     char *line = "1 > 2";
     char *result = convert(a, &state, line);
-    assert_equals("1 &gt; 2<br/>", result);
+    assert_equals("<p>\n1 &gt; 2", result);
+    arena_discard(a);
+}
+
+void test_a_paragraph_of_text_after_a_heading(void) {
+    char *input[4] = {
+        "# Title",
+        "",
+        "some text",
+        "",
+    };
+
+    char *expected[4] = {
+        "<h1>Title</h1>",
+        "",
+        "<p>\nsome text",
+        "</p>\n",
+    };
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+
+    assert_equals(expected[0], convert(a, &state, input[0]));
+    assert_equals(expected[1], convert(a, &state, input[1]));
+    assert_equals(expected[2], convert(a, &state, input[2]));
+    assert_equals(expected[3], convert(a, &state, input[3]));
+
+    arena_discard(a);
+}
+
+void test_a_paragraph_of_two_lines_of_text_after_a_heading(void) {
+    char *input[5] = {
+        "# Title",
+        "",
+        "first line",
+        "second line",
+        "",
+    };
+
+    char *expected[5] = {
+        "<h1>Title</h1>",
+        "",
+        "<p>\nfirst line",
+        "<br/>\nsecond line",
+        "</p>\n",
+    };
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+
+    assert_equals(expected[0], convert(a, &state, input[0]));
+    assert_equals(expected[1], convert(a, &state, input[1]));
+    assert_equals(expected[2], convert(a, &state, input[2]));
+    assert_equals(expected[3], convert(a, &state, input[3]));
+    assert_equals(expected[4], convert(a, &state, input[4]));
+
+    arena_discard(a);
+}
+
+void test_a_blockquote_after_a_paragraph_of_text(void) {
+    char *input[2] = {
+        "first line",
+        "> quote",
+    };
+
+    char *expected[5] = {
+        "<p>\nfirst line",
+        "<p/>\n<blockquote>quote",
+    };
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+
+    assert_equals(expected[0], convert(a, &state, input[0]));
+    assert_equals(expected[1], convert(a, &state, input[1]));
+
     arena_discard(a);
 }
 
@@ -136,7 +202,7 @@ void test_a_text_line_after_a_link(void) {
 
     char *line = "a text line";
     char *result = convert(a, &state, line);
-    assert_equals("</ul>\na text line<br/>", result);
+    assert_equals("</ul>\n<p>\na text line", result);
     arena_discard(a);
 }
 
@@ -194,7 +260,7 @@ void test_a_text_line_after_a_list_item(void) {
 
     char *line = "a text line";
     char *result = convert(a, &state, line);
-    assert_equals("</ul>\na text line<br/>", result);
+    assert_equals("</ul>\n<p>\na text line", result);
 
     arena_discard(a);
 }
@@ -207,7 +273,7 @@ void test_an_opening_quote(void) {
     struct convert_state state = {0};
     char *line = "> quote";
     char *result = convert(a, &state, line);
-    assert_equals("<blockquote>\nquote<br/>", result);
+    assert_equals("<blockquote>\nquote", result);
     arena_discard(a);
 }
 
@@ -219,7 +285,7 @@ void test_a_quote(void) {
 
     char *line = "> quote 2";
     char *result = convert(a, &state, line);
-    assert_equals("quote 2<br/>", result);
+    assert_equals("<br/>\nquote 2", result);
 
     arena_discard(a);
 }
@@ -230,11 +296,11 @@ void test_quotes_without_space(void) {
 
     char *previous_line = ">quote 1";
     char *result = convert(a, &state, previous_line);
-    assert_equals("<blockquote>\nquote 1<br/>", result);
+    assert_equals("<blockquote>\nquote 1", result);
 
     char *line = ">quote 2";
     result = convert(a, &state, line);
-    assert_equals("quote 2<br/>", result);
+    assert_equals("<br/>\nquote 2", result);
 
     arena_discard(a);
 }
@@ -247,7 +313,7 @@ void test_a_closing_quote(void) {
 
     char *line = "a non quote line";
     char *result = convert(a, &state, line);
-    assert_equals("</blockquote>\na non quote line<br/>", result);
+    assert_equals("</blockquote>\n<p>\na non quote line", result);
 
     arena_discard(a);
 }
@@ -311,6 +377,8 @@ int main(void) {
     test_a_link_with_a_description();
     test_a_second_link();
     test_a_text_line_after_a_link();
+    test_a_paragraph_of_text_after_a_heading();
+    test_a_paragraph_of_two_lines_of_text_after_a_heading();
     TEST_END;
 
     TEST_BEGIN(MODULE":heading");

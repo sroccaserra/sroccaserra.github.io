@@ -8,6 +8,7 @@
 enum line_type {
     NONE,
     TEXT,
+    EMPTY_LINE,
     HEADING,
     LINK,
     LIST_ITEM,

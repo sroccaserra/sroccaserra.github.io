@@ -70,12 +70,15 @@ static char *text_to_html(struct arena *a, char *line) {
         input.pos += input.size;
         cursor += output.size;
     }
-    arena_push(a, 5);
-    strncpy(cursor, "<br/>", 5);
-    cursor += 5;
     int size = cursor - result;
     result[size] = '\0';
 
+    return result;
+}
+
+char *empty_line(struct arena *a) {
+    char *result = arena_push(a, 1);
+    *result = '\0';
     return result;
 }
 
@@ -168,7 +171,12 @@ char *preformated_end(struct arena *a) {
     return result;
 }
 
-enum line_type line_type_for(char *line) {
+static bool is_empty(char *line) {
+    char *start = line + strspn(line, SPACES);
+    return '\0' == *start;
+}
+
+static enum line_type line_type_for(char *line) {
     if (is_link(line)) {
         return LINK;
     } else if (is_heading(line)) {
@@ -179,6 +187,8 @@ enum line_type line_type_for(char *line) {
         return QUOTE;
     } else if (is_preformated_toggle(line)) {
         return PREFORMATED_TOGGLE;
+    } else if (is_empty(line)) {
+        return EMPTY_LINE;
     }
 
     return TEXT;
@@ -202,18 +212,35 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
 
     char *result = arena_top(a);
 
-    if (is_starting_type(LIST_ITEM, state, line_type)) {
-        append(a, "<ul>\n", 5);
+    if (is_ending_type(TEXT, state, line_type)) {
+        append(a, "</p>\n", 5);
     } else if (is_ending_type(LIST_ITEM, state, line_type)) {
         append(a, "</ul>\n", 6);
-    } else if (is_starting_type(QUOTE, state, line_type)) {
-        append(a, "<blockquote>\n", 13);
     } else if (is_ending_type(QUOTE, state, line_type)) {
         append(a, "</blockquote>\n", 14);
-    } else if (is_starting_type(LINK, state, line_type)) {
-        append(a, "<ul>\n", 5);
     } else if (is_ending_type(LINK, state, line_type)) {
         append(a, "</ul>\n", 6);
+    }
+
+
+    if (is_starting_type(TEXT, state, line_type)) {
+        append(a, "<p>\n", 4);
+    } else if (TEXT == line_type) {
+        append(a, "<br/>\n", 6);
+    }
+
+    if (is_starting_type(LIST_ITEM, state, line_type)) {
+        append(a, "<ul>\n", 5);
+    }
+
+    if (is_starting_type(QUOTE, state, line_type)) {
+        append(a, "<blockquote>\n", 13);
+    } else if (QUOTE == line_type) {
+        append(a, "<br/>\n", 6);
+    }
+
+    if (is_starting_type(LINK, state, line_type)) {
+        append(a, "<ul>\n", 5);
     }
 
     switch (line_type) {
@@ -244,6 +271,9 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         case TEXT:
             text_to_html(a, line);
             break;
+        case EMPTY_LINE:
+            empty_line(a);
+            break;
         default:
             assert(false);
     }
@@ -263,10 +293,13 @@ void close_pending_tags(enum line_type last_line_type) {
         case QUOTE:
             printf("</blockquote>\n");
             break;
+        case TEXT:
+            printf("</p>\n");
+            break;
         case HEADING:
         case NONE:
         case PREFORMATED_TOGGLE:
-        case TEXT:
+        case EMPTY_LINE:
             break;
         default:
             assert(false);
