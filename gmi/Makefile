@@ -29,7 +29,7 @@ $(BUILD_HTML)/pages/%.html: pages/%.gmi | $(BUILD_HTML)/pages
 		  > "$@"
 
 $(BUILD_GMI)/pages/%.gmi: pages/%.gmi | $(BUILD_GMI)/pages
-	tail +3 "$<" > "$@"
+	tail +2 "$<" > "$@"
 
 $(BUILD_HTML):
 	mkdir -p "$@"
@@ -50,9 +50,7 @@ $(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
 		  > "$@"
 
 $(BUILD_GMI)/index.gmi: index.gmi | $(BUILD_GMI)
-	head -1 layout.gmi > "$@"
-	tail +5 layout.gmi >> "$@"
-	tail +3 "$<" | sed -n '0,/## Articles/p' >> "$@"
+	tail +2 "$<" | sed -n '0,/## Articles/p' > "$@"
 	bash scripts/toc.sh >> "$@"
 	sed '0,/## Articles/d' "$<" >> "$@"
 
