@@ -13,7 +13,6 @@ Et c'est proche d'un autre dicton, qu'on retrouve dans les mondes Unix et Extrem
 
 > Make it work, make it right, make it fast.
 
-
 Voilà ce que ce dicton, "do the right thing, do the thing right" évoque pour moi en général, et que j'ai pris le temps de noter à cette occasion.
 
 En effet, si on observe beaucoup de projets où on n'a pas le temps de penser à "do the thing right", on peut se demander si ce dicton est une bonne chose, et s'inquiéter que si on s'arrête au milieu du gué, on ne prendra pas le temps de faire "the thing right".
