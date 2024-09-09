@@ -4,14 +4,14 @@
 #include "arena.h"
 #include "astring.h"
 
-struct astring *astring_init(struct arena *a, char *cstr) {
+struct astring *astring_init(struct arena *a, const char *cstr) {
     struct astring *result = arena_push(a, sizeof(struct astring));
     result->size = strlen(cstr);
     result->items = cstr;
     return result;
 }
 
-struct astring *astring_init_ln(struct arena *a, char *cstr, int size) {
+struct astring *astring_init_ln(struct arena *a, const char *cstr, int size) {
     struct astring *result = arena_push(a, sizeof(struct astring));
     result->size = size;
     result->items = cstr;

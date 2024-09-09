@@ -85,9 +85,9 @@ char *empty_line(struct arena *a) {
 // Could be made configurable, or arena could be injected, or made static
 #define ARENA_SIZE_FOR_LINKS 128
 
-#define LINK_PRE "<li><a href=\""
-#define LINK_MID "\">"
-#define LINK_SUF "</a></li>"
+const char LINK_PRE[] = "<li><a href=\"";
+const char LINK_MID[] = "\">";
+const char LINK_SUF[] = "</a></li>";
 
 static char *link_to_a(struct arena *a, char *line) {
     struct arena *tmp = arena_init(ARENA_SIZE_FOR_LINKS);

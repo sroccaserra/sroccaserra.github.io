@@ -16,11 +16,11 @@
 
 struct astring {
     int size;
-    char *items;
+    const char *items;
 };
 
-struct astring *astring_init(struct arena *a, char *cstr);
-struct astring *astring_init_ln(struct arena *a, char *cstr, int size);
+struct astring *astring_init(struct arena *a, const char *cstr);
+struct astring *astring_init_ln(struct arena *a, const char *cstr, int size);
 
 void astring_set_cstr(struct astring *self, char *cstr);
 void astring_set_cstr_ln(struct astring *self, char *cstr, int size);
