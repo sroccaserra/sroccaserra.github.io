@@ -12,4 +12,6 @@ void *arena_push(struct arena *a, size_t size);
 void arena_pop(struct arena *a, size_t size);
 size_t arena_used(struct arena *a);
 
+void arena_append(struct arena *a, const char *s, int size);
+
 #endif

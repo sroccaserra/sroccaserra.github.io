@@ -9,12 +9,6 @@
 #include "arena.h"
 #include "gemtext_to_html.h"
 
-void arena_append(struct arena *a, const char *s, int size) {
-        char *pos = arena_top(a);
-        arena_push(a, size);
-        strncpy(pos, s, size);
-}
-
 static bool is_link(char *line) {
     return starts_with(line, "=>");
 }

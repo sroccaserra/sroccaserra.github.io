@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct arena {
     size_t capacity;
@@ -50,4 +51,10 @@ void arena_pop(struct arena *a, size_t size) {
 
 size_t arena_used(struct arena *a) {
     return a->used;
+}
+
+void arena_append(struct arena *a, const char *s, int size) {
+        char *pos = arena_top(a);
+        arena_push(a, size);
+        strncpy(pos, s, size);
 }
