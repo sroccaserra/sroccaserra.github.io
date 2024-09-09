@@ -7,8 +7,13 @@
 
 #include "text.h"
 #include "arena.h"
-#include "astring.h"
 #include "gemtext_to_html.h"
+
+void arena_append(struct arena *a, const char *s, int size) {
+        char *pos = arena_top(a);
+        arena_push(a, size);
+        strncpy(pos, s, size);
+}
 
 static bool is_link(char *line) {
     return starts_with(line, "=>");
@@ -82,49 +87,34 @@ char *empty_line(struct arena *a) {
     return result;
 }
 
-// Could be made configurable, or arena could be injected, or made static
-#define ARENA_SIZE_FOR_LINKS 128
-
-const char LINK_PRE[] = "<li><a href=\"";
-const char LINK_MID[] = "\">";
-const char LINK_SUF[] = "</a></li>";
+static const char LINK_PRE[] = "<li><a href=\"";
+static const char LINK_MID[] = "\">";
+static const char LINK_SUF[] = "</a></li>";
 
 static char *link_to_a(struct arena *a, char *line) {
-    struct arena *tmp = arena_init(ARENA_SIZE_FOR_LINKS);
+    char *result = arena_top(a);
 
     char *url_start = line + 2;
     url_start += strspn(url_start, SPACES);
     int url_size = strcspn(url_start, SPACES);
-    struct astring *url = astring_init_ln(tmp, url_start, url_size);
 
-    struct astring *description;
-    {
-        char *description_start = url_start + url_size;
-        description_start += strspn(description_start, SPACES);
-        int description_size = strlen(description_start);
-        if (description_size == 0) {
-            description = url;
-        } else {
-            description = astring_init_ln(tmp, description_start, description_size);
-        }
+    char *description_start = url_start + url_size;
+    description_start += strspn(description_start, SPACES);
+    int description_size = strlen(description_start);
+    if (description_size == 0) {
+        description_start = url_start;
+        description_size = url_size;
     }
 
-    int size = sizeof(LINK_PRE)-1 + url->size + sizeof(LINK_MID)-1 + description->size + sizeof(LINK_SUF)-1;
-    char *result = arena_push(a, size + 1);
-    {
-        struct astring *link_pre = astring_init(tmp, LINK_PRE);
-        struct astring *link_mid = astring_init(tmp, LINK_MID);
-        struct astring *link_suf = astring_init(tmp, LINK_SUF);
-        char *cstr = result;
-        cstr += astring_sprint(link_pre, cstr);
-        cstr += astring_sprint(url, cstr);
-        cstr += astring_sprint(link_mid, cstr);
-        cstr += astring_sprint(description, cstr);
-        cstr += astring_sprint(link_suf, cstr);
-        result[size] = '\0';
-    }
+    arena_append(a, LINK_PRE, sizeof(LINK_PRE) - 1);
+    arena_append(a, url_start, url_size);
+    arena_append(a, LINK_MID, sizeof(LINK_MID) - 1);
+    arena_append(a, description_start, description_size);
+    arena_append(a, LINK_SUF, sizeof(LINK_SUF) - 1);
 
-    arena_discard(tmp);
+    int size = (char *)arena_top(a) - result ;
+    result[size] = '\0';
+
     return result;
 }
 
@@ -187,12 +177,6 @@ static enum line_type line_type_for(char *line) {
     }
 
     return TEXT;
-}
-
-void arena_append(struct arena *a, char *s, int size) {
-        char *pos = arena_top(a);
-        arena_push(a, size);
-        strncpy(pos, s, size);
 }
 
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)

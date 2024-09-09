@@ -8,8 +8,6 @@ MAIN_DEPENDENCIES := src/gemtext_to_html.c \
 					 src/gemtext_to_html.h \
 					 src/arena.c \
 					 src/arena.h \
-					 src/astring.c \
-					 src/astring.h \
 					 src/text.c \
 					 src/text.h
 MAIN_C_FILES := $(filter %.c,$(MAIN_DEPENDENCIES))
