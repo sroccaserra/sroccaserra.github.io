@@ -109,12 +109,12 @@ static char *link_to_a(struct arena *a, char *line) {
         }
     }
 
-    struct astring *link_pre = astring_init(tmp, LINK_PRE);
-    struct astring *link_mid = astring_init(tmp, LINK_MID);
-    struct astring *link_suf = astring_init(tmp, LINK_SUF);
-    int size = link_pre->size + url->size + link_mid->size + description->size + link_suf->size;
+    int size = sizeof(LINK_PRE)-1 + url->size + sizeof(LINK_MID)-1 + description->size + sizeof(LINK_SUF)-1;
     char *result = arena_push(a, size + 1);
     {
+        struct astring *link_pre = astring_init(tmp, LINK_PRE);
+        struct astring *link_mid = astring_init(tmp, LINK_MID);
+        struct astring *link_suf = astring_init(tmp, LINK_SUF);
         char *cstr = result;
         cstr += astring_sprint(link_pre, cstr);
         cstr += astring_sprint(url, cstr);
