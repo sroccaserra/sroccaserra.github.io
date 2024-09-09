@@ -34,7 +34,7 @@ struct text_chunk {
     char *pos;
 };
 
-static char *text_to_html(struct arena *a, char *line) {
+static void text_to_html(struct arena *a, char *line) {
     char *result = arena_top(a);
 
     struct text_chunk input;
@@ -71,21 +71,18 @@ static char *text_to_html(struct arena *a, char *line) {
     }
     int size = cursor - result;
     result[size] = '\0';
-
-    return result;
 }
 
-char *empty_line(struct arena *a) {
+static void empty_line(struct arena *a) {
     char *result = arena_push(a, 1);
     *result = '\0';
-    return result;
 }
 
 static const char LINK_PRE[] = "<li><a href=\"";
 static const char LINK_MID[] = "\">";
 static const char LINK_SUF[] = "</a></li>";
 
-static char *link_to_a(struct arena *a, char *line) {
+static void link_to_a(struct arena *a, char *line) {
     char *result = arena_top(a);
 
     char *url_start = line + 2;
@@ -108,8 +105,6 @@ static char *link_to_a(struct arena *a, char *line) {
 
     int size = (char *)arena_top(a) - result ;
     result[size] = '\0';
-
-    return result;
 }
 
 static void link_to_img(struct arena *a, char *line) {
@@ -126,7 +121,7 @@ static void link_to_img(struct arena *a, char *line) {
     result[size] = '\0';
 }
 
-char *heading_to_html(struct arena *a, char *line) {
+static void heading_to_html(struct arena *a, char *line) {
     char *result = arena_top(a);
     int level = strspn(line, "#");
     assert(1 <= level);
@@ -136,37 +131,33 @@ char *heading_to_html(struct arena *a, char *line) {
     int size = sprintf(result, "<h%d>%s</h%d>", level, start, level);
     arena_push(a, size+1);
     result[size] = '\0';
-    return result;
 }
 
-char *list_item_to_html(struct arena *a, char *line) {
+static void list_item_to_html(struct arena *a, char *line) {
     char *result = arena_top(a);
     char *start = line+strspn(line, "*");
     start += strspn(start, SPACES);
     int size = sprintf(result, "<li>%s</li>", start);
     arena_push(a, size+1);
     result[size] = '\0';
-    return result;
 }
 
-char *quote_to_html(struct arena *a, char *line) {
+static void quote_to_html(struct arena *a, char *line) {
     char *start = line + 1;
     start += strspn(start, SPACES);
-    return text_to_html(a, start);
+    text_to_html(a, start);
 }
 
-char *preformated_begin(struct arena *a) {
+static void preformated_begin(struct arena *a) {
     int output_size = 6;
     char *result = arena_push(a, output_size);
     strncpy(result, "<pre>", output_size);
-    return result;
 }
 
-char *preformated_end(struct arena *a) {
+static void preformated_end(struct arena *a) {
     int output_size = 7;
     char *result = arena_push(a, output_size);
     strncpy(result, "</pre>", output_size);
-    return result;
 }
 
 static enum line_type line_type_for(char *line) {
@@ -275,7 +266,7 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
     return result;
 }
 
-void close_pending_tags(enum line_type last_line_type) {
+static void close_pending_tags(enum line_type last_line_type) {
     switch (last_line_type) {
         case LINK:
             printf("</ul>\n");
