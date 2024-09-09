@@ -16,6 +16,11 @@ bool starts_with(char *text, char *prefix) {
     return false;
 }
 
+bool is_empty(char *line) {
+    char *start = line + strspn(line, SPACES);
+    return '\0' == *start;
+}
+
 #define check_errno(str) do { \
     if(errno) {               \
         perror(str);          \

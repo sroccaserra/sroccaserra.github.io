@@ -171,11 +171,6 @@ char *preformated_end(struct arena *a) {
     return result;
 }
 
-static bool is_empty(char *line) {
-    char *start = line + strspn(line, SPACES);
-    return '\0' == *start;
-}
-
 static enum line_type line_type_for(char *line) {
     if (is_link(line)) {
         return LINK;
