@@ -189,7 +189,7 @@ static enum line_type line_type_for(char *line) {
     return TEXT;
 }
 
-void append(struct arena *a, char *s, int size) {
+void arena_append(struct arena *a, char *s, int size) {
         char *pos = arena_top(a);
         arena_push(a, size);
         strncpy(pos, s, size);
@@ -208,34 +208,34 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
     char *result = arena_top(a);
 
     if (is_ending_type(TEXT, state, line_type)) {
-        append(a, "</p>\n", 5);
+        arena_append(a, "</p>\n", 5);
     } else if (is_ending_type(LIST_ITEM, state, line_type)) {
-        append(a, "</ul>\n", 6);
+        arena_append(a, "</ul>\n", 6);
     } else if (is_ending_type(QUOTE, state, line_type)) {
-        append(a, "</blockquote>\n", 14);
+        arena_append(a, "</blockquote>\n", 14);
     } else if (is_ending_type(LINK, state, line_type)) {
-        append(a, "</ul>\n", 6);
+        arena_append(a, "</ul>\n", 6);
     }
 
 
     if (is_starting_type(TEXT, state, line_type)) {
-        append(a, "<p>\n", 4);
+        arena_append(a, "<p>\n", 4);
     } else if (TEXT == line_type) {
-        append(a, "<br/>\n", 6);
+        arena_append(a, "<br/>\n", 6);
     }
 
     if (is_starting_type(LIST_ITEM, state, line_type)) {
-        append(a, "<ul>\n", 5);
+        arena_append(a, "<ul>\n", 5);
     }
 
     if (is_starting_type(QUOTE, state, line_type)) {
-        append(a, "<blockquote>\n", 13);
+        arena_append(a, "<blockquote>\n", 13);
     } else if (QUOTE == line_type) {
-        append(a, "<br/>\n", 6);
+        arena_append(a, "<br/>\n", 6);
     }
 
     if (is_starting_type(LINK, state, line_type)) {
-        append(a, "<ul>\n", 5);
+        arena_append(a, "<ul>\n", 5);
     }
 
     switch (line_type) {
