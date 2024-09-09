@@ -171,7 +171,7 @@ char *preformated_end(struct arena *a) {
 
 static enum line_type line_type_for(char *line) {
     if (is_link(line)) {
-        if (ends_with(line, ".png")) {
+        if (ends_with(line, ".png") || ends_with(line, ".jpg") || ends_with(line, ".jpeg")) {
             return LINK_TO_IMAGE;
         }
         return LINK;

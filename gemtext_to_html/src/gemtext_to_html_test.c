@@ -197,14 +197,22 @@ void test_a_text_line_after_a_link(void) {
     arena_discard(a);
 }
 
-void test_a_link_to_a_local_image(void) {
+void test_a_link_to_a_png_or_jpeg_image(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+
     char *link_line = "=> /images/example.png";
-
     char *result = convert(a, &state, link_line);
-
     assert_equals("<img src=\"/images/example.png\" />", result);
+
+    link_line = "=> /images/example.jpg";
+    result = convert(a, &state, link_line);
+    assert_equals("<img src=\"/images/example.jpg\" />", result);
+
+    link_line = "=> /images/example.jpeg";
+    result = convert(a, &state, link_line);
+    assert_equals("<img src=\"/images/example.jpeg\" />", result);
+
     arena_discard(a);
 }
 
@@ -381,7 +389,7 @@ int main(void) {
     test_a_text_line_after_a_link();
     test_a_paragraph_of_text_after_a_heading();
     test_a_paragraph_of_two_lines_of_text_after_a_heading();
-    test_a_link_to_a_local_image();
+    test_a_link_to_a_png_or_jpeg_image();
     TEST_END;
 
     TEST_BEGIN(MODULE":heading");
