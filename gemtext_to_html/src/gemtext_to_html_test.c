@@ -126,20 +126,11 @@ void test_a_paragraph_of_two_lines_of_text_after_a_heading(void) {
 }
 
 void test_a_blockquote_after_a_paragraph_of_text(void) {
-    char *input[2] = {
-        "first line",
-        "> quote",
-    };
-
-    char *expected[5] = {
-        "<p>\nfirst line",
-        "<p/>\n<blockquote>quote",
-    };
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
 
-    assert_equals(expected[0], convert(a, &state, input[0]));
-    assert_equals(expected[1], convert(a, &state, input[1]));
+    assert_equals("<p>\nfirst line", convert(a, &state, "first line"));
+    assert_equals("<p/>\n<blockquote>quote", convert(a, &state, "> a quote"));
 
     arena_discard(a);
 }
