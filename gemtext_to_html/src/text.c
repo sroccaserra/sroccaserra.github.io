@@ -16,6 +16,15 @@ bool starts_with(char *text, char *prefix) {
     return false;
 }
 
+bool ends_with(char *text, char *suffix) {
+    if (text && suffix) {
+        int text_size = strlen(text);
+        int suffix_size = strlen(suffix);
+        return 0 == strcmp(text+text_size - suffix_size, suffix);
+    }
+    return false;
+}
+
 bool is_empty(char *line) {
     char *start = line + strspn(line, SPACES);
     return '\0' == *start;

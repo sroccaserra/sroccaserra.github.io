@@ -9,6 +9,7 @@
 #define SPACES " \f\n\r\t\v"
 
 bool starts_with(char *text, char *prefix);
+bool ends_with(char *text, char *suffix);
 bool is_empty(char *line);
 
 long slurp(struct arena *a, FILE *file, char **ptext);
