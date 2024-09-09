@@ -13,7 +13,7 @@ C'est top d'avoir un langage curly brackets qui soit typé statiquement et qu'on
 
 Go est un langage typé statiquement, ce qui fait qu'on a beaucoup de feedback en temps réel sur son code, impossible d'oublier un paramètre dans un appel de fonction ou de passer un paramètre du mauvais type par exemple. Ça va plus loin, car s'il y a une variable déclarée mais non inutilisée, le programme ne compile pas. J'apprécie, ça aide à la rigueur.
 
-<pre>
+```
 <b>func</b> solve_01_1(numbers []<b>int</b>) <b>int</b> {
 	previous := huge
 	result := 0
@@ -25,7 +25,7 @@ Go est un langage typé statiquement, ce qui fait qu'on a beaucoup de feedback e
 	}
 	<b>return</b> result
 }
-</pre>
+```
 
 Ci-dessus on peut observer la signature de la fonction, `func solve_01_1(numbers []int) int`, qui prend en entrée une liste d'entiers (`[]int`) et qui renvoit un entier (`int`). Du classique.
 
@@ -35,7 +35,7 @@ On peut observer aussi le mécanisme d'inférence de type à la déclaration des
 
 Le système de generics a l'air bien, j'ai pu m'en servir assez intuitivement.
 
-<pre>
+```
 ///
 // Declaration
 
@@ -53,7 +53,7 @@ Le système de generics a l'air bien, j'ai pu m'en servir assez intuitivement.
 func GetInputInts() []<b>int</b> {
 	return GetParsedLines(ParseInt)
 }
-</pre>
+```
 
 Ci dessus on peut observer une utilisation des generics, avec la définition d'une fonction `GetParsedLines()` paramétrable, et son utilisation avec deux types différents dans `GetInputLines()` et `GetInputInts()`.
 
@@ -71,10 +71,10 @@ C'est un langage typé statiquement qu'on peut lancer très facilement en ligne 
 
 Le langage est petit, on peut lire une grosse partie de la doc sans se faire trop mal, j'apprécie beaucoup les petits langages (Scheme, Lua, Smalltalk ❤️). La contrepartie c'est qu'il peut manquer certaines choses dont on a l'habitude.
 
-- Pas de `try` / `catch`, on récupère les erreurs en sortie de fonctions un peu comme en C
-- Les collections sont limitées (pas de set ni de tuple par exemple, un peu comme en Lua - mais : on a quand même droit à une heap et une liste doublement chaînée en plus des maps et tableaux dynamiques)
-- Pas de `map` / `reduce` / `filter` génériques out of the box. Il y a bien quelques personnes qui tentent de fournir des genres de libs équivalentes à LoDash mais si j'ai bien compris les devs Go préfèrent tout faire à coup de boucles `for` (voir le premier exemple ci-dessus), et pourquoi pas, on assume la simplicité des briques de base et un côté impératif.
-- Pas d’héritage (mais du polymorphisme avec les interfaces)
+* Pas de `try` / `catch`, on récupère les erreurs en sortie de fonctions un peu comme en C
+* Les collections sont limitées (pas de set ni de tuple par exemple, un peu comme en Lua - mais : on a quand même droit à une heap et une liste doublement chaînée en plus des maps et tableaux dynamiques)
+* Pas de `map` / `reduce` / `filter` génériques out of the box. Il y a bien quelques personnes qui tentent de fournir des genres de libs équivalentes à LoDash mais si j'ai bien compris les devs Go préfèrent tout faire à coup de boucles `for` (voir le premier exemple ci-dessus), et pourquoi pas, on assume la simplicité des briques de base et un côté impératif.
+* Pas d’héritage (mais du polymorphisme avec les interfaces)
 
 Encore une fois, l’avantage de ces omissions c’est que le langage reste petit, et avec un peu de créativité on s’en sort. Tant que j'ai des tableaux dynamiques, des hashmap et des fonctions du premier ordre je peux travailler en général.
 
@@ -108,19 +108,19 @@ J'en ressors avec l'impression qu'avec un peu plus d'expérience je pourrais tr�
 
 Pour aller plus loin, plein de docs :
 
-- Documentation ~ <https://go.dev/doc/>
-- A Tour of Go ~ <https://go.dev/tour/list>
-- Using Go Modules ~ <https://go.dev/blog/using-go-modules>
-- How to Write Go Code ~ <https://go.dev/doc/code>
-- The Go Programming Language Specification ~ <https://go.dev/ref/spec>
-- Go Modules Reference ~ <https://go.dev/ref/mod>
-- Standard Library ~ <https://pkg.go.dev/std>
-- Frequently Asked Questions (FAQ) ~ <https://go.dev/doc/faq>
-- Error Handling and Go ~ <https://go.dev/blog/error-handling-and-go>
+=> https://go.dev/doc/ Documentation
+=> https://go.dev/tour/list A Tour of Go
+=> https://go.dev/blog/using-go-modules Using Go Modules
+=> https://go.dev/doc/code How to Write Go Code
+=> https://go.dev/ref/spec The Go Programming Language Specification
+=> https://go.dev/ref/mod Go Modules Reference
+=> https://pkg.go.dev/std Standard Library
+=> https://go.dev/doc/faq Frequently Asked Questions (FAQ)
+=> https://go.dev/blog/error-handling-and-go Error Handling and Go
 
 Outils :
 
-- gopls ~ <https://pkg.go.dev/golang.org/x/tools/gopls>
+=> https://pkg.go.dev/golang.org/x/tools/gopls gopls
 
 ## Random
 

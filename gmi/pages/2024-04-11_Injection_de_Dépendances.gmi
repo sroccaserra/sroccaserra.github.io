@@ -61,13 +61,13 @@ Les parties en gras font le lien d'un bout de code à l'autre.
 <i>@* src/Commerce.Web/Views/Home/Index.cshtml *@</i>
 @model FeaturedProductsViewModel
 
-<h2>Featured Products</h2>
-<ul>
+&lt;h2>Featured Products&lt;/h2>
+&lt;ul>
     @foreach (<b>ProductViewModel</b> product in this.Model.Products)
     {
-        <li><b>@product.SummaryText</b></li>
+        &lt;li><b>@product.SummaryText</b>&lt;/li>
     }
-</ul>
+&lt;/ul>
 ```
 
 Ci dessus, on voit qu'on itère sur des `ProductViewModel` pour afficher leur `SummaryText`. Je note aussi la notion de _ViewModel_ : c'est un modèle dédié à la vue. Comme on l'a vu dans la liste de Featured Products affichée ci-dessus, ces `SummaryText` montrent un nom et un prix. Voyons d'où viennent ces informations.
@@ -138,7 +138,7 @@ Le `IProductService` est ici ce qu'on appelle parfois un *Application Service*. 
 <i>// src/Commerce.Domain/IProductService.cs</i>
 public interface IProductService
 {
-    <b>IEnumerable<DiscountedProduct> GetFeaturedProducts()</b>;
+    <b>IEnumerable&lt;DiscountedProduct> GetFeaturedProducts()</b>;
 }
 ```
 
@@ -164,7 +164,7 @@ public class ProductService : IProductService
         this.userContext = userContext;
     }
 
-    public IEnumerable<DiscountedProduct> <b>GetFeaturedProducts</b>()
+    public IEnumerable&lt;DiscountedProduct> <b>GetFeaturedProducts</b>()
     {
         return
             from product in this.repository
