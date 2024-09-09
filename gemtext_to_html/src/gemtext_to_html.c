@@ -112,6 +112,20 @@ static char *link_to_a(struct arena *a, char *line) {
     return result;
 }
 
+static void link_to_img(struct arena *a, char *line) {
+    char *result = arena_top(a);
+    arena_append(a, "<img src=\"", 10);
+
+    char *url_start = line + 2;
+    url_start += strspn(url_start, SPACES);
+    int url_size = strcspn(url_start, SPACES);
+    arena_append(a, url_start, url_size);
+
+    arena_append(a, "\" />", 4);
+    int size = (char *)arena_top(a) - result ;
+    result[size] = '\0';
+}
+
 char *heading_to_html(struct arena *a, char *line) {
     char *result = arena_top(a);
     int level = strspn(line, "#");
@@ -157,6 +171,9 @@ char *preformated_end(struct arena *a) {
 
 static enum line_type line_type_for(char *line) {
     if (is_link(line)) {
+        if (ends_with(line, ".png")) {
+            return LINK_TO_IMAGE;
+        }
         return LINK;
     } else if (is_heading(line)) {
         return HEADING;
@@ -223,6 +240,9 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
         case LINK:
             link_to_a(a, line);
             break;
+        case LINK_TO_IMAGE:
+            link_to_img(a, line);
+            break;
         case HEADING:
             heading_to_html(a, line);
             break;
@@ -269,6 +289,7 @@ void close_pending_tags(enum line_type last_line_type) {
         case TEXT:
             printf("</p>\n");
             break;
+        case LINK_TO_IMAGE:
         case HEADING:
         case NONE:
         case PREFORMATED_TOGGLE:

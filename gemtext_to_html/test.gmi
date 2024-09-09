@@ -21,3 +21,4 @@ int some_preformated_text(int a, int b) {
 ## Some links
 
 => http://example.com An example
+=> /images/test.png

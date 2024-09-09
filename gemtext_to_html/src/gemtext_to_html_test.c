@@ -13,7 +13,7 @@
 // x preformated toggle line
 // x render links as list items
 // x use <p> tags for text blocks.
-// o if a link is local to an image, generate an img tag
+// x if a link is local to an image, generate an img tag
 
 ///////////////////////////////////////////////////////////////////////////////
 // Text
@@ -197,6 +197,17 @@ void test_a_text_line_after_a_link(void) {
     arena_discard(a);
 }
 
+void test_a_link_to_a_local_image(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    char *link_line = "=> /images/example.png";
+
+    char *result = convert(a, &state, link_line);
+
+    assert_equals("<img src=\"/images/example.png\" />", result);
+    arena_discard(a);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Heading
 
@@ -370,6 +381,7 @@ int main(void) {
     test_a_text_line_after_a_link();
     test_a_paragraph_of_text_after_a_heading();
     test_a_paragraph_of_two_lines_of_text_after_a_heading();
+    test_a_link_to_a_local_image();
     TEST_END;
 
     TEST_BEGIN(MODULE":heading");

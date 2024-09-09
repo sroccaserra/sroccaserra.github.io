@@ -11,6 +11,7 @@ enum line_type {
     EMPTY_LINE,
     HEADING,
     LINK,
+    LINK_TO_IMAGE,
     LIST_ITEM,
     QUOTE,
     PREFORMATED_TOGGLE,
