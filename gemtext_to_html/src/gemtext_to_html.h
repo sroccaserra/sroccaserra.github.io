@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #include "arena.h"
+#include "options.h"
 
 enum line_type {
     NONE,
@@ -22,7 +23,7 @@ struct convert_state {
     enum line_type previous_line_type;
 };
 
-char *convert(struct arena *a, struct convert_state *state, char *line);
-void convert_input(struct arena *a, char *input, int file_size);
+char *convert(struct arena *a, struct options *o, struct convert_state *state, char *line);
+void convert_input(struct arena *a, struct options *o, char *input, int file_size);
 
 #endif

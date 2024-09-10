@@ -107,9 +107,15 @@ static void link_to_a(struct arena *a, char *line) {
     result[size] = '\0';
 }
 
-static void link_to_img(struct arena *a, char *line) {
+static void link_to_img(struct arena *a, char *img_class, char *line) {
     char *result = arena_top(a);
-    arena_append(a, "<img src=\"", 10);
+    arena_append(a, "<img ", 5);
+    if (img_class) {
+        arena_append(a, "class=\"", 7);
+        arena_append(a, img_class, strlen(img_class));
+        arena_append(a, "\" ", 2);
+    }
+    arena_append(a, "src=\"", 5);
 
     char *url_start = line + 2;
     url_start += strspn(url_start, SPACES);
@@ -184,7 +190,7 @@ static enum line_type line_type_for(char *line) {
 #define is_starting_type(type, state, line_type) (type != state->previous_line_type && type == line_type)
 #define is_ending_type(type, state, line_type) (type == state->previous_line_type && type != line_type)
 
-char *convert(struct arena *a, struct convert_state *state, char *line) {
+char *convert(struct arena *a, struct options *o, struct convert_state *state, char *line) {
     enum line_type line_type = line_type_for(line);
 
     if (state->is_in_preformated_mode && line_type != PREFORMATED_TOGGLE) {
@@ -232,7 +238,7 @@ char *convert(struct arena *a, struct convert_state *state, char *line) {
             link_to_a(a, line);
             break;
         case LINK_TO_IMAGE:
-            link_to_img(a, line);
+            link_to_img(a, o->img_class, line);
             break;
         case HEADING:
             heading_to_html(a, line);
@@ -291,14 +297,14 @@ static void close_pending_tags(enum line_type last_line_type) {
     }
 }
 
-void convert_input(struct arena *a, char *input, int file_size) {
+void convert_input(struct arena *a, struct options *o, char *input, int file_size) {
     int total_bytes_seen = 0;
     char *line = input;
     struct convert_state state = {0};
     while (total_bytes_seen < file_size) {
         int line_size = strcspn(line, "\n");
         line[line_size] = '\0';
-        printf("%s\n", convert(a, &state, line));
+        printf("%s\n", convert(a, o, &state, line));
         line += line_size + 1;
         total_bytes_seen += line_size + 1;
     }

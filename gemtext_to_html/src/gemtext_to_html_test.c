@@ -1,4 +1,6 @@
 #include "testing.h"
+#include "arena.h"
+#include "options.h"
 #include "gemtext_to_html.h"
 
 // x text line
@@ -21,8 +23,9 @@
 void test_an_empty_line_of_text(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("", result);
     arena_discard(a);
 }
@@ -30,8 +33,9 @@ void test_an_empty_line_of_text(void) {
 void test_a_line_of_text(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "a line of text";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<p>\na line of text", result);
     arena_discard(a);
 }
@@ -39,8 +43,9 @@ void test_a_line_of_text(void) {
 void test_a_line_of_text_with_an_amp(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "this & that";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<p>\nthis &amp; that", result);
     arena_discard(a);
 }
@@ -48,8 +53,9 @@ void test_a_line_of_text_with_an_amp(void) {
 void test_a_line_of_text_with_two_amps(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "good && bad";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<p>\ngood &amp;&amp; bad", result);
     arena_discard(a);
 }
@@ -57,8 +63,9 @@ void test_a_line_of_text_with_two_amps(void) {
 void test_a_line_of_text_with_an_lt(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "1 < 2";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<p>\n1 &lt; 2", result);
     arena_discard(a);
 }
@@ -66,8 +73,9 @@ void test_a_line_of_text_with_an_lt(void) {
 void test_a_line_of_text_with_a_gt(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "1 > 2";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<p>\n1 &gt; 2", result);
     arena_discard(a);
 }
@@ -88,11 +96,12 @@ void test_a_paragraph_of_text_after_a_heading(void) {
     };
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
 
-    assert_equals(expected[0], convert(a, &state, input[0]));
-    assert_equals(expected[1], convert(a, &state, input[1]));
-    assert_equals(expected[2], convert(a, &state, input[2]));
-    assert_equals(expected[3], convert(a, &state, input[3]));
+    assert_equals(expected[0], convert(a, &options, &state, input[0]));
+    assert_equals(expected[1], convert(a, &options, &state, input[1]));
+    assert_equals(expected[2], convert(a, &options, &state, input[2]));
+    assert_equals(expected[3], convert(a, &options, &state, input[3]));
 
     arena_discard(a);
 }
@@ -115,12 +124,13 @@ void test_a_paragraph_of_two_lines_of_text_after_a_heading(void) {
     };
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
 
-    assert_equals(expected[0], convert(a, &state, input[0]));
-    assert_equals(expected[1], convert(a, &state, input[1]));
-    assert_equals(expected[2], convert(a, &state, input[2]));
-    assert_equals(expected[3], convert(a, &state, input[3]));
-    assert_equals(expected[4], convert(a, &state, input[4]));
+    assert_equals(expected[0], convert(a, &options, &state, input[0]));
+    assert_equals(expected[1], convert(a, &options, &state, input[1]));
+    assert_equals(expected[2], convert(a, &options, &state, input[2]));
+    assert_equals(expected[3], convert(a, &options, &state, input[3]));
+    assert_equals(expected[4], convert(a, &options, &state, input[4]));
 
     arena_discard(a);
 }
@@ -128,9 +138,10 @@ void test_a_paragraph_of_two_lines_of_text_after_a_heading(void) {
 void test_a_blockquote_after_a_paragraph_of_text(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
 
-    assert_equals("<p>\nfirst line", convert(a, &state, "first line"));
-    assert_equals("<p/>\n<blockquote>quote", convert(a, &state, "> a quote"));
+    assert_equals("<p>\nfirst line", convert(a, &options, &state, "first line"));
+    assert_equals("<p/>\n<blockquote>quote", convert(a, &options, &state, "> a quote"));
 
     arena_discard(a);
 }
@@ -141,8 +152,9 @@ void test_a_blockquote_after_a_paragraph_of_text(void) {
 void test_a_link_without_description_1(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "=> https://example.com";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<ul>\n<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
@@ -150,8 +162,9 @@ void test_a_link_without_description_1(void) {
 void test_a_link_without_description_2(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "=> https://geminiprotocol.net";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<ul>\n<li><a href=\"https://geminiprotocol.net\">https://geminiprotocol.net</a></li>", result);
     arena_discard(a);
 }
@@ -159,8 +172,9 @@ void test_a_link_without_description_2(void) {
 void test_a_link_without_description_without_space(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "=>https://example.com";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<ul>\n<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
@@ -168,8 +182,9 @@ void test_a_link_without_description_without_space(void) {
 void test_a_link_with_a_description(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "=> https://example.com An example";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<ul>\n<li><a href=\"https://example.com\">An example</a></li>", result);
     arena_discard(a);
 }
@@ -177,10 +192,11 @@ void test_a_link_with_a_description(void) {
 void test_a_second_link(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "=> https://example.com";
-    convert(a, &state, line);
+    convert(a, &options, &state, line);
 
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<li><a href=\"https://example.com\">https://example.com</a></li>", result);
     arena_discard(a);
 }
@@ -188,11 +204,12 @@ void test_a_second_link(void) {
 void test_a_text_line_after_a_link(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *link_line = "=> https://example.com";
-    convert(a, &state, link_line);
+    convert(a, &options, &state, link_line);
 
     char *line = "a text line";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("</ul>\n<p>\na text line", result);
     arena_discard(a);
 }
@@ -200,20 +217,31 @@ void test_a_text_line_after_a_link(void) {
 void test_a_link_to_a_png_or_jpeg_image(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
 
     char *link_line = "=> /images/example.png";
-    char *result = convert(a, &state, link_line);
+    char *result = convert(a, &options, &state, link_line);
     assert_equals("<img src=\"/images/example.png\" />", result);
 
     link_line = "=> /images/example.jpg";
-    result = convert(a, &state, link_line);
+    result = convert(a, &options, &state, link_line);
     assert_equals("<img src=\"/images/example.jpg\" />", result);
 
     link_line = "=> /images/example.jpeg";
-    result = convert(a, &state, link_line);
+    result = convert(a, &options, &state, link_line);
     assert_equals("<img src=\"/images/example.jpeg\" />", result);
 
     arena_discard(a);
+}
+
+void test_a_link_to_an_image_with_class_option(void) {
+    struct arena *a = arena_init(256);
+    struct convert_state state = {0};
+    struct options options = {.img_class="center"};
+
+    char *link_line = "=> /images/example.png";
+    char *result = convert(a, &options, &state, link_line);
+    assert_equals("<img class=\"center\" src=\"/images/example.png\" />", result);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -222,8 +250,9 @@ void test_a_link_to_a_png_or_jpeg_image(void) {
 void test_a_heading_line(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "# Section 1";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<h1>Section 1</h1>", result);
     arena_discard(a);
 }
@@ -231,8 +260,9 @@ void test_a_heading_line(void) {
 void test_a_heading_line_without_space(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "###Section 3";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<h3>Section 3</h3>", result);
     arena_discard(a);
 }
@@ -243,8 +273,9 @@ void test_a_heading_line_without_space(void) {
 void test_an_opening_list_item(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "* item 1";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<ul>\n<li>item 1</li>", result);
     arena_discard(a);
 }
@@ -252,11 +283,12 @@ void test_an_opening_list_item(void) {
 void test_a_list_item(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *previous_line = "* item 1";
-    convert(a, &state, previous_line);
+    convert(a, &options, &state, previous_line);
 
     char *line = "* item 2";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<li>item 2</li>", result);
 
     arena_discard(a);
@@ -265,11 +297,12 @@ void test_a_list_item(void) {
 void test_a_text_line_after_a_list_item(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *list_item = "* list item";
-    convert(a, &state, list_item);
+    convert(a, &options, &state, list_item);
 
     char *line = "a text line";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("</ul>\n<p>\na text line", result);
 
     arena_discard(a);
@@ -281,8 +314,9 @@ void test_a_text_line_after_a_list_item(void) {
 void test_an_opening_quote(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "> quote";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<blockquote>\nquote", result);
     arena_discard(a);
 }
@@ -290,11 +324,12 @@ void test_an_opening_quote(void) {
 void test_a_quote(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *previous_line = "> quote 1";
-    convert(a, &state, previous_line);
+    convert(a, &options, &state, previous_line);
 
     char *line = "> quote 2";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<br/>\nquote 2", result);
 
     arena_discard(a);
@@ -303,13 +338,14 @@ void test_a_quote(void) {
 void test_quotes_without_space(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
 
     char *previous_line = ">quote 1";
-    char *result = convert(a, &state, previous_line);
+    char *result = convert(a, &options, &state, previous_line);
     assert_equals("<blockquote>\nquote 1", result);
 
     char *line = ">quote 2";
-    result = convert(a, &state, line);
+    result = convert(a, &options, &state, line);
     assert_equals("<br/>\nquote 2", result);
 
     arena_discard(a);
@@ -318,11 +354,12 @@ void test_quotes_without_space(void) {
 void test_a_closing_quote(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *previous_line = "> quote";
-    convert(a, &state, previous_line);
+    convert(a, &options, &state, previous_line);
 
     char *line = "a non quote line";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("</blockquote>\n<p>\na non quote line", result);
 
     arena_discard(a);
@@ -334,8 +371,9 @@ void test_a_closing_quote(void) {
 void test_entering_preformated_mode(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *line = "```";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("<pre>", result);
     arena_discard(a);
 }
@@ -343,15 +381,16 @@ void test_entering_preformated_mode(void) {
 void test_adding_preformated_text(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *previous_line = "```";
-    convert(a, &state, previous_line);
+    convert(a, &options, &state, previous_line);
 
     char *line = "int f(int a, int b) {";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("int f(int a, int b) {", result);
 
     line = "    return 1 && 2;";
-    result = convert(a, &state, line);
+    result = convert(a, &options, &state, line);
     assert_equals("    return 1 && 2;", result);
 
     arena_discard(a);
@@ -360,10 +399,11 @@ void test_adding_preformated_text(void) {
 void test_leaving_preformated_mode(void) {
     struct arena *a = arena_init(256);
     struct convert_state state = {0};
+    struct options options = {0};
     char *previous_line = "```";
-    convert(a, &state, previous_line);
+    convert(a, &options, &state, previous_line);
     char *line = "```";
-    char *result = convert(a, &state, line);
+    char *result = convert(a, &options, &state, line);
     assert_equals("</pre>", result);
     arena_discard(a);
 }
@@ -390,6 +430,7 @@ int main(void) {
     test_a_paragraph_of_text_after_a_heading();
     test_a_paragraph_of_two_lines_of_text_after_a_heading();
     test_a_link_to_a_png_or_jpeg_image();
+    test_a_link_to_an_image_with_class_option();
     TEST_END;
 
     TEST_BEGIN(MODULE":heading");
