@@ -48,6 +48,7 @@ $(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
 		  bash scripts/build_index.sh "$<" \
 		  | sed 's/\.gmi"/\.html"/g' \
 		  > "$@"
+	sed -i'' 's/<li>\([^>]\+>\)\([0-9-]\+ \~ \)/<li>\2\1/' build_html/index.html
 
 $(BUILD_GMI)/index.gmi: index.gmi | $(BUILD_GMI)
 	tail +2 "$<" | sed -n '0,/## Articles/p' > "$@"
