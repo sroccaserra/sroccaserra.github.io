@@ -28,7 +28,7 @@ Ce que j'ai me semble suffisant :
 * La liste des articles est générée automatiquement.
 * J'écris mes articles en markdown basique (pas de fioritures => le script markdown original de 18 ko suffit, c'est stable depuis 2004, pas de fancy générateur de 150+ Mo qui fait le café).
 * La dépendance vers markdown est facile à annuler : je peux revenir à du HTML pur en quelques minutes en utilisant les pages générées.
-* Pour le code, la balise `<pre>` plus quelques balises `<b>` pour mettre en valeur une ou deux choses suffisent largement à mes besoins, pas besoin de syntax highlighter.
+* Pour le code, la balise `&lt;pre>` plus quelques balises `&lt;b>` pour mettre en valeur une ou deux choses suffisent largement à mes besoins, pas besoin de syntax highlighter.
 * Pour visualiser mes changements j'utilise le Python installé par défaut pour démarrer un serveur HTTP local (un one-liner, voir Makefile).
 * J'héberge le site statique sur GitHub Pages, pour un développeur ça me paraît largement suffisant.
 

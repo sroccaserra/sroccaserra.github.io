@@ -7,9 +7,6 @@
 #include "options.h"
 #include "text.h"
 
-// Could be made configurable, to avoid having to rebuild for big files
-#define ARENA_SIZE 1000000
-
 int parse_options(int argc, char **argv, struct options *options) {
     int nb_args = 0;
     char opt;
@@ -27,6 +24,9 @@ int parse_options(int argc, char **argv, struct options *options) {
     }
     return nb_args;
 }
+
+// Could be made configurable, to avoid having to rebuild for big files
+#define ARENA_SIZE 1000000
 
 int main(int argc, char **argv) {
     int max_args = 2;
