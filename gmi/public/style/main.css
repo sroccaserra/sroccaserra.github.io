@@ -39,6 +39,13 @@ img.pixel, canvas.pixel {
     image-rendering: crisp-edges;
 }
 
+img.rss_sticker {
+    vertical-align: middle;
+    width: 16px;
+    height: auto;
+    content: url('/images/rss.png')
+}
+
 pre {
     background-color: #393939;
     color: white;

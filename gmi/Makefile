@@ -48,8 +48,12 @@ $(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
 		  bash scripts/build_index.sh "$<" \
 		  | sed 's/\.gmi"/\.html"/g' \
 		  > "$@"
-	sed -i'' 's/<li>\([^>]\+>\)\([0-9-]\+ \~ \)/<li>\2\1/' $(BUILD_HTML)/index.html
-	awk 'NR==1,/<ul>/{sub(/<ul>/, "<ul class=\"banner\">")} 1' $(BUILD_HTML)/index.html > $(BUILD_HTML)/tmp.html
+	sed -i'' 's/<li>\([^>]\+>\)\([0-9-]\+ \~ \)/<li>\2\1/' \
+		$(BUILD_HTML)/index.html
+	sed -i'' 's/>RSS</>RSS <img class="pixel rss_sticker" \/></' \
+		$(BUILD_HTML)/index.html
+	awk 'NR==1,/<ul>/{sub(/<ul>/, "<ul class=\"banner\">")} 1' \
+		$(BUILD_HTML)/index.html > $(BUILD_HTML)/tmp.html
 	mv $(BUILD_HTML)/{tmp,index}.html
 
 $(BUILD_GMI)/index.gmi: index.gmi | $(BUILD_GMI)
