@@ -1,0 +1,98 @@
+-- date: 2023-09-07
+# Quelques bonnes références classiques sur TDD
+
+Suite à des conversations avec des collègues, voilà la liste des refs classiques sur TDD (Test-Driven Development) auxquelles je me réfère souvent. Super pour s’inspirer et approfondir le sujet.
+
+Note : il y en a d’autres, si vous avez de bonnes refs classiques passez les moi 🙏
+
+=> https://mastodon.social/@sroccaserra @sroccaserra
+
+## Livres
+
+### Test-Driven Development: By Example
+
+
+Super introduction de Kent Beck, "the" référence.
+
+=> https://www.goodreads.com/book/show/387190.Test_Driven_Development
+
+### Unit Test Patterns: Refactoring Test Code
+
+* Gros pavé
+* Énormément de patterns de références
+* Toutes les astuces classiques y sont ?
+
+=> https://www.goodreads.com/book/show/337302.xUnit_Test_Patterns
+=> http://xunitpatterns.com/ Version gratuite en html
+
+### Growing Object-Oriented Software, Guided by Tests
+
+* Un super exemple de dev en TDD
+* Comment récupérer du feedback rapidement
+* Plein de conseils sur l'écriture des test, par ex. un chapitre "Test Flexibility"
+* En bonus, des principes de programmation orientée objet ~ Tell don't ask, Follow the Messages, ...
+* A popularisé l'idée de mocks ~ ni trop, ni trop peu : si vous avez trop de mocks c'est que vous ne suivez pas les conseils de ce livre
+
+* Don't mock values
+* Only mock types that you own
+* Allow Queries; Expect Commands
+
+=> https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests
+
+## Articles
+
+### Discussion "TestDrivenDevelopment" sur c2.com, "the" wiki
+
+=> http://wiki.c2.com/?TestDrivenDevelopment
+
+### Article "UnitTest" sur le bliki de Martin Fowler
+
+=> https://martinfowler.com/bliki/UnitTest.html
+
+### Don't Mock What You Don't Own
+
+=> https://github.com/testdouble/contributing-tests/wiki/Don%27t-mock-what-you-don%27t-own
+
+Pourquoi il n'est pas recommandé de mocker ce qui ne nous appartient pas, et que faire à la place.
+
+Voir aussi :
+
+=> https://8thlight.com/insights/thats-not-yours That's Not Yours
+
+### Mocks for Commands, Stubs for Queries
+
+* Explication détaillée du principe _Allow Queries; Expect Commands_ trouvé dans le livre Growing Object-Oriented Software
+
+=> https://blog.ploeh.dk/2013/10/23/mocks-for-commands-stubs-for-queries/ 
+
+### You Don't Hate Mocks; You Hate Side-Effects
+
+Un bon exemple / explication du lien mock / side effect et comment faire évoluer notre design en écoutant ce que dit le code.
+
+=> https://blog.thecodewhisperer.com/permalink/you-dont-hate-mocks-you-hate-side-effects
+
+## Vidéos
+
+### Rails Conf 2013: The Magic Tricks of Testing by Sandi Metz
+
+* Explication de critères pour décider quoi tester, quoi ne pas tester, pourquoi et comment
+* J'utilise très souvent le tableau montré dans la conf, qui résume très bien l'ensemble
+* Regardez la conf pour bien comprendre le tableau :
+
+```
+   Message   |     Query     |              Command
+-------------+---------------+-----------------------------------
+Incoming     | Assert result | Assert direct public side effects
+Sent to self | Ignore        | Ignore
+Outgoing     | Ignore        | Expect to send
+```
+
+=> https://www.youtube.com/watch?v=URSWYvyc42M
+
+### Présentation d'Outside-In TDD par l'exemple (Sandro Mancuso)
+
+3 vidéos de 30 mn chacune :
+
+=> https://www.youtube.com/watch?v=XHnuMjah6ps Outside In TDD part I
+=> https://www.youtube.com/watch?v=gs0rqDdz3ko Outside In TDD part II
+=> https://www.youtube.com/watch?v=R9OAt9AOrzI Outside In TDD part III

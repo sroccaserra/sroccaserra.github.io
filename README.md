@@ -21,6 +21,15 @@ Quelques détails techniques :
 - Pour visualiser mes changements, j'utilise Python, installé aussi par défaut,
   pour démarrer un serveur HTTP local.
 
+### Work In Progress
+
+Les répertoires `gmi` et `gemtext_to_html` contiennent le portage des articles
+de Markdown vers gemtext et les outils nécessaires pour publier ce blog en
+Gemini et HTTP.
+
+Plan : supprimer les fichiers de la racine (sauf `gemtext_to_html`) et y mettre
+le contenu du répertoire `gmi`.
+
 ### Références
 
 Inspirations pour coder ce site le plus simplement possible :
