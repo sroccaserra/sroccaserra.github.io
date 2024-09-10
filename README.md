@@ -18,8 +18,10 @@ Quelques détails techniques :
 - La liste des articles dans l'index est générée automatiquement.
 - La liste des items dans le fichier rss.xml est générée automatiquement.
 - Tapper `make` suffit pour mettre à jour tout ce qui doit l'être.
-- Pour visualiser mes changements, j'utilise Python, installé aussi par défaut,
-  pour démarrer un serveur HTTP local.
+- Le site peut être publié en version HTML/HTTP avec la target `publish_html`,
+  et en version gemtext/Gemini avec la target `publish_gmi`.
+- Optionel : pour visualiser mes changements, j'utilise Python, installé aussi
+  par défaut, pour démarrer un serveur HTTP local.
 
 ### Références
 
