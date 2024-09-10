@@ -1,48 +1,27 @@
 -- date: 2023-05-14
 # Savoir construire ses outils
 
-Parfois, face à une situation nouvelle que je ne comprends pas, j’ai besoin de
-voir le problème sous un autre angle. Dans ces conditions, je suis content
-d’utiliser tous les outils que j’ai déjà. Et parfois, quand mes outils
-habituels ne sont pas adaptés, savoir fabriquer très vite un nouvel outil
-spécifique à la situation est très utile.
+Parfois, face à une situation nouvelle que je ne comprends pas, j’ai besoin de voir le problème sous un autre angle. Dans ces conditions, je suis content d’utiliser tous les outils que j’ai déjà. Et parfois, quand mes outils habituels ne sont pas adaptés, savoir fabriquer très vite un nouvel outil spécifique à la situation est très utile.
 
-Voici le dernier exemple en date, où j’ai eu besoin de visualiser des
-événements sur un axe temporel pour les corréler et chercher des patterns.
+Voici le dernier exemple en date, où j’ai eu besoin de visualiser des événements sur un axe temporel pour les corréler et chercher des patterns.
 
-Dans ma mission actuelle, nous avons eu besoin d’établir une connexion VPN
-entre un serveur applicatif et un serveur SMTP pour envoyer des emails. Et nous
-avons détecté que cette connexion était défectueuse régulièrement, car environ
-un email sur dix ne partait pas : le serveur applicatif n’arrivait pas à
-joindre le serveur SMTP.
+Dans ma mission actuelle, nous avons eu besoin d’établir une connexion VPN entre un serveur applicatif et un serveur SMTP pour envoyer des emails. Et nous avons détecté que cette connexion était défectueuse régulièrement, car environ un email sur dix ne partait pas : le serveur applicatif n’arrivait pas à joindre le serveur SMTP.
 
-Autre point important : sur ce projet on n’a pas encore pris le temps ni le
-budget de s’outiller sur l’analyse de logs, avec des outils du marché comme
-Datadog par exemple. Ces outils fonctionnent très bien et je les recommande,
-mais nous ne les avons pas encore sous la main, d’où cette démarche un peu plus
-rustique.
+Autre point important : sur ce projet on n’a pas encore pris le temps ni le budget de s’outiller sur l’analyse de logs, avec des outils du marché comme Datadog par exemple. Ces outils fonctionnent très bien et je les recommande, mais nous ne les avons pas encore sous la main, d’où cette démarche un peu plus rustique.
 
-Voilà la démarche que j’ai suivie pour rendre visible les patterns de perte de
-connexion :
+Voilà la démarche que j’ai suivie pour rendre visible les patterns de perte de connexion :
 
-- activer les logs de ping VPN
-- extraire des logs de ping les événements qui m’intéressent
-- dessiner un graph avec tous ces événements
+* activer les logs de ping VPN
+* extraire des logs de ping les événements qui m’intéressent
+* dessiner un graph avec tous ces événements
 
 ## Exploration des logs
 
-Une connexion VPN, pour se maintenir, envoie à interval régulier des pings
-entre client et serveur. J’ai activé les logs de ces pings du point de vue de
-mon serveur applicatif. J’ai donc dans mes logs des pings envoyés et des pings
-reçus.
+Une connexion VPN, pour se maintenir, envoie à interval régulier des pings entre client et serveur. J’ai activé les logs de ces pings du point de vue de mon serveur applicatif. J’ai donc dans mes logs des pings envoyés et des pings reçus.
 
-Ces logs sont très verbeux, ils contiennent beaucoup d’information. En plissant
-les yeux, on peut voir dans ces lignes des lignes `RECEIVED PING PACKET` et
-`SENT PING`. On peut voire aussi des lignes `Inactivity timeout` et
-`ping-restart`&nbsp;: ce sont les lignes qui montrent le problème, le
-redémarrage fréquent de la connexion VPN qui causait les pertes d’emails.
+Ces logs sont très verbeux, ils contiennent beaucoup d’information. En plissant les yeux, on peut voir dans ces lignes des lignes `RECEIVED PING PACKET` et `SENT PING`. On peut voire aussi des lignes `Inactivity timeout` et `ping-restart` : ce sont les lignes qui montrent le problème, le redémarrage fréquent de la connexion VPN qui causait les pertes d’emails.
 
-<pre>
+```
 2023-05-12 17:21:28.999239998 +0200 CEST [web-1] 2023-05-12 15:21:28 us=359574 UDP WRITE [41] to [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
 2023-05-12 17:21:28.999245803 +0200 CEST [web-1] 2023-05-12 15:21:28 us=364929 UDP READ [41] from [AF_INET]12.34.56.789:1194: P_DATA_V2 kid=0 DATA len=40
 2023-05-12 17:21:28.999246770 +0200 CEST [web-1] 2023-05-12 15:21:28 us=364965 TLS: tls_pre_decrypt, key_id=0, IP=[AF_INET]12.34.56.789:1194
@@ -76,11 +55,9 @@ redémarrage fréquent de la connexion VPN qui causait les pertes d’emails.
 2023-05-12 17:22:29.005569472 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327690 PID packet_id_free
 2023-05-12 17:22:29.005574817 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327709 SIGUSR1[soft,ping-restart] received, process restarting
 2023-05-12 17:22:29.005575207 +0200 CEST [web-1] 2023-05-12 15:22:28 us=327727 Restart pause, 5 second(s)
-</pre>
+```
 
-On peut déjà en tirer des informations mais ce n’est pas très pratique : dans
-l’exemple il y a une ou deux minutes de logs, et pour mon problème j’ai besoin
-d’analyser un bon quart d’heure pour chercher des patterns.
+On peut déjà en tirer des informations mais ce n’est pas très pratique : dans l’exemple il y a une ou deux minutes de logs, et pour mon problème j’ai besoin d’analyser un bon quart d’heure pour chercher des patterns.
 
 ## Transformation des logs
 
@@ -89,7 +66,7 @@ de `grep`) et à les structurer pour isoler le timestamp.
 
 Isoler les envois de pings :
 
-<pre>
+```
 $ <b>rg</b> 'SENT PING' logs
 99694:2023-05-12 17:20:53.995533501 +0200 CEST [web-1] 2023-05-12 15:20:53 us=775530 SENT PING
 99697:2023-05-12 17:21:03.996518529 +0200 CEST [web-1] 2023-05-12 15:21:03 us=991544 SENT PING
@@ -103,11 +80,11 @@ $ <b>rg</b> 'SENT PING' logs
 99894:2023-05-12 17:22:34.006820819 +0200 CEST [web-1] 2023-05-12 15:22:33 us=328337 SENT PING
 99992:2023-05-12 17:22:44.007459739 +0200 CEST [web-1] 2023-05-12 15:22:43 us=490301 SENT PING
 99995:2023-05-12 17:22:54.008443004 +0200 CEST [web-1] 2023-05-12 15:22:53 us=684270 SENT PING
-</pre>
+```
 
 Extraire le timestamp avec `cut` (on délimite sur les espaces et on prend les deux premiers champs)  :
 
-<pre>
+```
 $ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2
 2023-05-12 17:20:53.995533501
 2023-05-12 17:21:03.996518529
@@ -121,13 +98,11 @@ $ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2
 2023-05-12 17:22:34.006820819
 2023-05-12 17:22:44.007459739
 2023-05-12 17:22:54.008443004
-</pre>
+```
 
-Ajouter le marqueur ' &gt;' (pour signifier “envoyé”) en fin de ligne, et
-envoyer le résultat dans un fichier “sent” (ici avec `tee` pour visualiser le
-résultat en même temps) :
+Ajouter le marqueur ' &gt;' (pour signifier “envoyé”) en fin de ligne, et envoyer le résultat dans un fichier “sent” (ici avec `tee` pour visualiser le résultat en même temps) :
 
-<pre>
+```
 $ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &gt;' | <b>tee</b> sent
 2023-05-12 17:20:53.995533501 &gt;
 2023-05-12 17:21:03.996518529 &gt;
@@ -141,29 +116,29 @@ $ <b>rg</b> 'SENT PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &gt;'
 2023-05-12 17:22:34.006820819 &gt;
 2023-05-12 17:22:44.007459739 &gt;
 2023-05-12 17:22:54.008443004 &gt;
-</pre>
+```
 
 Faire la même chose avec les pings reçus :
 
-<pre>
+```
 $ <b>rg</b> 'RECEIVED PING' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' &lt; Received' | <b>tee</b> received
 2023-05-12 17:20:12.991392556 &lt; Received
 2023-05-12 17:21:28.999248049 &lt; Received
 2023-05-12 17:22:44.007432531 &lt; Received
 2023-05-12 17:22:54.008453476 &lt; Received
-</pre>
+```
 
 Et les redémarrages de session VPN :
 
-<pre>
+```
 $ <b>rg</b> '12 17:.&ast;Inactivity timeout' logs | <b>cut</b> -d' ' -f1-2 | <b>rg</b> '$' -r ' * Restart !!' | <b>tee</b> restart
 2023-05-12 17:21:13.997629899 * Restart !!
 2023-05-12 17:22:29.005460487 * Restart !!
-</pre>
+```
 
-Ensuite on peut joindre les fichiers avec `cat` et les trier (par date puisque c’est le début de ligne) dans un fichier "history"&nbsp;:
+Ensuite on peut joindre les fichiers avec `cat` et les trier (par date puisque c’est le début de ligne) dans un fichier "history" :
 
-<pre>
+```
 $ <b>cat</b> received sent restarts | <b>sort</b> > history
 $ <b>cat</b> history
 2023-05-12 17:20:53.995533501 &gt;
@@ -183,7 +158,7 @@ $ <b>cat</b> history
 2023-05-12 17:22:44.007459739 &gt;
 2023-05-12 17:22:54.008443004 &gt;
 2023-05-12 17:22:54.008453476 &lt; Received
-</pre>
+```
 
 C’est déjà plus lisible, on peut maintenant commencer à corréler et voir des patterns. En plissant les yeux, on peut voir que les pings envoyés sont beaucoup plus fréquents que les pings reçus.
 
@@ -197,7 +172,7 @@ J’ai donc exploré un peu et j’ai trouvé une classe `RSChart` qui pouvait a
 
 En explorant quelques minutes de plus, j’ai trouvé comment ajouter des marqueurs, et en peu de temps j’avais ce résultat à partir de mes logs, exactement ce dont j’avais besoin :
 
-<img class="center" src="/images/2023-05-14_graph.png" width="800" height="486" />
+=> /images/2023-05-14_graph.png
 
 On peut voir qu’il y a effectivement un pattern super régulier : mon client VPN reçoit des pings du serveur pendant quelques dizaines de secondes, ne reçoit pas les pings du serveur pendant une minute et redémarre. Et ainsi de suite.
 
@@ -215,7 +190,7 @@ Pour résumer, bien connaître GNU core-utils et un langage de programmation un 
 
 On peut faire toute la phase d’exploration de logs en une seule ligne de awk :
 
-<pre>
+```
 $ <b>awk</b> &lt;logs '/SENT PING/ { print $1 $2 " &gt;" } ; /RECEIVED PING/ { print $1 $2 " &lt; Received"} ; /Inactivity/ { print $1 $2 " * Restart !!" }'
 2023-05-1217:20:43.994461854 &gt;
 2023-05-1217:20:53.995533501 &gt;
@@ -235,7 +210,7 @@ $ <b>awk</b> &lt;logs '/SENT PING/ { print $1 $2 " &gt;" } ; /RECEIVED PING/ { p
 2023-05-1217:22:44.007459739 &gt;
 2023-05-1217:22:54.008443004 &gt;
 2023-05-1217:22:54.008453476 &lt; Received
-</pre>
+```
 
 ### Code du graph en Pharo Smalltalk
 
@@ -243,7 +218,7 @@ Si vous connaissez Ruby, une bonne partie de Smalltalk va vous paraître famili�
 
 Exemple simple pour afficher une sinusoïde :
 
-<pre>
+```
 x := -3.14 to: 3.14 by: 0.1.
 y := x sin.
 
@@ -253,14 +228,13 @@ c addDecoration: (RSChartTitleDecoration new title: 'hello'; fontSize: 20).
 c addDecoration: (RSXLabelDecoration new title: 'My X Axis'; fontSize: 12).
 c addDecoration: (RSYLabelDecoration new title: 'My Y Axis'; fontSize: 15).
 c show
-</pre>
+```
 
-<img class="center" src="/images/2023-05-14_sinus.png" width="613" height="592" />
+=> /images/2023-05-14_sinus.png
 
-Voilà tout le code écrit vite fait pour le graph des redémarrages. Ça tient en
-une vingtaine de lignes&nbsp;:
+Voilà tout le code écrit vite fait pour le graph des redémarrages. Ça tient en une vingtaine de lignes :
 
-<pre>
+```
 file := FileSystem disk workingDirectory / 'Developer/projet/history'.
 lines := file contents lines allButFirst: 8.
 
@@ -290,11 +264,10 @@ c addDecoration: (RSXLabelDecoration new
 
 c padding: 0 @ 80.
 c show
-</pre>
+```
 
 ## Liens
 
-- Le site de Pharo Smalltalk, qui permet de faire tourner ce code out of the
-  box ~ [pharo.org][ph]
+Le site de Pharo Smalltalk, qui permet de faire tourner ce code out of the box :
 
-[ph]: https://pharo.org/
+=> https://pharo.org/
