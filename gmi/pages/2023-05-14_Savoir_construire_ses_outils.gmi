@@ -61,8 +61,7 @@ On peut déjà en tirer des informations mais ce n’est pas très pratique : da
 
 ## Transformation des logs
 
-J’ai commencé par extraire les événements qui m’intéressent avec `rg` (un genre
-de `grep`) et à les structurer pour isoler le timestamp.
+J’ai commencé par extraire les événements qui m’intéressent avec `rg` (un genre de `grep`) et à les structurer pour isoler le timestamp.
 
 Isoler les envois de pings :
 

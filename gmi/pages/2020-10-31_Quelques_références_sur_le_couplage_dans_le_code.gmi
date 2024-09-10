@@ -11,7 +11,7 @@ Tout d'abord, The Pragmatic Programmer est une super référence sur le sujet.
 
 Notamment dans la 2e édition, le topic 28, Decoupling, pp. 130-137.
 
-Pour vous donner envie de le lire (et ça me donne super envie de le relire !!), ça parle de&nbsp;:
+Pour vous donner envie de le lire (et ça me donne super envie de le relire !!), ça parle de :
 
 * Structural Rigidity,
 * Tip 44 : Decoupled code is easier to change,
@@ -31,7 +31,7 @@ Dans Refactoring, il y a les code smells opposés “Divergent Change” et “S
 
 ### Code Complete
 
-Dans Code Complete&nbsp;:
+Dans Code Complete :
 
 > Loose coupling: Loose coupling means designing so that you hold connections
 > among different parts of a program to a minimum. Use the principles of good

@@ -7,7 +7,7 @@ Dans les choses que j'ai apprises, je suis content d'en avoir fait suffisamment 
 
 Je note aussi que le principe RAII (Resource Acquisition Is Initialization) m'a donné le goût de la symétrie dans le cycle de vie.  J'apprécie que la création d'un objet et sa destruction / sortie de scope, ou que les ouvertures et fermetures de ressources aient lieu au même niveau d'abstraction, et si possible dans des positions symétriques.
 
-Je repense souvent à ce principe, même dans des langages où on ne gère pas explicitement la mémoire. Pour essayer de le décrire, souvent il y a des traitements qui peuvent bien se modéliser en poupées gigognes de&nbsp;:
+Je repense souvent à ce principe, même dans des langages où on ne gère pas explicitement la mémoire. Pour essayer de le décrire, souvent il y a des traitements qui peuvent bien se modéliser en poupées gigognes de :
 
 * "préparation"
 * "exécution"

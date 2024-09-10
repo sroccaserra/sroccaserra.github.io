@@ -88,7 +88,7 @@ Améliorer sa vitesse de frappe peut aussi vous aider à écrire en parlant. En 
 
 Entraînez vous à expliquer des choses par écrit, à donner votre avis par écrit.
 
-Si votre environnement de travail le permet, vous pouvez intervenir régulièrement dans les conversations qui vous intéressent sur votre Mattermost ou Slack ou whatever. Un peu comme la prise de note, ça vous aide à développer vos idées et votre ton à l'écrit, mais le petit plus c'est que les personnes qui vous lisent peuvent vous répondre&nbsp;: vous avez un retour rapide sur ce que vous dites.
+Si votre environnement de travail le permet, vous pouvez intervenir régulièrement dans les conversations qui vous intéressent sur votre Mattermost ou Slack ou whatever. Un peu comme la prise de note, ça vous aide à développer vos idées et votre ton à l'écrit, mais le petit plus c'est que les personnes qui vous lisent peuvent vous répondre : vous avez un retour rapide sur ce que vous dites.
 
 Même quand j'explique quelque-chose à une personne à l'oral, j'ai pris l'habitude de prendre des notes de mon explication. Pour ça, c'est utile de savoir écrire en parlant comme vu au dessus, et donc de maîtriser le touch-typing. Pas besoin de taper extrêmement vite. Personnellement je tourne à environ 50 à 60 mots par minute. Ça me ralentit un peu dans ce que je dis, mais je trouve ça suffisant pour écrire en parlant confortablement. Je ne note pas tout et j'utilise quelques pauses pour rattraper mon écriture.
 
