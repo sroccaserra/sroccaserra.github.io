@@ -12,9 +12,8 @@ Pour commencer, la simplicité est explicitement au cœur d'Extreme Programming 
 Notamment, on entent souvent citer l'expression YAGNI (You Aren't Gonna Need It), mais il y a aussi les deux principes _Small Release_ et _Simple Design_.
 
 > - Small releases—Put a simple system into production quickly, then release new versions on a very short cycle.
-> - Simple
- design—The system should be designed as simply as possible at any given
- moment. Extra complexity is removed as soon as it is discovered.
+>
+> - Simple design—The system should be designed as simply as possible at any given moment. Extra complexity is removed as soon as it is discovered.
 
 Et les _Four Rules of Simple Design_, toujours au cœur d'XP :
 
@@ -27,7 +26,7 @@ C'est un peu comme le jeu de Go, les règles sont simples mais on va pouvoir app
 
 ## Simplicité et Agilité
 
-Il y a ça aussi au cœur de l'agilité, dont deux des trois principes essentiels (\*) sont pour moi&nbsp;:
+Il y a ça aussi au cœur de l'agilité, dont deux des trois principes essentiels (*) sont pour moi :
 
 > - React to the unexpected by gathering feedback (not by thinking "better" up front)
 > - When reality stops matching the plan, change the plan (instead of pushing the plan harder)
@@ -48,7 +47,7 @@ En passant, même quand on a ces heuristiques, on va avoir du travail pour défi
 
 Quand on a ces deux principes en tête, on est encouragé à avoir un plan modérément compliqué, voire le moins possible. Car on sait qu'on va avoir de l'inattendu et qu'on vas avoir à adapter notre plan face à la réalité.
 
-(\*)&nbsp;: Formulations piquées à J. B. Rainsberger, les trois qu'il propose :
+(*) : Formulations piquées à J. B. Rainsberger, les trois qu'il propose :
 
 > - React to the unexpected by gathering feedback (not by thinking "better" up front)
 > - Treat people as people (not as fungible cogs)
@@ -56,14 +55,14 @@ Quand on a ces deux principes en tête, on est encouragé à avoir un plan modé
 
 ## Simplicité, tu emploies toujours ce mot…
 
-> — C’est inconcevable !<br/>
+> — C’est inconcevable !
 > — Tu emploies toujours ce mot. Je ne sais pas s'il veut dire ce que tu penses.
 
 (Vizzini et Inigo Montoya, Princess Bride.)
 
 Attention cependant, car la simplicité ou la complexité, c’est très difficile à définir.
 
-Pour donner un exemple du travail de définition qu’on peut faire, dans la communauté DDD on s’intéresse à la question "La complexité : laquelle” ? On trouve des outils pour séparer ce qui est quantifiable et ce qui ne l'est pas, et des outils pour séparer complexité accidentelle de complexité essentielle de complexité structurelle. La communauté DDD s’intéresse aussi beaucoup au rôle du couplage dans tout ça, et au rôle du contexte (\*\*).
+Pour donner un exemple du travail de définition qu’on peut faire, dans la communauté DDD on s’intéresse à la question "La complexité : laquelle” ? On trouve des outils pour séparer ce qui est quantifiable et ce qui ne l'est pas, et des outils pour séparer complexité accidentelle de complexité essentielle de complexité structurelle. La communauté DDD s’intéresse aussi beaucoup au rôle du couplage dans tout ça, et au rôle du contexte (**).
 
 Complexité, laquelle, mais aussi complexité "pour qui" ? Il y a également des enjeux de pouvoir.
 
@@ -73,7 +72,7 @@ Autre exemple, on connaît déjà ces problèmes de définition et de quantifica
 
 Bref, comme évoqué plus haut, on va avoir du travail pour définir ce qu’on veut réussir ensemble.
 
-(\*\*)&nbsp;: Ce sont des points communs avec la communauté Extreme Programming, qui y apporte des réponses légèrement différentes —mais qui peuvent être compatibles— dans ce que je peux observer, mais c’est un autre sujet.
+(**) : Ce sont des points communs avec la communauté Extreme Programming, qui y apporte des réponses légèrement différentes —mais qui peuvent être compatibles— dans ce que je peux observer, mais c’est un autre sujet.
 
 ## La simplicité, c’est pas simple
 
@@ -89,21 +88,12 @@ Ce sont des choses que mes collègues et moi travaillons depuis longtemps heureu
 
 ## Liens
 
-- [Extreme Programing Explained][xpe]
-- [L'eXtreme Programming][lxp]
-- [You Aren't Gonna Need It (YAGNI)][yagni]
-- [Beck Design Rules][bdr]
-- [The Four Elements of Simple Design][fesd]
-- [J. B. Rainsberger on "Agile rules"][jbr]
-- Do the simplest thing that could possibly work
-    - <http://wiki.c2.com/?DoTheSimplestThingThatCouldPossiblyWork>
-    - <https://www.artima.com/articles/the-simplest-thing-that-could-possibly-work#part3>
-- [The Market for "Lemons"][mfl]
-
-[xpe]: https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained
-[lxp]: https://www.editions-eyrolles.com/Archive/9782212110517/l-extreme-programming
-[yagni]: https://wiki.c2.com/?YouArentGonnaNeedIt
-[bdr]: https://martinfowler.com/bliki/BeckDesignRules.html
-[fesd]: https://blog.jbrains.ca/permalink/the-four-elements-of-simple-design
-[jbr]: https://www.linkedin.com/feed/update/activity:6959914647567134721
-[mfl]: https://fr.wikipedia.org/wiki/The_Market_for_%E2%80%9CLemons%E2%80%9D
+=> https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained Extreme Programing Explained (livre)
+=> https://www.editions-eyrolles.com/Archive/9782212110517/l-extreme-programming L'eXtreme Programming (livre)
+=> https://wiki.c2.com/?YouArentGonnaNeedIt You Aren't Gonna Need It (YAGNI)
+=> https://martinfowler.com/bliki/BeckDesignRules.html Beck Design Rules
+=> https://blog.jbrains.ca/permalink/the-four-elements-of-simple-design The Four Elements of Simple Design
+=> https://www.linkedin.com/feed/update/activity:6959914647567134721 J. B. Rainsberger on "Agile rules"
+=> http://wiki.c2.com/?DoTheSimplestThingThatCouldPossiblyWork Article c2.com DoTheSimplestThingThatCouldPossiblyWork
+=> https://www.artima.com/articles/the-simplest-thing-that-could-possibly-work#part3> Article Artima the-simplest-thing-that-could-possibly-work
+=> https://fr.wikipedia.org/wiki/The_Market_for_%E2%80%9CLemons%E2%80%9D The Market for "Lemons"

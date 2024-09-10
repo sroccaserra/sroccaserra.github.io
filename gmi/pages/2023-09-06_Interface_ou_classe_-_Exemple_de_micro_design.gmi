@@ -23,4 +23,4 @@ En tout cas j'ai trouvé très intéressant d'avoir ce genre de réflexions de m
 
 ## Liens
 
-- <https://www.goodreads.com/book/show/781559.Implementation_Patterns>
+=> https://www.goodreads.com/book/show/781559.Implementation_Patterns

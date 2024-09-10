@@ -3,7 +3,10 @@
 
 Ça fait plusieurs fois que dans des conversations Web je pose ou que je vois poser la question :
 
-> Avez-vous des exemples disponibles en open source d'une appli qui ne serait pas un hello world ou un kata qui vous parait intéressante comme modèle? (idéalement dans un langage relativement courant comme java/python/js/C# ou ce genre de truc)
+> Avez-vous des exemples disponibles en open source d'une appli qui ne serait
+> pas un hello world ou un kata qui vous parait intéressante comme modèle?
+> (idéalement dans un langage relativement courant comme java/python/js/C# ou
+> ce genre de truc)
 
 ## Proposition de beau code
 
@@ -17,7 +20,7 @@ Par exemple, on pourrait argumenter que la lib Java n'est pas partout exemplaire
 
 Exemple de la classe `LinkedList`, où on trouve beaucoup de `if (x == null)` :
 
-<pre>
+```
     void linkBefore(E e, Node<E> succ) {
         final Node<E> pred = succ.prev;
         final Node<E> newNode = new Node<>(pred, e, succ);
@@ -29,8 +32,7 @@ Exemple de la classe `LinkedList`, où on trouve beaucoup de `if (x == null)` :
         size++;
         modCount++;
     }
-</pre>
-
+```
 
 On pourrait proposer des éléments de réponse à cette objection. Par exemple, je pense que les libs standard Java c'est très vaste, et qu'il y a des parties comme la classe `LinkedList` (date de Java 1.2) qui restent intéressantes si on les lit en contexte (temporel et d'implémentation et d'usage).
 
@@ -54,23 +56,23 @@ Moi même je n'ai pas souvenir d'avoir lu du code et de me dire "ça y est ! le 
 
 Exemples de beautés parfois incompatibles :
 
-- Expressivité
-- Concision
-- Uniformité
-- Familiarité
-- Simplicité
-- Élégance
-- Extensibilité
-- Évolutivité
-- Cohésion
-- Découplage
-- Performance
-- Sécurité
-- Adaptation au problème à résoudre
-- Découvrabilité
-- Conformité à un pattern
-- Conformité à un standard
-- ...
+* Expressivité
+* Concision
+* Uniformité
+* Familiarité
+* Simplicité
+* Élégance
+* Extensibilité
+* Évolutivité
+* Cohésion
+* Découplage
+* Performance
+* Sécurité
+* Adaptation au problème à résoudre
+* Découvrabilité
+* Conformité à un pattern
+* Conformité à un standard
+* ...
 
 ### Les murs bougent...
 
@@ -104,17 +106,17 @@ Je suis toujours à la recherche de beau code, pour une définition assez large 
 
 Et peut-être qu'un des moyens d'avoir plus de réponse à cette question serait d'accepter de proposer du code qui ne soit pas parfait, mais qui soit beau au moins pour une raison, et au moins pour vous, et d'avoir de la curiosité et des conversations autour de ce code.
 
-- "Pourquoi tu le trouves beau ?"
-- "Quelle genre de beauté ?"
-- "Dans quel contexte ?"
-- ...
+* "Pourquoi tu le trouves beau ?"
+* "Quelle genre de beauté ?"
+* "Dans quel contexte ?"
+* ...
 
 ## Liens
 
-Exemple de code ci-dessus tiré de&nbsp;:
+Exemple de code ci-dessus tiré de :
 
-- <https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/master/src/java.base/share/classes/java/util/LinkedList.java>
+=> https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/master/src/java.base/share/classes/java/util/LinkedList.java
 
-Si le code de Quake III vous intéresse, pour gagner un peu de temps&nbsp;:
+Si le code de Quake III vous intéresse, pour gagner un peu de temps :
 
-- <https://fabiensanglard.net/quake3/>
+=> https://fabiensanglard.net/quake3/

@@ -9,7 +9,7 @@ Ce sont des notes très partielles, à mon usage personnel. Je vous invite à vo
 
 Dans ce deuxième article, mes notes sur la présentation de Laurent Bossavit.
 
-Dans les articles suivants, j'ai prévu de partager mes notes sur les interventions de&nbsp;:
+Dans les articles suivants, j'ai prévu de partager mes notes sur les interventions de :
 
 => /pages/2023-06-08_NewCrafts_Paris_2023_~_Clare_Sudbery.html Clare Sudbery
 
@@ -54,7 +54,7 @@ Un feedback n'est pas non plus une note, ni des étoiles sur cinq. On n'est plus
 
 À nouveau : le feedback est une phrase en "Je".
 
-Laurent observe aussi que les outils de feedback de la CNV, comme "OSCAR", "DESC", "OSBD" sont de bons outils. Mais quand ils sont appliqués sans l'intention initiale, ils perdent toute leur utilité. Comme par exemple le format possible de rédaction d'une User Story&nbsp;: "As a... I want ... So that..." 👉️ "En tant que PO, Je veux que tu réalise ce ticket, Afin d'effectuer les Story Points" 🤦
+Laurent observe aussi que les outils de feedback de la CNV, comme "OSCAR", "DESC", "OSBD" sont de bons outils. Mais quand ils sont appliqués sans l'intention initiale, ils perdent toute leur utilité. Comme par exemple le format possible de rédaction d'une User Story : "As a... I want ... So that..." 👉️ "En tant que PO, Je veux que tu réalise ce ticket, Afin d'effectuer les Story Points" 🤦
 
 Comme on l'a vu, de drôles de formes de "feedback" sont un problème. Ces formes ne sont pas un bon outil de management. Autre exemple qui pose problème : le retour du shit sandwich (idée étrange selon laquelle on fait un "feedback positif", suivi d'un "feedback négatif", puis d'un nouveau "feedback positif" = meilleure façon de ne pas être clair du tout).
 
