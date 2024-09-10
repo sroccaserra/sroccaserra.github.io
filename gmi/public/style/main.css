@@ -15,6 +15,19 @@ html {
     margin-right: auto;
 }
 
+ul.banner li {
+    display: inline;
+}
+
+ul.banner li::after {
+    content: ' |'
+}
+
+ul.banner li:last-child:after
+{
+  content: '';
+}
+
 img {
     max-width: 100%;
     height: auto;
