@@ -19,7 +19,7 @@ function rss_item() {
             <description/>
             <pubDate>${DATE}</pubDate>
             <guid>${URL}</guid>
-        </item>"
+        </item>
 EOF
 }
 
