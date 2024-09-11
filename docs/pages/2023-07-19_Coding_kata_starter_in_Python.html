@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="/style/main.css" rel="stylesheet">
+        <title>Coding kata starter in Python</title>
+        <meta charset="utf-8"/>
+        <script src="/scripts/auto_reload.js"></script>
+    </head>
+    <body>
+        <header>
+            <br/>
+            <center>
+                <a class="title" href="/"><b>Apprendre + Équipe = Programmes</b><br/></a>
+            </center>
+        </header>
+        <article>
+                <br/>
+                <time datetime="2023-07-19">2023-07-19</time>
+                <br/>
+                <h1>Coding kata starter in Python</h1>
+                <hr/>
+
+                <!-- contents -->
+
+<p>
+This is how I usually start a coding kata, here in Python. It should be easy and very fast, so I can move on to the kata (the interesting part).
+</p>
+
+<p>
+Rationale: some kata repositories provide a starter in many languages. If this works for you this is great, you might not need this article. This article is intended to people that want to quickly start from scratch (because I find it to be rather easy), and / or people that have found that this or that repository does not use your version of the runtime, or uses old versions of testing libraries, or does not use your favorite libraries, or are even slower than starting from scratch.
+</p>
+
+<p>
+So here is what I use. It should take less that 3 mn (you can practice to go even faster than that), and give you a shareable public repository ready to write tests and have a linter ready for fast feedback. Now we can move on to the kata.
+</p>
+
+<p>
+If you find that useful, you can go further and adapt it to your prefered testing lib or your prefered language.
+</p>
+
+<p>
+Prerequisite: have a Python 3 runtime available. Usually this also provides virtualenv. If not: `sudo apt install virtualenv`.
+</p>
+
+<p>
+Let's suppose we have chosen to practice with the famous Bowling kata.
+</p>
+
+<p>
+Project start:
+</p>
+
+<pre>
+$ <b>mkdir</b> bowling-kata
+$ <b>cd</b> bowling-kata
+</pre>
+
+<p>
+Create a virtualenv, activate it (⚠️ shell dependent ⚠️) and install pytest.
+</p>
+
+<pre>
+$ <b>virtualenv</b> -p python3 venv
+$ <b>source</b> venv/bin/activate
+$ <b>pip</b> install pytest
+</pre>
+
+<p>
+Note: if you know &amp; prefer the unittest module from the Python standard lib, you don't even need this virtualenv &amp; pytest installation step.
+</p>
+
+<p>
+Write the shortest possible failing test in your favorite editor in "bowling_test.py", for example:
+</p>
+
+<pre>
+<b>def</b> test_fails()<b>:</b>
+    <b>assert</b> 0 <b>==</b> 1
+</pre>
+
+<p>
+Run the test, it should fail with the correct error message:
+</p>
+
+<pre>
+$ <b>pytest</b>
+============================== test session starts ===============================
+platform linux -- Python 3.10.6, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/sebastien/Developer/scratch/bowling-kata
+configfile: pytest.ini
+collected 1 item
+
+bowling_test.py F                                                          [100%]
+
+==================================== FAILURES ====================================
+___________________________________ test_fails ___________________________________
+
+    def test_fails():
+>       assert 0 == 1
+<b>E       assert 0 == 1</b>
+
+bowling_test.py:2: AssertionError
+============================ short test summary info =============================
+<b>FAILED bowling_test.py::test_fails - assert 0 == 1</b>
+=============================== 1 failed in 0.01s ================================
+</pre>
+
+<p>
+For a learning session, you should be good to go. This is where I usually stop the setup part and start working on the kata. Your IDE should catch most lint errors already. Optional: `pip install flake8` if needed.
+</p>
+
+<h2>(Optional) Create a more elaborate directory structure</h2>
+
+<pre>
+$ <b>mkdir</b> src
+$ <b>mkdir</b> test
+$ <b>mv</b> bowling_test.py test
+</pre>
+
+<p>
+Add a bowling function in `src/bowling.py`:
+</p>
+
+<pre>
+<b>def</b> bowling()<b>:</b>
+    <b>return</b> 1
+</pre>
+
+<p>
+Import it from `test/bowling_test.py`:
+</p>
+
+<pre>
+<b>from</b> bowling <b>import</b> bowling
+
+<b>def</b> test_fails()<b>:</b>
+    <b>assert</b> 0 <b>==</b> bowling()
+</pre>
+
+<p>
+Add `src` to pytest’s pythonpath in `pytest.ini`:
+</p>
+
+<pre>
+[pytest]
+pythonpath=src
+</pre>
+
+<p>
+Running `pytest` again should give you the same correct error message.
+</p>
+
+<p>
+The final structure:
+</p>
+
+<pre>
+$ <b>tree</b> -I __pycache__/ -I venv -I .pytest_cache/
+.
+├── pytest.ini
+├── src
+│   └── bowling.py
+└── test
+    └── bowling_test.py
+</pre>
+
+<h2>(Optional) Git setup</h2>
+
+<p>
+This is useful in remote contexts if you want to take turns in the session.
+</p>
+
+<pre>
+$ <b>echo</b> venv >> .gitignore
+$ <b>echo</b> __pycache__ >> .gitignore
+$ <b>echo</b> .pytest_cache >> .gitignore
+$ <b>git</b> init
+$ <b>git</b> add .
+$ <b>git</b> commit -m first
+</pre>
+
+<p>
+Create a new repo on github or gitlab or ..., then copy / paste the github provided snippet to setup the remote and push.
+</p>
+
+<h2>Kata Animation tips</h2>
+
+<p>
+Always leave the test code, implementation code, and test logs visible at all times. Use split windows, your IDE or tmux can help with that. This allows everyone to have time to finish reading the code or the error messages at all times.
+</p>
+
+<p>
+Explicitely state that the primary goal is to have a shared understanding, not to finish the kata at all cost.
+</p>
+
+<p>
+Finish the session 10 mn early, use this time for a debrief. Listen to what everyone wants to share about this particular session.
+</p>
+
+<p>
+For a live coding session, learning to type code fast can help keeping the session dynamic, and frees some time for the conversation. If the keyboard changes hands, don't blame someone for typing slowly.
+</p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="https://codingdojo.org/kata/Bowling/">The bowling kata</a></li>
+<li><a href="https://docs.python.org/3/">The Python 3 docs</a></li>
+<li><a href="https://virtualenv.pypa.io/en/latest/">The Virtualenv docs</a></li>
+<li><a href="https://docs.pytest.org/">The Pytest docs</a></li>
+<li><a href="https://docs.python.org/3/library/unittest.html">The unittest docs</a></li>
+</ul>
+
+        </article>
+    </body>
+</html>

@@ -5,7 +5,7 @@ MAKEFLAGS += --warn-undefined-variables
 SHELL := /usr/bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
-BUILD_HTML := build_html
+BUILD_HTML := docs
 BUILD_GMI := build_gmi
 CONVERT_TO_HTML := gemtext_to_html/build/gemtext_to_html -c center
 BASE_URL := https://sroccaserra.shrt.site

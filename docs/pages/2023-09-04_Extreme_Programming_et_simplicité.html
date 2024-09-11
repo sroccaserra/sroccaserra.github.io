@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="/style/main.css" rel="stylesheet">
+        <title>Extreme Programming et simplicité</title>
+        <meta charset="utf-8"/>
+        <script src="/scripts/auto_reload.js"></script>
+    </head>
+    <body>
+        <header>
+            <br/>
+            <center>
+                <a class="title" href="/"><b>Apprendre + Équipe = Programmes</b><br/></a>
+            </center>
+        </header>
+        <article>
+                <br/>
+                <time datetime="2023-09-04">2023-09-04</time>
+                <br/>
+                <h1>Extreme Programming et simplicité</h1>
+                <hr/>
+
+                <!-- contents -->
+
+<p>
+Cet été j'ai relu quelques chapitres du livre Extreme Programming Explained, de Kent Beck, et j'ai discuté avec des collègues de la notion de simplicité, et de pourquoi c'est difficile à définir.
+</p>
+
+<p>
+Ça m'a donné envie de croiser les deux sujets, ce que je propose dans cet article.
+</p>
+
+<h2>Simplicité et Extreme Programming</h2>
+
+<p>
+Pour commencer, la simplicité est explicitement au cœur d'Extreme Programming (XP).
+</p>
+
+<p>
+Notamment, on entent souvent citer l'expression YAGNI (You Aren't Gonna Need It), mais il y a aussi les deux principes _Small Release_ et _Simple Design_.
+</p>
+
+<blockquote>
+- Small releases—Put a simple system into production quickly, then release new versions on a very short cycle.
+<br/>
+
+<br/>
+- Simple design—The system should be designed as simply as possible at any given moment. Extra complexity is removed as soon as it is discovered.
+</blockquote>
+
+<p>
+Et les _Four Rules of Simple Design_, toujours au cœur d'XP :
+</p>
+
+<blockquote>
+- Passes the tests
+<br/>
+- Reveals intention
+<br/>
+- No duplication
+<br/>
+- Fewest elements
+</blockquote>
+
+<p>
+C'est un peu comme le jeu de Go, les règles sont simples mais on va pouvoir apprendre à les maîtriser tout au long de sa carrière.
+</p>
+
+<h2>Simplicité et Agilité</h2>
+
+<p>
+Il y a ça aussi au cœur de l'agilité, dont deux des trois principes essentiels (*) sont pour moi :
+</p>
+
+<blockquote>
+- React to the unexpected by gathering feedback (not by thinking "better" up front)
+<br/>
+- When reality stops matching the plan, change the plan (instead of pushing the plan harder)
+</blockquote>
+
+<p>
+Quand on a ces deux principes en tête, on est encouragé à avoir un plan modérément compliqué, voire le moins possible. Car on sait qu'on va avoir de l'inattendu et qu'on vas avoir à adapter notre plan face à la réalité.
+</p>
+
+<p>
+Il y a aussi une expression qui est présente depuis longtemps dans les communautés Agiles et XP, c'est :
+</p>
+
+<blockquote>
+Do the simplest thing that could possibly work.
+</blockquote>
+
+<p>
+Je note que ce n'est pas une règle absolue mais une heuristique, et que la forme complète est plutôt :
+</p>
+
+<blockquote>
+If you're not sure what to do yet, do the simplest thing that could possibly work.
+</blockquote>
+
+<p>
+À travers cette heuristique, on retrouve une notion importante en agilité : se donner la capacité de retarder une décision jusqu'au moment où on a assez d'info pour la prendre (mais pas plus tard). Ça demande pas mal de compétences tech pour pouvoir faire ça, comme pour "faire simple" d'ailleurs. Quand c'est nécessaire, en attendant plus d'info / de feedback (qu'on va activement chercher), on fait la chose la plus simple qui fonctionne.
+</p>
+
+<p>
+En passant, même quand on a ces heuristiques, on va avoir du travail pour définir ensemble "le moment où on on a assez d'info pour prendre une décision". Par exemple il arrive qu'un enjeu politique s'invite à la discussion, et on met un Kafka en day 0 parce-que telle personne ayant le dernier mot l'a décidé en chambre 🤷
+</p>
+
+<p>
+Quand on a ces deux principes en tête, on est encouragé à avoir un plan modérément compliqué, voire le moins possible. Car on sait qu'on va avoir de l'inattendu et qu'on vas avoir à adapter notre plan face à la réalité.
+</p>
+
+<p>
+(*) : Formulations piquées à J. B. Rainsberger, les trois qu'il propose :
+</p>
+
+<blockquote>
+- React to the unexpected by gathering feedback (not by thinking "better" up front)
+<br/>
+- Treat people as people (not as fungible cogs)
+<br/>
+- When reality stops matching the plan, change the plan (instead of pushing the plan harder)
+</blockquote>
+
+<h2>Simplicité, tu emploies toujours ce mot…</h2>
+
+<blockquote>
+— C’est inconcevable !
+<br/>
+— Tu emploies toujours ce mot. Je ne sais pas s'il veut dire ce que tu penses.
+</blockquote>
+
+<p>
+(Vizzini et Inigo Montoya, Princess Bride.)
+</p>
+
+<p>
+Attention cependant, car la simplicité ou la complexité, c’est très difficile à définir.
+</p>
+
+<p>
+Pour donner un exemple du travail de définition qu’on peut faire, dans la communauté DDD on s’intéresse à la question "La complexité : laquelle” ? On trouve des outils pour séparer ce qui est quantifiable et ce qui ne l'est pas, et des outils pour séparer complexité accidentelle de complexité essentielle de complexité structurelle. La communauté DDD s’intéresse aussi beaucoup au rôle du couplage dans tout ça, et au rôle du contexte (**).
+</p>
+
+<p>
+Complexité, laquelle, mais aussi complexité "pour qui" ? Il y a également des enjeux de pouvoir.
+</p>
+
+<p>
+Autre exemple, on connaît déjà ces problèmes de définition et de quantification quand on s'intéresse à la "qualité". Je n'ai pas encore trouvé de meilleure définition de la qualité que celle de Jerry Weinberg :
+</p>
+
+<blockquote>
+De la valeur pour quelqu'un à un moment donné.
+</blockquote>
+
+<p>
+Bref, comme évoqué plus haut, on va avoir du travail pour définir ce qu’on veut réussir ensemble.
+</p>
+
+<p>
+(**) : Ce sont des points communs avec la communauté Extreme Programming, qui y apporte des réponses légèrement différentes —mais qui peuvent être compatibles— dans ce que je peux observer, mais c’est un autre sujet.
+</p>
+
+<h2>La simplicité, c’est pas simple</h2>
+
+<p>
+Ce genre de notions (simplicité, qualité, ...) est difficile à appréhender donc. Ça m’évoque au moins les trois points communs ci-dessous.
+</p>
+
+<p>
+A) Étant difficiles à définir, ces notions ne permettent pas de se contenter de suivre des règles ou des recettes. On va préférer se tourner vers des heuristiques et des systèmes auto régulés (inspect &amp; adapt ?).
+</p>
+
+<p>
+B) En général avec ces notions il est facile de trouver des réponses apparemment évidentes et séduisantes mais malheureusement fausses de manière subtile. Il va falloir affiner régulièrement notre compréhension (cf. système auto-régulé).
+</p>
+
+<p>
+C) Ces notions créent une asymétrie de l'information entre expert·es et client·es qui favorise les mauvaises prestations, cf. market for lemons :(
+</p>
+
+<p>
+Ce sont des choses que mes collègues et moi travaillons depuis longtemps heureusement, mais c'est sûr, la simplicité... c'est pas simple.
+</p>
+
+<h2>Liens</h2>
+
+<ul>
+<li><a href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained">Extreme Programing Explained (livre)</a></li>
+<li><a href="https://www.editions-eyrolles.com/Archive/9782212110517/l-extreme-programming">L'eXtreme Programming (livre)</a></li>
+<li><a href="https://wiki.c2.com/?YouArentGonnaNeedIt">You Aren't Gonna Need It (YAGNI)</a></li>
+<li><a href="https://martinfowler.com/bliki/BeckDesignRules.html">Beck Design Rules</a></li>
+<li><a href="https://blog.jbrains.ca/permalink/the-four-elements-of-simple-design">The Four Elements of Simple Design</a></li>
+<li><a href="https://www.linkedin.com/feed/update/activity:6959914647567134721">J. B. Rainsberger on "Agile rules"</a></li>
+<li><a href="http://wiki.c2.com/?DoTheSimplestThingThatCouldPossiblyWork">Article c2.com DoTheSimplestThingThatCouldPossiblyWork</a></li>
+<li><a href="https://www.artima.com/articles/the-simplest-thing-that-could-possibly-work#part3>">Article Artima the-simplest-thing-that-could-possibly-work</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/The_Market_for_%E2%80%9CLemons%E2%80%9D">The Market for "Lemons"</a></li>
+</ul>
+
+        </article>
+    </body>
+</html>

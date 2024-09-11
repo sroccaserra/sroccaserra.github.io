@@ -1,0 +1,116 @@
+* {
+    font-size: 18px;
+}
+
+html {
+    font-family : Verdana, "Bitstream Vera Sans", "DejaVu Sans", Tahoma, Geneva, Arial, "Sans-serif";
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul.banner {
+    padding-left: 0;
+}
+
+ul.banner li {
+    display: inline;
+}
+
+ul.banner li::after {
+    content: ' |'
+}
+
+ul.banner li:last-child:after
+{
+  content: '';
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img.pixel, canvas.pixel {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+img.rss_sticker {
+    vertical-align: middle;
+    width: 16px;
+    height: auto;
+    content: url('/images/rss.png')
+}
+
+pre {
+    background-color: #393939;
+    color: white;
+    max-width:100%;
+    height:auto;
+    overflow: scroll;
+    padding: 1ch;
+    padding-left: 2ch;
+}
+
+code {
+    font-weight: bold;
+    background-color: #f2f2f5;
+    color: #393939;
+    border-radius: 0.5ch;
+    padding-left: 0.3ch;
+    padding-right: 0.3ch;
+}
+
+blockquote {
+    background-color: #dedede;
+    color: #393939;
+    font-style: italic;
+    text-align: justify;
+    padding: 2ch;
+    margin: 0ch;
+    margin-bottom: 2ch;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 140%;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+h3 {
+    color: #393939;
+    font-weight: bold;
+}
+
+a {
+    color: #393939;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
