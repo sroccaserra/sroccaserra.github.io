@@ -51,6 +51,8 @@ $(BUILD_HTML)/index.html: index.gmi | $(BUILD_HTML)
 		  > "$@"
 	sed -i'' 's/<li>\([^>]\+>\)\([0-9-]\+ \~ \)/<li>\2\1/' \
 		$(BUILD_HTML)/index.html
+	sed -i'' 's/>Mastodon</ rel="me">Mastodon</' \
+		$(BUILD_HTML)/index.html
 	sed -i'' 's/>RSS</>RSS <img class="pixel rss_sticker" \/></' \
 		$(BUILD_HTML)/index.html
 	awk 'NR==1,/<ul>/{sub(/<ul>/, "<ul class=\"banner\">")} 1' \
