@@ -1,6 +1,6 @@
 ### Site
 
-- <https://sroccaserra.github.io/>
+- <https://sroccaserra.srht.site>
 - <gemini://sroccaserra.srht.site>
 
 ### Intention
