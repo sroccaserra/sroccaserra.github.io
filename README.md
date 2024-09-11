@@ -32,6 +32,7 @@ Inspirations pour coder ce site le plus simplement possible :
 - Phil Hagelberg's Colophon ~ <https://technomancy.us/colophon>
 - Phil Hagelberg's Makefile ~ <https://p.hagelb.org/Makefile.html>
 - Frugarilla ~ <https://www.frugarilla.fr/>
+- Le site de Ploum ~ <https://git.sr.ht/~lioploum/ploum.net>
 - <https://danluu.com/>
 - <https://motherfuckingwebsite.com/>
 - <https://chrisman.github.io/9.html>
