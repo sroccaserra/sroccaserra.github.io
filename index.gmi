@@ -11,6 +11,12 @@ Né en 331 PPM.
 => /rss.xml RSS
 => https://github.com/sroccaserra/sroccaserra.github.io Code source
 
+> ⚠️ Cette version du site n'est plus mise à jour.  ⚠️
+
+=> https://sroccaserra.srht.site
+
+> ^^^ Le site est maintenant hébergé sur sourcehut. ^^^
+
 ## Articles
 
 ## Articles sur le blog d'OCTO Technology</h2>
