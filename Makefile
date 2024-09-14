@@ -22,7 +22,7 @@ HTML_OUT_FILES=$(patsubst %.gmi,$(BUILD_HTML)/%.html,$(GMI_IN_FILES))
 all_html: $(HTML_OUT_FILES) sync_public $(BUILD_HTML)/rss.xml
 
 .PHONY: all_gmi
-all_gmi: $(GMI_OUT_FILES)
+all_gmi: $(GMI_OUT_FILES) sync_public $(BUILD_GMI)/rss.xml
 
 $(BUILD_HTML)/pages/%.html: pages/%.gmi | $(BUILD_HTML)/pages
 	BUILD="$(BUILD_HTML)" CONVERT="$(CONVERT_TO_HTML)" \
@@ -65,14 +65,21 @@ $(BUILD_HTML)/rss.xml: rss_layout.xml $(BUILD_HTML)/index.html
 			 bash scripts/build_rss.sh "$<" \
 			 > "$@"
 
+$(BUILD_GMI)/rss.xml: rss_layout.xml $(BUILD_GMI)/index.gmi
+	@echo Updating RSS...
+	BASE_URL=$(BASE_URL) \
+			 bash scripts/build_rss.sh "$<" \
+			 > "$@"
+
 $(BUILD_GMI)/index.gmi: index.gmi | $(BUILD_GMI)
 	tail +2 "$<" | sed -n '0,/## Articles/p' > "$@"
 	bash scripts/toc.sh >> "$@"
 	sed '0,/## Articles/d' "$<" >> "$@"
 
 .PHONY: sync_public
-sync_public: | $(BUILD_HTML)
+sync_public: | $(BUILD_HTML) $(BUILD_GMI)
 	@rsync -au public/ $(BUILD_HTML)
+	@rsync -au public/images $(BUILD_GMI)
 
 ###############################################################################
 # Serving
