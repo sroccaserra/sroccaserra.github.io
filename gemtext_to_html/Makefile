@@ -1,6 +1,7 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
+.DEFAULT_GOAL := main
 
 CFLAGS := -g -Og
 
@@ -11,8 +12,6 @@ MAIN_DEPENDENCIES := src/gemtext_to_html.c \
 					 src/text.c \
 					 src/text.h
 MAIN_C_FILES := $(filter %.c,$(MAIN_DEPENDENCIES))
-
-default: test
 
 ###############
 # ~ Running ~ #
@@ -63,6 +62,9 @@ mem_check:
 ################
 # ~ Building ~ #
 ################
+
+.PHONY: main
+main: build/gemtext_to_html
 
 build:
 	@mkdir -p build
