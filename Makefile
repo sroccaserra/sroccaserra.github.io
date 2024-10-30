@@ -10,7 +10,7 @@ BUILD_GMI := build_gmi
 CONVERT_TO_HTML := gemtext_to_html/build/gemtext_to_html -c center
 BASE_URL := https://sroccaserra.shrt.site
 
-GMI_IN_FILES=$(wildcard pages/*.gmi) links.gmi index.gmi
+GMI_IN_FILES=$(wildcard pages/*.gmi) index.gmi
 GMI_OUT_FILES=$(patsubst %.gmi,$(BUILD_GMI)/%.gmi,$(GMI_IN_FILES))
 HTML_OUT_FILES=$(patsubst %.gmi,$(BUILD_HTML)/%.html,$(GMI_IN_FILES))
 
