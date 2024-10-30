@@ -1,0 +1,90 @@
+-- date: 2024-10-22
+# Imiter vs. Éprouver
+
+Ce matin j'ai lu un article qui montre une façon dont le livre Accelerate peut être mal compris / utilisé. Sa lecture a été l'occasion pour moi de rassembler plusieurs sujets qui me paraissent intéressants en ce moment. Extrait :
+
+> The problem is that managers, upon reading the book, see it not as interesting research that can spur their own experiments, but as a prescription to producing a 'High Performing Technology Organisation', despite the authors proclamation on pages 136-140 that correlation does not equal causation, and that they didn't do any causal analysis, because "we did not have the data necessary for this kind of work" (bottom of page 139).
+
+=> https://gist.github.com/sleepyfox/347575d736e1d52d5dcf104cb8ca9169 Time to decelerate
+
+## Imiter sans éprouver
+
+Tout d'abord, je pense que cette façon de passer à côté de l'essentiel n'est pas réservée aux managers. Et je pense aussi qu'elle s'applique à d'autres sujets, comme l'amélioration continue par exemple.
+
+Ensuite, pour résumer ce que j'ai en tête à ce sujet, et que j'observe régulièrement depuis que j'y fais attention : dans une équipe donnée, si on se contente d'*imiter* ce que fait une autre équipe, sans l'*éprouver*, on n'en retire que peu de bénéfice.
+
+> imiter [imite] v. tr.
+>
+> [1] s'efforcer de faire la même chose que (qqn), chercher à reproduire (les attitudes, les gestes d'une personne, d'un animal, des voix, des sons, des bruits…).
+> ➙ Contrefaire, copier, mimer, répéter, reproduire, simuler.
+>
+> — Le Robert
+
+> éprouver [epʀuve] v. tr.
+>
+> [1] essayer (qqch.) pour vérifier quelle est la valeur, la qualité.
+> ➙ Expérimenter.
+> ➙ Essayer, tâter (de) ; pratique (mettre en).
+>
+> [3] apprécier, connaître par une expérience personnelle ; se rendre compte de.
+> ➙ Constater, réaliser, reconnaître.
+>
+> — Le Robert
+
+## L'importance d'éprouver
+
+Ça souligne pour moi l'importance de ne pas se contenter d'imiter des pratiques, mais de les éprouver. Donc d'expérimenter, et tout aussi important, de vérifier régulièrement ce que l'expérimentation nous apporte. Où en est-on suite à cette expérimentation ? Est-ce qu'elle nous emmène vers ce qu'on veut atteindre ? Est-ce qu'elle nous emmène ailleurs ? Est-ce que cette nouvelle destination est préférable à la cible initiale ?
+
+Deux formules me viennent en tête, qui incluent ces questions. Dans "Inspect & Adapt", il y a "Inspect". Dans "Plan, Do, Check, Act", il y a "Check". Il se trouve que ces formules sont souvent citées dans des contextes agiles, mais ces questions sont utiles quand on parle d'amélioration continue en général.
+
+Je pense aussi à cette citation de J. B. Rainsberger, qui nous invite à mettre à jour le plan quand on acquière une meilleure compréhension de notre position :
+
+> When reality stops matching the plan, change the plan (instead of pushing the plan harder).
+
+Il existe des outils pour se poser ces questions sur nos expérimentations. Par exemple :
+
+* Les rétrospectives
+* Les timeboxs avec débriefs
+* Le feedback rapide
+
+Et tout ce qui facilite la communication peut aider.
+
+## Digression sur le mot "éprouver"
+
+J'avais depuis longtemps des réflexions sur la notion d'imitation, mais confronter cette notion à la notion d'éprouver est récent pour moi.
+
+Je suis arrivé à "épreuve" puis à "éprouver" cette semaine, en visionnant une conférence de Bruno Latour.
+
+Dans cette conférence, plutôt que de se contenter d'utiliser des termes sans les remettre en question (sans les éprouver), ce qui revient à :
+
+> enfiler des séries de clichés les uns derrière les autres qui n’ont aucune espèce de signification
+
+Il nous invite à :
+
+> transformer ces termes en les ramenant à leur monde d’attributs, de propriétés ou de performances
+
+Il donne deux façons de questionner notre contexte par des épreuves.
+
+La première est quand on n'a pas d'information sur ce qu'on observe. On va donc conduire des expériences, des épreuves, pour en déterminer des attributs, et ainsi découvrir des compétences de notre contexte en l'éprouvant.
+
+La deuxième, c'est quand on pense connaître ce qu'on observe. On peut alors en déduire des attributs, qu'on va vérifier par des épreuves. Si les épreuves révèlent que ce qu'on observe n'a pas les attributs prévus, c'est un signe qu'on n'est pas en train d'observer exactement ce qu'on pensait observer, ou qu'on le connais moins bien que ce qu'on imaginait.
+
+Dans les deux cas, on va éprouver, faire subir des épreuves à notre sujet pour le connaître ou vérifier qu'il a bien les attributs qu'on imagine.
+
+## It ain’t what we don’t know that gets us in trouble, it’s what we know that ain’t so
+
+Dans mon expérience je suis très souvent surpris de ce que je découvre en faisant ça, et quand je n'éprouve pas un minimum mon sujet, je me crée des problèmes à cause de ce que je croyais savoir, mais qui était faux.
+
+Ça a l'air un peu trivial, mais ça me parle beaucoup, car dans des contextes missions je pense souvent aux inconnues connues, voire aux inconnues inconnues, mais parfois ce n'est pas ça qui coince. J'observe régulièrement que je me créé des problèmes à cause d'une hypothèse que j'avais faite sur mon contexte mission, que je n'ai pas vérifiée, et que j'aurais pu valider / invalider facilement en l'éprouvant. 
+
+Dans Secrets of Consulting, de Jerry Weinberg, on trouve cette citation :
+
+> It ain’t what we don’t know that gets us in trouble, it’s what we know that ain’t so.
+
+## Conclusion
+
+Après ce long tour, où j'ai pris le risque de mettre ensemble des choses différentes, en m'autorisant à me tromper, j'en reviens à Imiter vs. Éprouver.
+
+Pour moi, pour tirer plus de bénéfices d'Accelerate, ce n'est pas (seulement) l'imitation de ce que font d'autres équipes qui crée de la compétence, c'est ce qu'on apprend collectivement sur notre contexte d'équipe, d'entreprise, etc. en l'éprouvant.
+
+J'ai envie aussi de préciser que l'imitation n'est pas mauvaise en soit, imiter est aussi une façon d'apprendre. Rien ne nous empêche d'imiter ET d'éprouver.
