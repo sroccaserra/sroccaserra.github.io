@@ -7,7 +7,11 @@ src="${1:?'Missing source file name.'}"
 
 function rss_item() {
     local IN_FILE="$1"
-    local URL="${BASE_URL}/${IN_FILE%.gmi}.html"
+    local URL="${PROTOCOL}://${BASE_URL}/${IN_FILE}"
+    if [[ "${PROTOCOL}" == https ]]
+    then
+        URL="${URL%.gmi}.html"
+    fi
 
     local TITLE=`article_title ${IN_FILE}`
     local DATE=`article_date ${IN_FILE}`
