@@ -13,6 +13,16 @@ Quand une avancée technologique n'est pas encore tirée par de nombreux usages 
 > Vit aux dépens de celui qui l'écoute :
 > Cette leçon vaut bien un fromage, sans doute.
 
+Je pense aussi à l'article "A radical idea" de Jürgen Geuter. Il y partage une idée assez extrême, qu'on pourrait prendre pour un conseil :
+
+> Things that do not exist (yet) do not exist.
+
+Pour donner un peu plus de contexte :
+
+> We are constantly asked to keep talking about things as potential. To judge things based on promises of what they might do that go way beyond the actual realities of the thing. Like OpenAI and others can’t make any money with their machine learning models. But their text and image generators might bring a 10% GDP increase as Meta’s open letter claims? You sure about that?  Sounds like that requires a lot of magic thinking between 1) “OpenAI builds stochastic parrots” and 3) “GDP goes up by 10%”. How exactly is 2) shaped in this chain of reasoning and does it actually exist?
+
+=> https://tante.cc/2024/09/23/a-radical-idea/ A radical idea
+
 Bref, je n'ai pas de boule de cristal et je m'autorise à me tromper, mais je pense que l'IA générative ne sera pas la révolution annoncée.
 
 => https://mastodon.social/@sroccaserra/112592922678941928 🧵 @sroccaserra
