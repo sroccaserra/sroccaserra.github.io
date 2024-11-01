@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <atom:link href="https://sroccaserra.srht.site/rss.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://sroccaserra.fr/rss.xml" rel="self" type="application/rss+xml" />
         <title>Apprendre + Équipe = Programmes</title>
-        <link>https://sroccaserra.srht.site</link>
+        <link>https://sroccaserra.fr</link>
         <description>
             Des notes sur ce que j'observe dans les métiers liés à la
             conception de logiciels
         </description>
         <image>
-            <url>https://sroccaserra.srht.site/favicon.ico</url>
-            <link>https://sroccaserra.srht.site</link>
+            <url>https://sroccaserra.fr/favicon.ico</url>
+            <link>https://sroccaserra.fr</link>
         </image>
 
         <!-- contents -->

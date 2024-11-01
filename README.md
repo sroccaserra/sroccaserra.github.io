@@ -1,7 +1,7 @@
 ### Site
 
-- <https://sroccaserra.srht.site>
-- <gemini://sroccaserra.srht.site>
+- <https://sroccaserra.fr>
+- <gemini://sroccaserra.fr>
 
 ### Intention
 

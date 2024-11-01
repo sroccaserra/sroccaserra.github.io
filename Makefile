@@ -8,7 +8,7 @@ SHELL := /usr/bin/bash
 BUILD_HTML := build_html
 BUILD_GMI := build_gmi
 CONVERT_TO_HTML := gemtext_to_html/build/gemtext_to_html -c center
-BASE_URL := sroccaserra.srht.site
+BASE_URL := sroccaserra.fr
 
 GMI_IN_FILES=$(wildcard pages/*.gmi) index.gmi
 GMI_OUT_FILES=$(patsubst %.gmi,$(BUILD_GMI)/%.gmi,$(GMI_IN_FILES))
